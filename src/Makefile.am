@@ -28,6 +28,7 @@ AM_CPPFLAGS += -I $(top_builddir)
 
 TASKS =
 include task/local.mk
+include ast/local.mk
 include parse/local.mk
 include object/local.mk
 
@@ -80,6 +81,7 @@ CLEANFILES += $(nodist_libtc_la_SOURCES)
 libtc_la_LIBADD =				\
 	$(libobject_la)				\
 	$(libparse_la)				\
+	$(libast_la)				\
 	$(libmisc_la)				\
 	$(libargp_la)
 

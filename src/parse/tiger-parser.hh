@@ -13,6 +13,7 @@
 # include <misc/error.hh>
 # include <misc/path.hh>
 # include <misc/file-library.hh>
+# include <ast/fwd.hh>
 # include <parse/parsetiger.hh>
 # include <parse/tweast.hh>
 
@@ -66,6 +67,8 @@ namespace parse
     /// Set the parser traces.
     TigerParser& parse_trace(bool b = true);
 
+    /// Enable object extensions.
+    TigerParser& enable_object_extensions (bool b = true);
 
     /// Enable syntax extensions.
     TigerParser& enable_extensions(bool b = true);
@@ -111,6 +114,8 @@ namespace parse
     input_type input_;
     /// The file library for imports.
     misc::file_library library_;
+    /// Allow object extensions?
+    bool enable_object_extensions_p_;
     /// Allow language extensions (reserved identifiers, new keywords)?
     bool enable_extensions_p_;
   };

@@ -13,13 +13,7 @@
 # include <misc/file-library.hh>
 # include <parse/fwd.hh>
 
-// This forward declarations is provided to allow the compilation of
-// the project without the `ast' module at TC-1.  Remove it as soon
-// as this module is available (i.e., at TC-2).
-namespace ast
-{
-  class Decs;
-}
+# include <ast/fwd.hh>
 
 /// Parsing the input, delivering an ast::Ast.
 namespace parse
@@ -31,6 +25,7 @@ namespace parse
   /// \param file_library               library for managing search path.
   /// \param scan_trace_p               display informations on scan step.
   /// \param parse_trace_p              display informations on parse step.
+  /// \param enable_object_extensions_p enable object constructions
   ///
   /// \return a pair the first element of which is a pointer to an
   ///         abstract parse tree upon success, `nullptr' otherwise;
@@ -47,6 +42,7 @@ namespace parse
          const std::string& fname,
          misc::file_library& l,
          bool scan_trace_p, bool parse_trace_p
+         , bool enable_object_extensions_p = false
          );
 
   /// \brief Parse a Tweast.
@@ -56,13 +52,22 @@ namespace parse
 
   /// Parse a std::string. Used for unit tests.
   ast::Exp* parse (const std::string& str
+                   , bool enable_object_extensions_p = false
                    );
 
   /// Parse a std::string. Used for unit tests.
   /// The declaration of the _main function is automatically added.
   ast::DecsList* parse_unit (const std::string& str
+                   , bool enable_object_extensions_p = false
                    );
 
+  /// \brief Parse a set of declarations.
+  ///
+  /// Wrapper around parse::parse to return the single ast::Decs
+  /// to be found in the input (expected to contain decs_listdecs).
+  ///
+  /// Used by desugar::BoundCheckingVisitor and object::ObjectDesugarVisitor.
+  ast::Decs* parse_decs (Tweast& in);
 
 } // namespace parse
 

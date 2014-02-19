@@ -32,6 +32,13 @@ namespace parse
     return *this;
   }
 
+  /// Enable object extensions.
+  TigerParser&
+  TigerParser::enable_object_extensions(bool b)
+  {
+    enable_object_extensions_p_ = b;
+    return *this;
+  }
 
   /// Enable syntax extensions.
   TigerParser&

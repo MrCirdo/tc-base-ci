@@ -67,6 +67,30 @@
 %token <int>            INT    "integer"
 
 
+/*--------------------------------.
+| Support for the non-terminals.  |
+`--------------------------------*/
+
+%code requires
+{
+# include <ast/fwd.hh>
+// Provide the declarations of the following classes for the
+// %destructor clauses below to work properly.
+# include <ast/exp.hh>
+# include <ast/var.hh>
+# include <ast/ty.hh>
+# include <ast/name-ty.hh>
+# include <ast/field.hh>
+# include <ast/field-init.hh>
+# include <ast/function-dec.hh>
+# include <ast/type-dec.hh>
+# include <ast/var-dec.hh>
+# include <ast/any-decs.hh>
+# include <ast/decs-list.hh>
+}
+
+  // FIXME: Some code was deleted here (Printers and destructors).
+
 
 /*-----------------------------------------.
 | Code output in the implementation file.  |
@@ -79,6 +103,8 @@
 # include <parse/tweast.hh>
 # include <misc/separator.hh>
 # include <misc/symbol.hh>
+# include <ast/all.hh>
+# include <ast/libast.hh>
 
   namespace
   {
@@ -108,6 +134,7 @@
        ASSIGN       ":="
        BREAK        "break"
        CAST         "_cast"
+       CLASS        "class"
        COLON        ":"
        COMMA        ","
        DIVIDE       "/"
@@ -116,6 +143,7 @@
        ELSE         "else"
        END          "end"
        EQ           "="
+       EXTENDS      "extends"
        FOR          "for"
        FUNCTION     "function"
        GE           ">="
@@ -130,7 +158,9 @@
        LPAREN       "("
        LT           "<"
        MINUS        "-"
+       METHOD       "method"
        NE           "<>"
+       NEW          "new"
        NIL          "nil"
        OF           "of"
        OR           "|"
@@ -149,6 +179,7 @@
        EOF 0        "end of file"
 
 
+  // FIXME: Some code was deleted here (%types).
 
   // FIXME: Some code was deleted here (Priorities/associativities).
 %start program
@@ -156,9 +187,9 @@
 %%
 program:
   /* Parsing a source program.  */
-  exp   
+  exp   { tp.ast_ = $1; }
 | /* Parsing an imported file.  */
-  decs  
+  decs  { tp.ast_ = $1; }
 ;
 
   // FIXME: Some code was deleted here (Rest of the grammar).
