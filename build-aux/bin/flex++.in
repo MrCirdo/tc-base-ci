@@ -67,11 +67,16 @@ fi
 # 3. Disable the declarations of yyalloc, yyrealloc and yyfree
 #    declarations, which are not in YY_FLEX_NAMESPACE, while the
 #    implementations are.
-perl -pi                                                \
-     -e "s{<FlexLexer\\.h>}{<$output_header>}g;"        \
-     -e "s{\\Q$output.tmp\\E}{$output}g;"               \
-     -e 's{(^void \*yy(re)?alloc.*;)}{// $1}g;'         \
-     -e 's{(^void yyfree.*;)}{// $1}g;'                 \
+#
+# 4. Work around Apple Flex not using the same interface as stock Flex
+#    regarding yyFlexLexer::LexerInput and yyFlexLexer::LexerOutput.
+perl -pi								\
+     -e "s{<FlexLexer\\.h>}{<$output_header>}g;"			\
+     -e "s{\\Q$output.tmp\\E}{$output}g;"				\
+     -e 's{(^void \*yy(re)?alloc.*;)}{// $1}g;'				\
+     -e 's{(^void yyfree.*;)}{// $1}g;'					\
+     -e 's{size_t(.*)LexerInput\((.*)size_t}{int$1LexerInput($2int};'	\
+     -e 's{void(.*)LexerOutput\((.*)size_t}{void$1LexerOutput($2int};'	\
      "$output.tmp"
 ## For some reason, on Windows perl does not remove the back up file.
 rm -f "$output.bak"
