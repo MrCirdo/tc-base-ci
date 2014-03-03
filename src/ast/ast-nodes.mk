@@ -10,6 +10,7 @@ AST_NODES =  \
 	  ast/class-ty.hh ast/class-ty.hxx ast/class-ty.cc  \
 	  ast/dec.hh ast/dec.hxx ast/dec.cc  \
 	  ast/decs-list.hh ast/decs-list.hxx ast/decs-list.cc  \
+	  ast/escapable.hh ast/escapable.hxx ast/escapable.cc  \
 	  ast/exp.hh ast/exp.hxx ast/exp.cc  \
 	  ast/field.hh ast/field.hxx ast/field.cc  \
 	  ast/field-init.hh ast/field-init.hxx ast/field-init.cc  \

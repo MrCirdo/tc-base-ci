@@ -8,13 +8,14 @@
 
 # include <ast/exp.hh>
 # include <ast/name-ty.hh>
+# include <ast/escapable.hh>
 # include <ast/dec.hh>
 
 namespace ast
 {
 
   /// VarDec.
-  class VarDec : public Dec
+  class VarDec : public Dec, public Escapable
   {
     /** \name Ctor & dtor.
      ** \{ */

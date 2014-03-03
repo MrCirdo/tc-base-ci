@@ -76,6 +76,7 @@ libcallgraph += $(libmisc)
 libbind      += $(libparse) $(libast)
 libastclone  += $(libast)
 libparse     += $(libmisc)
+libobject    += $(libbind)
 # libast already declares libmisc as dependency, but we have to add
 # it manually to LDADD when libast is absent (i.e., at TC-1).
 libparse     += $(libast)

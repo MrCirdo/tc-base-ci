@@ -17,6 +17,16 @@ namespace ast
   // Anonymous namespace: these functions are private to this file.
   namespace
   {
+    /// Output \a e on \a ostr.
+    inline
+    std::ostream&
+    operator<< (std::ostream& ostr, const Escapable& e)
+    {
+      if (escapes_display(ostr) && e.escape_get())
+        ostr << "/* escaping */ ";
+
+      return ostr;
+    }
 
     /// \brief Output \a e on \a ostr.
     ///
@@ -27,6 +37,8 @@ namespace ast
     operator<< (std::ostream& ostr, const Dec& e)
     {
       ostr << e.name_get();
+      if (bindings_display(ostr))
+        ostr << " /* " << &e << " */";
       return ostr;
     }
   }
@@ -43,6 +55,8 @@ namespace ast
   PrettyPrinter::operator()(const SimpleVar& e)
   {
     ostr_ << e.name_get();
+    if (bindings_display(ostr_))
+      ostr_ << " /* " << e.def_get() << " */";
   }
 
   void

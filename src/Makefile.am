@@ -30,6 +30,8 @@ TASKS =
 include task/local.mk
 include ast/local.mk
 include parse/local.mk
+include bind/local.mk
+include escapes/local.mk
 include object/local.mk
 
 EXTRA_DIST += tiger_common.i
@@ -80,6 +82,8 @@ CLEANFILES += $(nodist_libtc_la_SOURCES)
 ## some symbols.
 libtc_la_LIBADD =				\
 	$(libobject_la)				\
+	$(libescapes_la)			\
+	$(libbind_la)				\
 	$(libparse_la)				\
 	$(libast_la)				\
 	$(libmisc_la)				\

@@ -27,6 +27,7 @@ namespace ast
   class ClassTy;
   class Dec;
   class DecsList;
+  class Escapable;
   class Exp;
   class Field;
   class FieldInit;
@@ -79,7 +80,6 @@ namespace ast
   typedef AnyDecs<MethodDec> MethodDecs;
   typedef AnyDecs<TypeDec> TypeDecs;
   typedef AnyDecs<VarDec> VarDecs;
-
 
 
 } // namespace ast

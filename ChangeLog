@@ -1,3 +1,56 @@
+2014-03-03  Roland Levillain  <roland@lrde.epita.fr>
+
+	Regen tests outputs.
+
+	* tests/lexical/object-constructs-in-non-object-program.tc-err:
+	Regen (was initially generated in the wrong directory).
+
+2014-03-03  Roland Levillain  <roland@lrde.epita.fr>
+
+	Forbid the use of `self' outside method definitions.
+
+	* src/object/binder.hh, src/object/binder.cc
+	(object::Binder::under_class_ty_): Remove attribute.
+	(object::Binder::within_method_dec_): New attribute.
+	(object::Binder::operator()(ast::SimpleVar& e))
+	(object::Binder::operator()(ast::ClassTy& e))
+	(object::Binder::operator()(ast::MethodDec& e))
+	(object::Binder::visit_dec_body<ast::FunctionDec>):
+	Adjust.
+	* tests/object-bind/initialize-attribute-with-self.tig:
+	New test, exercising this case.
+	* tests/object-bind/initialize-attribute-with-self.tc-err,
+	* tests/object-bind/initialize-attribute-with-self.tc-sta:
+	New test outputs.
+
+2014-02-28  Roland Levillain  <roland@lrde.epita.fr>
+
+	Generate more contents of ast/fwd.hh and thus really hide RuleDecs.
+
+	* dev/ast-fwd-gen: Generate typedefs for *Decs classes and remove
+	them...
+	* src/ast/ast.yml (fwd_hh_epilogue): ...from this.
+	* src/ast/fwd.hh: Regen.
+
+2014-02-27  Roland Levillain  <roland@lrde.epita.fr>
+
+	Update TODO.txt.
+
+	* TODO.txt (bison++ and monoburg++): Remove item, as these scripts
+	now differ much more.
+	(TC-1: select-const): Remove item, as the Generic Programming
+	lecture from the TYLA course covers this topic now (see
+	https://trac.lrde.epita.fr/tc/ticket/20).
+	(TC-6: Boost::lambda): Remove item, as C++11 lambda expressions do
+	a better job now.
+
+2014-02-27  Roland Levillain  <roland@lrde.epita.fr>
+
+	Make tc-check logs uniform w.r.t. spacing.
+
+	* tests/tc-check.in (interface_check): Here.
+	Reported by Arnaud Farbos <arnaud.farbos@epita.fr>.
+
 2014-02-19  Roland Levillain  <roland@lrde.epita.fr>
 
 	Work around Apple Flex not using the same interface as stock Flex.
