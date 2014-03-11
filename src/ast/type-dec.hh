@@ -6,6 +6,7 @@
 #ifndef AST_TYPE_DEC_HH
 # define AST_TYPE_DEC_HH
 
+# include <ast/type-constructor.hh>
 # include <ast/dec.hh>
 # include <ast/ty.hh>
 
@@ -13,7 +14,7 @@ namespace ast
 {
 
   /// TypeDec.
-  class TypeDec : public Dec
+  class TypeDec : public Dec, public TypeConstructor
   {
     /** \name Ctor & dtor.
      ** \{ */

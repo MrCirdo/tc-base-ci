@@ -30,9 +30,15 @@ TASKS =
 include task/local.mk
 include ast/local.mk
 include parse/local.mk
+include astclone/local.mk
 include bind/local.mk
 include escapes/local.mk
+include callgraph/local.mk
+include type/local.mk
 include object/local.mk
+include overload/local.mk
+include desugar/local.mk
+include inlining/local.mk
 
 EXTRA_DIST += tiger_common.i
 
@@ -81,9 +87,15 @@ CLEANFILES += $(nodist_libtc_la_SOURCES)
 ## times, resulting in a library comprising several definitions of
 ## some symbols.
 libtc_la_LIBADD =				\
+	$(libdesugar_la)			\
+	$(libinlining_la)			\
+	$(liboverload_la)			\
 	$(libobject_la)				\
+	$(libtype_la)				\
+	$(libcallgraph_la)			\
 	$(libescapes_la)			\
 	$(libbind_la)				\
+	$(libastclone_la)			\
 	$(libparse_la)				\
 	$(libast_la)				\
 	$(libmisc_la)				\

@@ -53,11 +53,7 @@ namespace escapes
     /// Super class type.
     typedef ast::DefaultVisitor super_type;
     /// Import all the overloaded visit methods.
-#ifdef SWIG
-    using ast::DefaultVisitor::operator();
-#else
     using super_type::operator();
-#endif
 
   // FIXME: Some code was deleted here.
   };

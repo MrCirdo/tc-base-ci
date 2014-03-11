@@ -18,7 +18,7 @@
 # include <parse/tweast.hh>
 
 // Announce to Bison the lexing function it must use.
-// Unfortunately, SWIG 1.3.28 cannot parse this declaration.
+// Unfortunately, SWIG 2.0.7 cannot parse this declaration.
 #ifndef SWIG
   YY_DECL_ ();
 #endif

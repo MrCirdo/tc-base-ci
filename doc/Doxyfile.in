@@ -115,7 +115,8 @@ FULL_PATH_NAMES        = YES
 # If left blank the directory from which doxygen is run is used as the 
 # path to strip.
 
-STRIP_FROM_PATH        = @top_srcdir@/src \
+STRIP_FROM_PATH        = @top_srcdir@/lib \
+                         @top_srcdir@/src \
                          @top_builddir@/src
 
 # The STRIP_FROM_INC_PATH tag can be used to strip a user-defined part of 
@@ -467,7 +468,8 @@ WARN_LOGFILE           =
 # "myfile.cpp" or directories like "/usr/src/myproject". Separate the
 # files or directories with spaces.
 
-INPUT                  = @top_srcdir@/src \
+INPUT                  = @top_srcdir@/lib \
+                         @top_srcdir@/src \
                          @top_builddir@/src
 
 # This tag can be used to specify the character encoding of the source
@@ -520,7 +522,7 @@ EXCLUDE_SYMLINKS       = YES
 # against the file with absolute path, so to exclude all test directories 
 # for example use the pattern */test/*
 
-EXCLUDE_PATTERNS       = 
+EXCLUDE_PATTERNS       = test*.cc
 
 # The EXCLUDE_SYMBOLS tag can be used to specify one or more symbol
 # names (namespaces, classes, functions, etc.) that should be excluded

@@ -1,3 +1,46 @@
+2014-03-07  Roland Levillain  <roland@lrde.epita.fr>
+
+	Remove a SWIG workaround.
+
+	* src/escapes/escapes-visitor.hh (escapes::EscapesVisitor): Here.
+	* src/parse/tiger-parser.hh: Update a comment about SWIG.
+
+2014-03-07  Roland Levillain  <roland@lrde.epita.fr>
+
+	Fix and re-enable tests/good/getchar.tig.
+
+	* tests/good/getchar.tig: Here, as this test is now fully
+	supported.  Read the input from the stdin using getchar(), so that
+	the implementation matches the description of the test.
+	* tests/good/getchar.-e.s,
+	* tests/good/getchar.-e.u.s,
+	* tests/good/getchar.hir,
+	* tests/good/getchar.hpr,
+	* tests/good/getchar.lir,
+	* tests/good/getchar.lpr,
+	* tests/good/getchar.out,
+	* tests/good/getchar.s,
+	* tests/good/getchar.u.s:
+	Regen.
+
+2014-03-06  Roland Levillain  <roland@lrde.epita.fr>
+
+	Fix the distribution in src/transform/.
+
+	* src/transform/local.mk: Fix timestamps' names.
+
+2014-03-05  Roland Levillain  <roland@lrde.epita.fr>
+
+	Generate Doxygen documentation for members of namespace `misc'.
+
+	* doc/Doxyfile.in (INPUT, STRIP_FROM_PATH): Add @top_srcdir@/lib.
+
+2014-03-05  Roland Levillain  <roland@lrde.epita.fr>
+
+	Do not generate Doxygen documentation for tests.
+
+	* doc/Doxyfile.in (EXCLUDE_PATTERNS): Add test*.cc.
+
 2014-03-03  Roland Levillain  <roland@lrde.epita.fr>
 
 	Regen tests outputs.
