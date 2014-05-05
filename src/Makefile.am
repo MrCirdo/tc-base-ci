@@ -39,6 +39,10 @@ include object/local.mk
 include overload/local.mk
 include desugar/local.mk
 include inlining/local.mk
+include temp/local.mk
+include tree/local.mk
+include frame/local.mk
+include translate/local.mk
 
 EXTRA_DIST += tiger_common.i
 
@@ -87,6 +91,10 @@ CLEANFILES += $(nodist_libtc_la_SOURCES)
 ## times, resulting in a library comprising several definitions of
 ## some symbols.
 libtc_la_LIBADD =				\
+	$(libtranslate_la)			\
+	$(libframe_la)				\
+	$(libtree_la)				\
+	$(libtemp_la)				\
 	$(libdesugar_la)			\
 	$(libinlining_la)			\
 	$(liboverload_la)			\

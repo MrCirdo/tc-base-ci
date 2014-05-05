@@ -18,6 +18,14 @@ namespace ast
   /// FunctionDec.
   class FunctionDec : public Dec, public TypeConstructor
   {
+
+  public:
+    /// Return the list of the escapes.
+    std::list<bool> escapes_get() const
+    {
+  // FIXME: Some code was deleted here.
+    }
+
     /** \name Ctor & dtor.
      ** \{ */
   public:

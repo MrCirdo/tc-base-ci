@@ -1,3 +1,12 @@
+2014-03-18  Roland Levillain  <roland@lrde.epita.fr>
+
+	Improve the documentation of type::Class.
+
+	* src/type/class.hh
+	(type::Class::attr_type, type::Class::meth_type): Here.
+	Reported by Pierre De Abreu <deabre_p@epita.fr>.
+	(type::Class::attr_find): Typo in comment.
+
 2014-03-07  Roland Levillain  <roland@lrde.epita.fr>
 
 	Remove a SWIG workaround.

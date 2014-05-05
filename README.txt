@@ -1,6 +1,6 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
-.                             : 4825 206  23
+.                             : 5322 241  22
     lib                       :  326  10  32
         misc                  :  326  10  32
             graph.hh          :    3   1   3
@@ -11,8 +11,8 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :   41   1  41
             variant.hxx       :   10   2   5
-    src                       : 4499 196  22
-        ast                   : 1722  62  27
+    src                       : 4996 231  21
+        ast                   : 1727  63  27
             array-exp.cc      :   26   1  26
             array-exp.hh      :   47   1  47
             array-exp.hxx     :   34   1  34
@@ -32,6 +32,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             field-var.cc      :   23   1  23
             field-var.hh      :   46   1  46
             field-var.hxx     :   34   1  34
+            function-dec.hh   :    5   1   5
             if-exp.cc         :   26   1  26
             if-exp.hh         :   55   1  55
             if-exp.hxx        :   34   1  34
@@ -112,6 +113,16 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             scantiger.ll      :    7   1   7
             tasks.cc          :    2   1   2
             tiger-parser.cc   :   28   4   7
+        temp                  :  146   2  73
+            identifier.hxx    :  146   2  73
+        translate             :  292  31   9
+            exp.cc            :   47   6   7
+            level.cc          :   12   2   6
+            translation.cc    :  149  11  13
+            translation.hh    :    6   1   6
+            translator.cc     :   78  11   7
+        tree                  :   54   1  54
+            fragment.cc       :   54   1  54
         type                  :  803  36  22
             array.hh          :   20   1  20
             array.hxx         :   10   1  10

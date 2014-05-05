@@ -31,9 +31,13 @@ namespace type
     /** \name Attribute and Method elementary manipulation.
      ** \{ */
   public:
-    /// Return the attribute type associated to \a key.
+    /// \brief Return the attribute type associated to \a key.
+    ///
+    /// The search is performed throughout the super classes.
     const Type* attr_type(const misc::symbol& key) const;
-    /// Return the method type associated to \a key.
+    /// \brief Return the method type associated to \a key.
+    ///
+    /// The search is performed throughout the super classes.
     const Method* meth_type(const misc::symbol& key) const;
     /** \} */
 
@@ -53,7 +57,7 @@ namespace type
     /// \brief Find an attribute using its name, return `nullptr' if
     /// not found.
     ///
-    /// The search is performed throughtout the super classes.
+    /// The search is performed throughout the super classes.
     const Attribute* attr_find(const misc::symbol& key) const;
     /// \brief Find an owned attribute using its name, return
     /// `nullptr' if not found.
