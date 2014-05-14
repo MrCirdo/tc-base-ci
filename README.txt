@@ -1,6 +1,6 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
-.                             : 5322 241  22
+.                             : 5312 239  22
     lib                       :  326  10  32
         misc                  :  326  10  32
             graph.hh          :    3   1   3
@@ -11,7 +11,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :   41   1  41
             variant.hxx       :   10   2   5
-    src                       : 4996 231  21
+    src                       : 4986 229  21
         ast                   : 1727  63  27
             array-exp.cc      :   26   1  26
             array-exp.hh      :   47   1  47
@@ -115,10 +115,10 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             tiger-parser.cc   :   28   4   7
         temp                  :  146   2  73
             identifier.hxx    :  146   2  73
-        translate             :  292  31   9
+        translate             :  282  29   9
             exp.cc            :   47   6   7
-            level.cc          :   12   2   6
-            translation.cc    :  149  11  13
+            level.cc          :    3   1   3
+            translation.cc    :  148  10  14
             translation.hh    :    6   1   6
             translator.cc     :   78  11   7
         tree                  :   54   1  54

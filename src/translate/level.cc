@@ -88,7 +88,16 @@ namespace translate
     if (&use_level == this)
       return new tree::Temp("fp");
 
-  // FIXME: Some code was deleted here (Use the static link to retrieve the frame pointer).
+    // Use the static link to retrieve the frame pointer.
+    // An access to the first formal, hopefully the static link.
+    tree::rExp res = use_level.sl();
+    // Loop until we find it.
+    for (const Level* temp = use_level.parent_get();
+         temp != this && temp != nullptr;
+         temp = temp->parent_get())
+      res = new tree::Mem(res);
+
+    return res;
   }
 
 

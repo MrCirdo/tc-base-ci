@@ -1,3 +1,24 @@
+2014-05-14  Roland Levillain  <roland@lrde.epita.fr>
+
+	Show more code to help students.
+
+	* src/translate/level.cc (translate::Level::fp)
+	* src/translate/translation.cc (translate::static_link):
+	Here.
+
+2014-05-05  Roland Levillain  <roland@lrde.epita.fr>
+
+	Fix the generation of timestamps in src/transform/.
+
+	* src/transform/local.mk: Fix the name of *.stamp files.
+	* dev/stagize: Likewise.
+
+2014-05-05  Roland Levillain  <roland@lrde.epita.fr>
+
+	Improve the documentation of bind::Renamer.
+
+	* src/bind/renamer.hh: Here.
+
 2014-03-18  Roland Levillain  <roland@lrde.epita.fr>
 
 	Improve the documentation of type::Class.
@@ -40576,4 +40597,4 @@ coding: utf-8
 ispell-local-dictionary: "american"
 End:
 
-$Id: 7fef12e1f5fa43449d667a0eec1d837c40fc1202 $
+$Id: 1101476b5fc5e253c724cbbe0ecf0c3fd15cad03 $

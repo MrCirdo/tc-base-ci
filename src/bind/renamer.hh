@@ -12,7 +12,8 @@
 
 namespace bind
 {
-  /// Perform identifier renaming within an AST (in place).
+  /// Perform identifier renaming within an AST (in place),
+  /// without support for objects.
   class Renamer : public ast::DefaultVisitor, public ast::NonObjectVisitor
   {
   public:

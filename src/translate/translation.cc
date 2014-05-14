@@ -89,7 +89,7 @@ namespace translate
   {
     assertion(decl);
     assertion(use);
-  // FIXME: Some code was deleted here (Compute the static link).
+    return new Ex(decl->parent_get()->fp(*use));
   }
 
   rExp
