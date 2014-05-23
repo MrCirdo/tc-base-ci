@@ -1,6 +1,6 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
-.                             : 5312 239  22
+.                             : 5597 251  22
     lib                       :  326  10  32
         misc                  :  326  10  32
             graph.hh          :    3   1   3
@@ -11,7 +11,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :   41   1  41
             variant.hxx       :   10   2   5
-    src                       : 4986 229  21
+    src                       : 5271 241  21
         ast                   : 1727  63  27
             array-exp.cc      :   26   1  26
             array-exp.hh      :   47   1  47
@@ -83,6 +83,10 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             renamer.hxx       :   49   1  49
             tasks.cc          :   41   1  41
             tasks.hh          :   49   1  49
+        canon                 :  285  12  23
+            canon.cc          :   87   5  17
+            libcanon.cc       :   20   1  20
+            traces.cc         :  178   6  29
         desugar               :  247   4  61
             bound-checking-visitor.cc:  135   1 135
             bound-checking-visitor.hh:    7   1   7

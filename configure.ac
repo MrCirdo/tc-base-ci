@@ -207,7 +207,7 @@ AM_CONDITIONAL([SUPPORTED_IA32],
                [echo "$host" | grep -q '^\(i.86\|x86_64\).*linux\|^\(i.86\|amd64\).*freebsd'])
 
 # HAVM.
-TC_PROG([havm], [>=0.24], [HAVM], [The Tree Virtual Machine])
+TC_PROG([havm], [>=0.26], [HAVM], [The Tree Virtual Machine])
 
 # Tiger reference compiler.
 AC_ARG_VAR([TC], [Tiger reference compiler])

@@ -78,6 +78,9 @@ This package was written by and with the assistance of
 * Julien Grall                  julien.grall@gmail.com
   - Support for TC-0 tarballs in tc-check.
 
+* Laurent Gourvénec             laurent.gourvenec@epita.fr
+  - FreeBSD support.
+
 * Michaël Cadilhac              michael.cadilhac@lrde.epita.fr
   - Conversion to MonoBurg.
 
@@ -142,6 +145,9 @@ This package was written by and with the assistance of
 
 * Stéphane Molina              molina_s@epita.fr
   - Configuration files in tc-check.
+
+* Théophile Ranquet            ranquet@lrde.epita.fr
+  - Stylistic changes.
 
 * Thierry Géraud               theo@epita.fr
   - Initial idea for visitors.

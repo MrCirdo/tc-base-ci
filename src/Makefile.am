@@ -43,6 +43,7 @@ include temp/local.mk
 include tree/local.mk
 include frame/local.mk
 include translate/local.mk
+include canon/local.mk
 
 EXTRA_DIST += tiger_common.i
 
@@ -91,6 +92,7 @@ CLEANFILES += $(nodist_libtc_la_SOURCES)
 ## times, resulting in a library comprising several definitions of
 ## some symbols.
 libtc_la_LIBADD =				\
+	$(libcanon_la)				\
 	$(libtranslate_la)			\
 	$(libframe_la)				\
 	$(libtree_la)				\

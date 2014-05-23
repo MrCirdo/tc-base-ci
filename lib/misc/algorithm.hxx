@@ -40,6 +40,7 @@ namespace misc
     return std::find(c.begin(), c.end(), v);
   }
 
+
   // Apply \a f to all the members of \a c, and return it.
   template <typename Container, typename Functor>
   inline Functor&
