@@ -1,0 +1,31 @@
+# move_store.brg                                         -*- c++ -*-
+
+move: Move(Mem(Binop(Const, exp)), exp),
+move: Move(Mem(Binop(exp, Const)), exp)
+{
+  rBinop binop = tree->left_get()->left_get().cast<Binop>();
+
+  precondition(binop->oper_get() == Binop::sub or
+               binop->oper_get() == Binop::add);
+
+  rExp binop_left = binop->left_get();
+  rExp binop_right = binop->right_get();
+  if (binop_right->kind_get() == Tree::const_kind)
+    binop_left.swap(binop_right);
+  rConst const_left = binop_left.cast<Const>();
+  short sign = 1;
+
+  precondition(binop_right);
+  precondition(binop_left);
+
+  if(binop->oper_get() == Binop::sub)
+    sign = -1;
+  EMIT(IA32_ASSEMBLY.store_build(tree->right_get()->asm_get(),
+                                 binop_right->asm_get(),
+                                 sign * const_left->value_get()));
+}
+
+move: Move(Mem(b : binop), e : exp)
+{
+  EMIT(IA32_ASSEMBLY.store_build(e->asm_get(), b->asm_get()));
+}

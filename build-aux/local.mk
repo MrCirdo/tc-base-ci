@@ -8,6 +8,7 @@ dist_lisp_DATA = build-aux/rebox.el build-aux/panther.el build-aux/tiger.el
 dist_noinst_SCRIPTS = build-aux/bin/move-if-change build-aux/bin/fuse-switch
 
 nodist_noinst_SCRIPTS = build-aux/bin/bison++
+nodist_noinst_SCRIPTS += build-aux/bin/monoburg++
 
 EXTRA_DIST += build-aux/tiger-syntax.vim build-aux/tiger-ftdetect.vim
 

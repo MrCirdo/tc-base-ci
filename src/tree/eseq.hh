@@ -22,27 +22,27 @@ namespace tree
      ** \param stm      Statement list
      ** \param exp      Last expression
      */
-    Eseq (const rStm& stm, const rExp& exp);
+    Eseq(const rStm& stm, const rExp& exp);
 
     /** \name Accessors.
      ** \{ */
 
     /// Statement list
-    rStm stm_get () const;
+    rStm stm_get() const;
 
     /// Last expression
-    rExp exp_get () const;
+    rExp exp_get() const;
 
     /// eseq_kind.
-    virtual kind_tree_type kind_get () const override;
+    virtual kind_tree_type kind_get() const override;
 
     /** \} */
 
     /** \name Printing.
      ** \{ */
 
-    virtual std::ostream& tag_print (std::ostream&) const override;
-    virtual std::ostream& dump (std::ostream& ostr) const override;
+    virtual std::ostream& tag_print(std::ostream&) const override;
+    virtual std::ostream& dump(std::ostream& ostr) const override;
 
     /** \} */
 

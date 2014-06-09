@@ -22,11 +22,11 @@ class std::list
 {
 
   std::string
-  __str__ () const
+  __str__() const
   {
     std::ostringstream o;
     o << *$self;
-    return o.str ();
+    return o.str();
   }
 
 }

@@ -1,0 +1,98 @@
+#! /bin/sh
+
+# Exit status.
+status=0
+
+# Any tool failure is a failure of the script.
+set -e
+
+: ${MONOBURG=@MONOBURG@}
+
+# monoburg++ INPUT OUTPUT HEADER OPTIONS
+# --------------------------------------
+
+me=$(basename $0)
+move_if_change='@abs_srcdir@/move-if-change'
+
+input=$1
+input_base=$(basename "$input")
+input_dir=$(dirname "$input")
+shift
+output=$1
+output_base=$(basename "$output")
+output_dir=$(dirname "$output")
+output_dir_abs=$(cd "$output_dir" && pwd)
+shift
+header=$1
+shift
+options="$@"
+
+# Compute other input files from INPUT.
+inputs=\
+$(
+  set -e
+  cd $input_dir
+  inputs=$input_base
+  queue=$input_base
+  while test -n "$queue"; do
+    next_queue=
+    for f in $queue; do
+      includes=$(grep '%include' $f | sed "s/%include //")
+      for i in $includes; do
+        # Did we already processed this file?
+        if echo $inputs | fgrep --quiet $i; then
+          :
+        else
+          inputs="$inputs $i"
+          next_queue="$next_queue $i"
+        fi
+      done
+    done
+    queue=$next_queue
+  done
+  echo $inputs
+)
+
+# Alexandre Duret-Lutz also notes that in VPATH-builds $(srcdir) can
+# be an absolute path depending on how ./configure is called ...
+# In that case
+
+#   monoburg $(srcdir)/tree.brg [...]
+
+# will hard code the path in the maintainer's tree.  Hence, do not use
+# paths with MonoBURG, chdir there.
+
+# A tmp dir.
+tmp=$output.dir
+rm -rf $tmp
+mkdir $tmp
+
+# Compile in this dir.
+# Don't use `ln -s' as its semantics of paths sucks.
+for f in $inputs; do
+  cp $input_dir/$f $tmp
+done
+cd $tmp
+
+header_base=$(basename "$header")
+set +e
+$MONOBURG $options $input_base -s $output_base -d $header_base
+status=$?
+set -e
+
+if test $status = 0; then
+    for file in *
+    do
+        if echo $inputs | fgrep --quiet $file; then
+            # Leave the file here.
+            :
+        else
+            $move_if_change "$file" "$output_dir_abs/$file"
+        fi
+    done
+fi
+
+# Get rid of the tmp dir.
+cd -
+rm -rf $tmp
+exit $status

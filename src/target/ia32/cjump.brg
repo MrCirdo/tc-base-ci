@@ -1,0 +1,36 @@
+# cjump.brg                                              -*- c++ -*-
+
+cjump: Cjump(e : exp, c : Const)
+{
+  rCjump cjump = tree.cast<Cjump>();
+  rConst cst = c.cast<Const>();
+
+  EMIT(IA32_ASSEMBLY.cjump_build(cjump->relop_get(),
+                                 e->asm_get(),
+                                 cst->value_get(),
+                                 cjump->label_true_get(),
+                                 cjump->label_false_get()));
+}
+
+cjump: Cjump(c : Const, e : exp)
+{
+  rCjump cjump = tree.cast<Cjump>();
+  rConst cst = c.cast<Const>();
+
+  EMIT(IA32_ASSEMBLY.cjump_build(cjump->relop_get(),
+                                 cst->value_get(),
+                                 e->asm_get(),
+                                 cjump->label_true_get(),
+                                 cjump->label_false_get()));
+}
+
+cjump: Cjump(e1 : exp, e2 : exp)
+{
+  rCjump cjump = tree.cast<Cjump>();
+
+  EMIT(IA32_ASSEMBLY.cjump_build(cjump->relop_get(),
+                                 e1->asm_get(),
+                                 e2->asm_get(),
+                                 cjump->label_true_get(),
+                                 cjump->label_false_get()));
+}

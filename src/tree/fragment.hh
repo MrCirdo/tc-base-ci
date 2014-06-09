@@ -41,20 +41,20 @@ namespace tree
   class Fragment
   {
   public:
-    virtual std::ostream& dump (std::ostream& o) const = 0;
+    virtual std::ostream& dump(std::ostream& o) const = 0;
 
-    virtual ~Fragment ();
+    virtual ~Fragment();
 
     /** \name Visitors entry point.
      ** \{ */
   public:
     /// Accept a Visitor \a v.
-    virtual void accept (Visitor& v) = 0;
-    virtual void accept (ConstVisitor& v) const = 0;
+    virtual void accept(Visitor& v) = 0;
+    virtual void accept(ConstVisitor& v) const = 0;
     /** \} */
   };
 
-  std::ostream& operator<< (std::ostream& o, const Fragment& f);
+  std::ostream& operator<<(std::ostream& o, const Fragment& f);
 
 
   /*--------------------.
@@ -65,25 +65,25 @@ namespace tree
   class DataFrag : public Fragment
   {
   public:
-    DataFrag (const temp::Label& label, const std::string& data);
+    DataFrag(const temp::Label& label, const std::string& data);
 
-    virtual std::ostream& dump (std::ostream& o) const override;
+    virtual std::ostream& dump(std::ostream& o) const override;
 
     /** \name Accessors.
      ** \{ */
     /// Data label.
-    temp::Label label_get () const;
+    temp::Label label_get() const;
 
     /// Data.
-    const std::string& data_get () const;
+    const std::string& data_get() const;
     /** \} */
 
     /** \name Visitors entry point.
      ** \{ */
   public:
     /// Accept a Visitor \a v.
-    virtual void accept (Visitor& v) override;
-    virtual void accept (ConstVisitor& v) const override;
+    virtual void accept(Visitor& v) override;
+    virtual void accept(ConstVisitor& v) const override;
     /** \} */
 
   protected:
@@ -107,39 +107,39 @@ namespace tree
   public:
     /** \name Constructor and Destructor.
      ** \{ */
-    ProcFrag (const temp::Label& label,
-              const misc::symbol& name,
-              const rStm& body,
-              const frame::Frame* frame);
+    ProcFrag(const temp::Label& label,
+             const misc::symbol& name,
+             const rStm& body,
+             const frame::Frame* frame);
 
-    ~ProcFrag ();
+    ~ProcFrag();
     /** \} */
 
     /** \name Accessors.
      ** \{ */
     /// Code label.
-    temp::Label label_get () const;
+    temp::Label label_get() const;
 
     /// Procedure name.
-    const misc::symbol& name_get () const;
+    const misc::symbol& name_get() const;
 
     /// Body.
-    rStm body_get () const;
-    void body_set (const rStm& body);
+    rStm body_get() const;
+    void body_set(const rStm& body);
 
     /// Procedure frame.
-    const frame::Frame& frame_get () const;
+    const frame::Frame& frame_get() const;
     /** \} */
 
     /// Display this fragment.
-    virtual std::ostream& dump (std::ostream& o) const override;
+    virtual std::ostream& dump(std::ostream& o) const override;
 
      /** \name Visitors entry point.
      ** \{ */
   public:
     /// Accept a Visitor \a v.
-    virtual void accept (Visitor& v) override;
-    virtual void accept (ConstVisitor& v) const override;
+    virtual void accept(Visitor& v) override;
+    virtual void accept(ConstVisitor& v) const override;
     /** \} */
 
   private:

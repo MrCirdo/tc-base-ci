@@ -1,3 +1,112 @@
+2014-06-09  Roland Levillain  <roland@lrde.epita.fr>
+
+	Run the register allocator on the first example of test-regalloc.
+
+	* src/regalloc/test-regalloc.cc (example_1): Here.
+	(MyCpu, MyTarget): New classes.
+
+2014-06-09  Roland Levillain  <roland@lrde.epita.fr>
+
+	Re-enable regalloc/test-regalloc.
+
+	* src/regalloc/test-regalloc.cc: Revamp test.
+	* src/regalloc/local.mk (TESTS): Add regalloc/test-regalloc.
+	(regalloc_test_regalloc_LDADD):	Reenable variable.
+
+2014-06-09  Roland Levillain  <roland@lrde.epita.fr>
+
+	Add construction of misc::list from an initializer list.
+
+	* lib/misc/list.hh, lib/misc/list.hxx
+	(misc::list<T>::list(std::initializer_list<T>)): New ctor.
+
+2014-06-09  Roland Levillain  <roland@lrde.epita.fr>
+
+	Fix space before parentheses in src/tree.
+
+	* src/tree/binop.hh,
+	* src/tree/call.cc,
+	* src/tree/call.hh,
+	* src/tree/const.hh,
+	* src/tree/eseq.hh,
+	* src/tree/fragment.hh,
+	* src/tree/fragments.hh,
+	* src/tree/jump.hh,
+	* src/tree/label.hh,
+	* src/tree/mem.hh,
+	* src/tree/move.hh,
+	* src/tree/name.hh,
+	* src/tree/seq.hh,
+	* src/tree/seq.hxx,
+	* src/tree/sxp.hh,
+	* src/tree/temp.hh,
+	* src/tree/tiger_tree.i,
+	* src/tree/tree.cc,
+	* src/tree/tree.hxx,
+	* src/tree/trees.hh:
+	Here.
+
+2014-06-09  Roland Levillain  <roland@lrde.epita.fr>
+
+	Regen code generators.
+
+	* src/target/ia32/codegen.cc,
+	* src/target/ia32/codegen.hh,
+	* src/target/mips/codegen.cc,
+	* src/target/mips/codegen.hh:
+	Regen.
+
+2014-06-09  Roland Levillain  <roland@lrde.epita.fr>
+
+	Fix space before parentheses in src/target.
+
+	* src/target/cpu.hh,
+	* src/target/ia32/cpu.hh,
+	* src/target/ia32/epilogue.cc,
+	* src/target/ia32/gas-assembly.hh,
+	* src/target/ia32/gas-layout.cc,
+	* src/target/ia32/gas-layout.hh,
+	* src/target/ia32/local.mk,
+	* src/target/ia32/move_load.brg,
+	* src/target/ia32/prologue.hh,
+	* src/target/ia32/target.hh,
+	* src/target/ia32/tree.brg,
+	* src/target/mips/cpu.hh,
+	* src/target/mips/epilogue.cc,
+	* src/target/mips/local.mk,
+	* src/target/mips/prologue.hh,
+	* src/target/mips/spim-assembly.hh,
+	* src/target/mips/spim-layout.cc,
+	* src/target/mips/spim-layout.hh,
+	* src/target/mips/target.hh,
+	* src/target/mips/tree.brg,
+	* src/target/target.cc,
+	* src/target/target.hh,
+	* src/target/tasks.cc,
+	* src/target/tiger-runtime.c:
+	Here.
+
+2014-06-06  Roland Levillain  <roland@lrde.epita.fr>
+
+	Remove a useless empty file.
+
+	* src/target/monoburg.mk: Remove.
+
+2014-05-27  Roland Levillain  <roland@lrde.epita.fr>
+
+	Remove dead code in Makefiles.
+
+	* src/canon/local.mk: Here.
+
+2014-05-27  Roland Levillain  <roland@lrde.epita.fr>
+
+	lib/argp: Please Automake 1.14.
+
+	* lib/argp/configure.ac: Invoke AM_PROG_AR.
+	* lib/argp/Makefile.am (AUTOMAKE_OPTIONS): Add subdir-objects,
+	as this will be the default behavior in future versions of
+	Automake.
+
 2014-05-20  Roland Levillain  <roland@lrde.epita.fr>
 
 	Regen the FreeBSD IA-32 Tiger runtime.
@@ -42715,4 +42824,4 @@ coding: utf-8
 ispell-local-dictionary: "american"
 End:
 
-$Id: f065bb0dea9e7a9195a1378b55b90c5874fede4e $
+$Id: 1b680d9a4d2d0e5cab951be9f92aa8b3c376ab25 $

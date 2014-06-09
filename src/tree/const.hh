@@ -16,23 +16,23 @@ namespace tree
   {
   public:
     /// Build a constant integer value.
-    explicit Const (int value);
+    explicit Const(int value);
 
     /** \name Accessors.
      ** \{ */
 
     /// Return constant integer value.
-    const int& value_get () const;
+    const int& value_get() const;
 
     /// const_kind.
-    virtual kind_tree_type kind_get () const override;
+    virtual kind_tree_type kind_get() const override;
 
     /** \} */
 
     /** \name Printing.
      ** \{ */
 
-    virtual std::ostream& tag_print (std::ostream& ostr) const override;
+    virtual std::ostream& tag_print(std::ostream& ostr) const override;
 
     /** \} */
 

@@ -12,38 +12,38 @@ namespace tree
 {
 
   inline
-  Seq::Seq (const tree_list_type& children)
-    : Stm (children)
+  Seq::Seq(const tree_list_type& children)
+    : Stm(children)
   {
   }
 
   inline
-  Seq::Seq (const rStm& left, const rStm& right)
-    : Stm ()
+  Seq::Seq(const rStm& left, const rStm& right)
+    : Stm()
   {
-    push_back (left);
-    push_back (right);
+    push_back(left);
+    push_back(right);
   }
 
   inline
-  Seq::Seq (const rStm& left)
-    : Stm ()
+  Seq::Seq(const rStm& left)
+    : Stm()
   {
-    push_back (left);
+    push_back(left);
   }
 
   inline
-  Seq::Seq (std::initializer_list<rStm> l)
-    : Stm ()
+  Seq::Seq(std::initializer_list<rStm> l)
+    : Stm()
   {
     for (const rStm& p : l)
-      push_back (p);
+      push_back(p);
   }
 
   inline void
-  Seq::push_back (const rStm& stm)
+  Seq::push_back(const rStm& stm)
   {
-    child_push_back (stm);
+    child_push_back(stm);
   }
 
 }

@@ -37,6 +37,9 @@ namespace misc
     template <class InputIterator>
     list(InputIterator f, InputIterator l);
 
+    /// Buid a list from an initializer list.
+    list(std::initializer_list<Ident_> l);
+
     /// Build a list from another container.
     template <class C> list(const C& c);
 

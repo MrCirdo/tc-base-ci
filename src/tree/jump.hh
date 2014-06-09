@@ -23,19 +23,19 @@ namespace tree
   class Jump : public Stm
   {
   public:
-    Jump (const rExp& exp);
+    Jump(const rExp& exp);
 
     /** \name Accessors.
      ** \{ */
 
     /// The destination.
-    rExp exp_get () const;
+    rExp exp_get() const;
 
     /// The list of destination labels.
-    temp::label_list_type label_get () const;
+    temp::label_list_type label_get() const;
 
     /// jump_kind.
-    virtual kind_tree_type kind_get () const override;
+    virtual kind_tree_type kind_get() const override;
 
     /** \} */
 
@@ -43,7 +43,7 @@ namespace tree
      ** \{ */
 
     /// Print JUMP.
-    virtual std::ostream& tag_print (std::ostream& ostr) const override;
+    virtual std::ostream& tag_print(std::ostream& ostr) const override;
 
     /** \} */
 

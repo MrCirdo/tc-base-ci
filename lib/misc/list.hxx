@@ -45,6 +45,12 @@ namespace misc
   }
 
   template <class T>
+  list<T>::list(std::initializer_list<T> l)
+  {
+    this->insert(this->begin(), l.begin(), l.end());
+  }
+
+  template <class T>
   template <class InputIterator>
   list<T>::list(InputIterator f, InputIterator l)
     : super_type(f, l)

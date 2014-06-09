@@ -23,24 +23,24 @@ namespace tree
      **
      ** \param exp      Expression of accessed address.
      */
-    Mem (const rExp& exp);
+    Mem(const rExp& exp);
 
     /** \name Accessors.
      ** \{ */
 
     /// Accessed address.
-    rExp exp_get () const;
-    void exp_set (const rExp& exp);
+    rExp exp_get() const;
+    void exp_set(const rExp& exp);
 
     /// mem_kind.
-    virtual kind_tree_type kind_get () const override;
+    virtual kind_tree_type kind_get() const override;
 
     /** \} */
 
     /** \name Printing.
      ** \{ */
 
-    virtual std::ostream& tag_print (std::ostream& ostr) const override;
+    virtual std::ostream& tag_print(std::ostream& ostr) const override;
 
     /** \} */
 

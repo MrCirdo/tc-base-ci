@@ -36,29 +36,29 @@ namespace tree
      ** \param left     Left operand
      ** \param right    Right operand
      */
-    Binop (const Oper oper, const rExp& left, const rExp& right);
+    Binop(const Oper oper, const rExp& left, const rExp& right);
 
     /** \name Accessors.
      ** \{ */
 
     /// Left operand.
-    rExp left_get () const;
+    rExp left_get() const;
 
     /// Right operand.
-    rExp right_get () const;
+    rExp right_get() const;
 
     /// Operation.
     /// \see Oper.
-    Oper oper_get () const;
+    Oper oper_get() const;
 
     /** \} */
 
     /** \name Printing.
      ** \{ */
 
-    virtual std::ostream& tag_print (std::ostream& ostr) const override;
+    virtual std::ostream& tag_print(std::ostream& ostr) const override;
 
-    virtual kind_tree_type kind_get () const override;
+    virtual kind_tree_type kind_get() const override;
 
     /** \} */
 

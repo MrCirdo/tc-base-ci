@@ -20,6 +20,7 @@ AC_GNU_SOURCE
 # Checks for programs.
 AC_PROG_CC
 AC_PROG_MAKE_SET
+AM_PROG_AR
 AC_PROG_LIBTOOL
 
 if test "x$ac_cv_prog_cc_stdc" = xno; then

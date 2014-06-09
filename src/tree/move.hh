@@ -22,26 +22,26 @@ namespace tree
      ** \param dst      Memory indirection or register.
      ** \param src      Direct value, register or memory indirection.
      */
-    Move (const rExp& dst, const rExp& src);
+    Move(const rExp& dst, const rExp& src);
 
     /** \name Accessors.
      ** \{ */
 
     /// Destination.
-    rExp dst_get () const;
+    rExp dst_get() const;
 
     /// Source.
-    rExp src_get () const;
+    rExp src_get() const;
 
     /// move_kind.
-    virtual kind_tree_type kind_get () const override;
+    virtual kind_tree_type kind_get() const override;
 
     /** \} */
 
     /** \name Printing.
      ** \{ */
 
-    virtual std::ostream& tag_print (std::ostream& ostr) const override;
+    virtual std::ostream& tag_print(std::ostream& ostr) const override;
 
     /** \} */
 

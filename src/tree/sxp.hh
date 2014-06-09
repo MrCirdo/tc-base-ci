@@ -20,23 +20,23 @@ namespace tree
   class Sxp : public Stm
   {
   public:
-    Sxp (const rExp& exp);
+    Sxp(const rExp& exp);
 
     /** \name Accessors.
      ** \{ */
 
     /// Expression.
-    rExp exp_get () const;
+    rExp exp_get() const;
 
     /// sxp_kind.
-    virtual kind_tree_type kind_get () const override;
+    virtual kind_tree_type kind_get() const override;
 
     /** \} */
 
     /** \name Printing.
      ** \{ */
 
-    virtual std::ostream& tag_print (std::ostream& ostr) const override;
+    virtual std::ostream& tag_print(std::ostream& ostr) const override;
 
     /** \} */
 

@@ -20,23 +20,23 @@ namespace tree
   {
   public:
     /// Build a node representing the temporary \a temp.
-    Temp (const temp::Temp& temp);
+    Temp(const temp::Temp& temp);
 
     /** \name Accessors.
      ** \{ */
 
     /// Pseudo register.
-    temp::Temp temp_get () const;
+    temp::Temp temp_get() const;
 
     /// Temp kind.
-    virtual kind_tree_type kind_get () const override;
+    virtual kind_tree_type kind_get() const override;
 
     /** \} */
 
     /** \name Printing.
      ** \{ */
 
-    virtual std::ostream& tag_print (std::ostream& ostr) const override;
+    virtual std::ostream& tag_print(std::ostream& ostr) const override;
 
     /** \} */
 

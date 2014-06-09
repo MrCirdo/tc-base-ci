@@ -7,9 +7,4 @@ canon_libcanon_la_SOURCES =						\
 
 EXTRA_DIST += canon/tiger_canon.i
 
-## FIXME: Does not seem to be working.
-## TESTS += canon/test-canon
-## canon_test_canon_LDADD = $(libcanon)
-## TESTS = canon/test-canon
-
 TASKS += canon/tasks.hh canon/tasks.cc

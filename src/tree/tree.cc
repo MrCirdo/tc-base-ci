@@ -14,13 +14,13 @@
 namespace tree
 {
 
-  Tree::~Tree ()
+  Tree::~Tree()
   {
     delete temp_;
   }
 
   void
-  Tree::parent_get_assert () const
+  Tree::parent_get_assert() const
   {
     if (parent_ == nullptr)
       {
@@ -29,32 +29,32 @@ namespace tree
           << misc::incendl
           << *this
           << misc::decindent;
-        precondition (parent_ != nullptr);
+        precondition(parent_ != nullptr);
       }
   }
 
   void
-  Tree::replace_by (const rTree& tree)
+  Tree::replace_by(const rTree& tree)
   {
-    parent_get_assert ();
-    precondition (tree);
-    precondition (tree != this);
+    parent_get_assert();
+    precondition(tree);
+    precondition(tree != this);
 
     // Find who we are for our parent.
     tree_list_type& siblings = parent_->children_;
-    tree_list_type::iterator me = misc::find (siblings, this);
+    tree_list_type::iterator me = misc::find(siblings, this);
 
-    assertion (me != siblings.end ());
+    assertion(me != siblings.end());
 
-    parent_->child_set (*me, tree);
+    parent_->child_set(*me, tree);
     this->parent_ = nullptr;
   }
 
   std::ostream&
-  Tree::dump (std::ostream& o) const
+  Tree::dump(std::ostream& o) const
   {
-    tag_print (o);
-    if (!children_.empty ())
+    tag_print(o);
+    if (!children_.empty())
       o << misc::incendl
         << children_
         << misc::decindent;

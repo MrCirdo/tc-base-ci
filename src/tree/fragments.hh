@@ -21,11 +21,11 @@ namespace tree
     // Inherit constructors from base class.
     using super_type::super_type;
 
-    virtual ~Fragments ();
+    virtual ~Fragments();
   };
 
   /// Report \a fragments on \a ostr.
-  std::ostream& operator<< (std::ostream& o, const Fragments& f);
+  std::ostream& operator<<(std::ostream& o, const Fragments& f);
 
 } // namespace tree
 
