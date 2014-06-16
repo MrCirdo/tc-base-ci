@@ -1,6 +1,6 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
-.                             : 6056 276  21
+.                             : 6182 280  22
     lib                       :  326  10  32
         misc                  :  326  10  32
             graph.hh          :    3   1   3
@@ -11,7 +11,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :   41   1  41
             variant.hxx       :   10   2   5
-    src                       : 5730 266  21
+    src                       : 5856 270  21
         ast                   : 1727  63  27
             array-exp.cc      :   26   1  26
             array-exp.hh      :   47   1  47
@@ -99,6 +99,10 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             inliner.hh        :   11   2   5
             pruner.cc         :   55   1  55
             pruner.hh         :   12   2   6
+        liveness              :  126   4  31
+            flowgraph.hxx     :   38   2  19
+            interference-graph.cc:   45   1  45
+            liveness.cc       :   43   1  43
         object                :  191  21   9
             binder.cc         :   12   2   6
             desugar-visitor.cc:   27   5   5

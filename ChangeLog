@@ -1,3 +1,10 @@
+2014-06-10  Roland Levillain  <roland@lrde.epita.fr>
+
+	Remove useless option ``--asm-flowgraphs''.
+
+	* src/regalloc/tasks.hh (regalloc::tasks): Here.
+	Addresses Trac ticket #44 (https://trac.lrde.epita.fr/tc/ticket/44).
+
 2014-06-09  Roland Levillain  <roland@lrde.epita.fr>
 
 	Run the register allocator on the first example of test-regalloc.
