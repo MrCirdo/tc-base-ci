@@ -1,3 +1,17 @@
+2014-07-03  Roland Levillain  <roland@lrde.epita.fr>
+
+	Update AX_CHECK_COMPILE_FLAG.
+
+	* m4/ax_check_compile_flag.m4: Here, from
+	http://www.gnu.org/software/autoconf-archive/ax_check_compile_flag.html.
+
+2014-06-25  Akim Demaille  <akim@lrde.epita.fr>
+
+	diff-r: be more robust to paths
+
+	* dev/diff-r: Use filter-diff to nuke files with a path: diff -x
+	does not support this.
+
 2014-06-10  Roland Levillain  <roland@lrde.epita.fr>
 
 	Remove useless option ``--asm-flowgraphs''.
@@ -42831,4 +42845,4 @@ coding: utf-8
 ispell-local-dictionary: "american"
 End:
 
-$Id: 1b680d9a4d2d0e5cab951be9f92aa8b3c376ab25 $
+$Id: d1935a90e1397d8eeeccd296c24b3a36e58c3311 $

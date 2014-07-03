@@ -1,6 +1,6 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
-.                             : 6182 280  22
+.                             : 6640 286  23
     lib                       :  326  10  32
         misc                  :  326  10  32
             graph.hh          :    3   1   3
@@ -11,7 +11,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :   41   1  41
             variant.hxx       :   10   2   5
-    src                       : 5856 270  21
+    src                       : 6314 276  22
         ast                   : 1727  63  27
             array-exp.cc      :   26   1  26
             array-exp.hh      :   47   1  47
@@ -121,6 +121,9 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             scantiger.ll      :    7   1   7
             tasks.cc          :    2   1   2
             tiger-parser.cc   :   28   4   7
+        regalloc              :  458   6  76
+            color.cc          :  455   5  91
+            regallocator.cc   :    3   1   3
         target                :  459  25  18
             ia32              :  103   6  17
                 call.brg      :   10   1  10

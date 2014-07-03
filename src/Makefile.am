@@ -46,6 +46,7 @@ include translate/local.mk
 include canon/local.mk
 include assem/local.mk
 include liveness/local.mk
+include regalloc/local.mk
 include target/local.mk
 
 EXTRA_DIST += tiger_common.i
@@ -95,6 +96,7 @@ CLEANFILES += $(nodist_libtc_la_SOURCES)
 ## times, resulting in a library comprising several definitions of
 ## some symbols.
 libtc_la_LIBADD =				\
+	$(libregalloc_la)			\
 	$(libliveness_la)			\
 	$(libassem_la)				\
 	$(libcanon_la)				\

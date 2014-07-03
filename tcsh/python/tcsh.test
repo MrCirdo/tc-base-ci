@@ -7,3 +7,5 @@ run=$top_builddir/tcsh/run
 
 $run $srcdir/test-front-end.py $testsdir/good/fact.tig
 $run $srcdir/test-compiler.py $testsdir/good/fact.tig
+$run $srcdir/ti.py -b tree $testsdir/good/fact.tig
+$run $srcdir/ti.py -b mips $testsdir/good/fact.tig
