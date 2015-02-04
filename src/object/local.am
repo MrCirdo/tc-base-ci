@@ -1,0 +1,16 @@
+## object module.
+EXTRA_DIST += %D%/tiger_object.i
+
+src_libtc_la_SOURCES += %D%/libobject.hh %D%/libobject.cc
+
+
+
+
+
+# Tests.
+
+
+
+
+
+TASKS += %D%/tasks.hh %D%/tasks.cc
