@@ -36,9 +36,7 @@ namespace task
       return;
 
     // Callback when the option is parsed.
-    // The argument is only a dummy, needed because we want to add a notifier
-    // to the `boost::program_options::typed_value' below.
-    auto cb = [this, &task](bool){ enable_task(task.name_get()); };
+    auto cb = [this, &task](bool f){ if (f) enable_task(task.name_get()); };
 
     namespace po = boost::program_options;
     auto v = po::bool_switch()->notifier(cb);

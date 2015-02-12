@@ -7,8 +7,6 @@
 
 #include <misc/contract.hh>
 
-#ifndef NDEBUG
-
 void __FailedCondition(const char* condType,
                        const char* condText,
                        const char* fileName,
@@ -21,8 +19,6 @@ void __FailedCondition(const char* condType,
             << condText << "' failed.\n";
   abort();
 }
-
-#endif // !NDEBUG
 
 void __Terminate(const char* fileName, int fileLine, const char* reason)
 {

@@ -12,6 +12,7 @@
 # include <common.hh>
 # include <misc/error.hh>
 # include <misc/file-library.hh>
+# include <ast/fwd.hh>
 # include <parse/parsetiger.hh>
 # include <parse/tweast.hh>
 # include <boost/filesystem.hpp>
@@ -43,7 +44,7 @@ namespace parse
 #endif
 
     /// Parse the Tiger file \a name.
-    ast_type parse_file(const std::string& name);
+    ast_type parse_file(const misc::path& name);
     /// Parse the Tweast \a s.  Extensions are enabled.
     ast_type parse(Tweast& s);
     /// Parse the string \a s.  Extensions are automatically disabled.
@@ -65,6 +66,8 @@ namespace parse
     /// Set the parser traces.
     TigerParser& parse_trace(bool b = true);
 
+    /// Enable object extensions.
+    TigerParser& enable_object_extensions(bool b = true);
 
     /// Enable syntax extensions.
     TigerParser& enable_extensions(bool b = true);
@@ -110,6 +113,8 @@ namespace parse
     input_type input_;
     /// The file library for imports.
     misc::file_library library_;
+    /// Allow object extensions?
+    bool enable_object_extensions_p_ = false;
     /// Allow language extensions (reserved identifiers, new keywords)?
     bool enable_extensions_p_ = false;
   };

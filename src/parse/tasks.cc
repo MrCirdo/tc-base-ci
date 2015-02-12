@@ -14,6 +14,8 @@
 #include <parse/tasks.hh>
 #undef DEFINE_TASKS
 
+#include <ast/tasks.hh>
+#include <object/tasks.hh>
 
 namespace parse
 {
@@ -39,6 +41,7 @@ namespace parse
       std::pair<ast::DecsList*, misc::error> result =
         ::parse::parse(prelude, filename, l,
                        scan_trace, parse_trace
+                       , object::tasks::enable_object_extensions_p
                        );
 
       // If the parsing completely failed, stop.

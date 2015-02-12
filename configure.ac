@@ -7,7 +7,7 @@ AC_PREREQ([2.64])
 ## Package set up.  ##
 ## ---------------- ##
 
-AC_INIT([LRDE Tiger Compiler], [1.35], [tiger@lrde.epita.fr], [tc],
+AC_INIT([LRDE Tiger Compiler], [1.36], [tiger@lrde.epita.fr], [tc],
         [http://tiger.lrde.epita.fr])
 
 # Auxiliary files.
@@ -203,10 +203,6 @@ AM_CONDITIONAL([IA32_FREEBSD],
 AM_CONDITIONAL([SUPPORTED_IA32],
                [echo "$host" | grep -q '^\(i.86\|x86_64\).*linux\|^\(i.86\|amd64\).*freebsd'])
 
-
-# Tiger reference compiler.
-AC_ARG_VAR([TC], [Tiger reference compiler])
-AC_CHECK_PROGS([TC], [tc])
 
 
 ## ----------- ##

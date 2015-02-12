@@ -20,13 +20,13 @@ public:
   }
 };
 
-unsigned
+static unsigned
 urand(unsigned max)
 {
   return rand() % max;
 }
 
-bool
+static bool
 consistency(graph_type& g)
 {
   unsigned nb_states = 1 + urand(10);

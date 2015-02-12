@@ -42,6 +42,13 @@ namespace parse
     return *this;
   }
 
+  /// Enable object extensions.
+  TigerParser&
+  TigerParser::enable_object_extensions(bool b)
+  {
+    enable_object_extensions_p_ = b;
+    return *this;
+  }
 
   /// Enable syntax extensions.
   TigerParser&
@@ -100,11 +107,11 @@ namespace parse
   `---------------*/
 
   ast_type
-  TigerParser::parse_file(const std::string& name)
+  TigerParser::parse_file(const misc::path& name)
   {
     if (parse_trace_p_)
       std::cerr << "Parsing file: " << name << std::endl;
-    input_ = name;
+    input_ = name.string();
     return parse_();
   }
 
@@ -156,7 +163,7 @@ namespace parse
 
     // Complete path of file (directory + filename).
     misc::path absolute_path
-      = directory_path / misc::path(misc::basename(name));
+      = directory_path / misc::path(misc::path(name).filename());
 
     // Detect recursive inclusion.
     if (open_files_.find(absolute_path) != open_files_.end())
@@ -178,7 +185,7 @@ namespace parse
     ast::DecsList* res = nullptr;
     try
       {
-        res = parse_file(absolute_path.native());
+        res = parse_file(absolute_path);
       }
     catch (boost::bad_get& e)
       {

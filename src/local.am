@@ -54,12 +54,12 @@ dist_src_tc_SOURCES =				\
 src_tc_LDADD = src/libtc.la
 
 
-
 ## --------- ##
 ## Modules.  ##
 ## --------- ##
 
 TASKS =
 include src/task/local.am
+include src/ast/local.am
 include src/parse/local.am
 include src/object/local.am

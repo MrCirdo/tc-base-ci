@@ -96,9 +96,6 @@ namespace misc
   boost::filesystem::path
   operator+(boost::filesystem::path& p1, boost::filesystem::path& p2);
 
-  std::string basename(const std::string& file);
-  boost::filesystem::path basedir(const std::string& file);
-
 }
 
 # include <misc/file-library.hxx>

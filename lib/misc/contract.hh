@@ -6,7 +6,6 @@
 #ifndef MISC_CONTRACT_HH
 # define MISC_CONTRACT_HH
 
-
 // Use GCC magic bits to specify we cannot return from these functions
 
 #ifndef __attribute__
@@ -20,10 +19,17 @@
 #endif
 
 
+void __FailedCondition(const char* condType,
+                       const char* condText,
+                       const char* fileName,
+                       int fileLine) ATTRIBUTE_NORETURN;
+
 void __Terminate(const char*, int, const char*) ATTRIBUTE_NORETURN;
 
 # define die(reason)              __Terminate(__FILE__, __LINE__, reason)
 # define unreached()              die("unreachable code reached")
+
+
 
 # ifdef NDEBUG
 
@@ -33,11 +39,6 @@ void __Terminate(const char*, int, const char*) ATTRIBUTE_NORETURN;
 #  define postcondition(expr)     ((void) 0)
 
 # else // NDEBUG
-
-void __FailedCondition(const char* condType,
-                       const char* condText,
-                       const char* fileName,
-                       int fileLine) ATTRIBUTE_NORETURN;
 
 #  define __TestCondition(condType,expr)                                \
   ((void) ((expr) ? 0 : (__FailedCondition( #condType, #expr,           \

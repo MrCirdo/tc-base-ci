@@ -106,8 +106,8 @@ namespace misc
   file_library::find_file(const std::string& file)
   {
     // Split file in two components, basename and basedir.
-    path directory = basedir(file);
-    std::string filename = basename(file);
+    path p = path(file);
+    path directory = p.filename();
 
     if (directory.is_absolute())
       {
@@ -119,9 +119,9 @@ namespace misc
       {
         // Does the file can be found in current directory?
         if (find_in_directory(current_directory_get(), file))
-          return basedir((current_directory_get() / file).native());
+          return (current_directory_get() / file).parent_path();
 
-        directory = find_in_search_path(directory, filename);
+        directory = find_in_search_path(directory, p.filename().string());
       }
 
     return directory;
@@ -167,26 +167,5 @@ namespace misc
     return ostr;
   }
 
-  std::string
-  basename(const std::string& file)
-  {
-    std::string::size_type pos;
-
-    if ((pos = file.rfind('/')) != std::string::npos)
-      return file.substr(pos + 1);
-    else
-      return file;
-  }
-
-  path
-  basedir(const std::string& file)
-  {
-    std::string::size_type pos;
-
-    if ((pos = file.rfind('/')) != std::string::npos)
-      return path(file.substr(0, pos));
-    else
-      return path();
-  }
 
 }
