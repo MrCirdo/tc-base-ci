@@ -1,3 +1,11 @@
+New in 1.37, 2015-02-26:
+
+* More targets
+
+  - Clean ia32, mips target files
+  - Add arm backend files
+  - Initializer lits for cpu class
+
 New in 1.36, 2015-02-12:
 
 * More C++17 features

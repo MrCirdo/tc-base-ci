@@ -1,6 +1,6 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
-.                             : 2287  99  23
+.                             : 2833 131  21
     lib                       :  260  17  15
         misc                  :  260  17  15
             graph.hh          :    3   1   3
@@ -11,8 +11,8 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :    8   5   1
             variant.hxx       :    1   1   1
-    src                       : 2027  82  24
-        ast                   : 1565  69  22
+    src                       : 2573 114  22
+        ast                   : 1567  70  22
             array-exp.cc      :   26   1  26
             array-exp.hh      :   43   1  43
             array-exp.hxx     :   34   1  34
@@ -47,7 +47,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             object-exp.hxx    :   12   1  12
             object-visitor.hxx:    9   5   1
             op-exp.cc         :   19   1  19
-            pretty-printer.cc :  287   3  95
+            pretty-printer.cc :  289   4  72
             pretty-printer.hh :   30   2  15
             record-exp.cc     :   25   1  25
             record-exp.hh     :   37   1  37
@@ -67,8 +67,28 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             type-constructor.cc:    8   1   8
             type-constructor.hh:   30   1  30
             type-constructor.hxx:   11   1  11
-        parse                 :  462  13  35
-            parsetiger.yy     :  429   7  61
+        bind                  :  457  22  20
+            binder.cc         :  158   7  22
+            binder.hh         :   33   3  11
+            binder.hxx        :   45   3  15
+            libbind.cc        :   17   1  17
+            libbind.hh        :   19   1  19
+            renamer.cc        :   44   1  44
+            renamer.hh        :    6   2   3
+            renamer.hxx       :   43   2  21
+            tasks.cc          :   43   1  43
+            tasks.hh          :   49   1  49
+        escapes               :   49   2  24
+            escapes-visitor.cc:   35   1  35
+            escapes-visitor.hh:   14   1  14
+        object                :   35   7   5
+            binder.cc         :   12   2   6
+            libobject.cc      :    8   2   4
+            libobject.hh      :    5   1   5
+            tasks.cc          :    6   1   6
+            tasks.hh          :    4   1   4
+        parse                 :  465  13  35
+            parsetiger.yy     :  432   7  61
             scantiger.ll      :   18   3   6
             tasks.cc          :    2   1   2
             tiger-parser.cc   :   13   2   6
