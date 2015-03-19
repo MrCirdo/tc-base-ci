@@ -6,8 +6,8 @@
 #ifndef AST_CAST_VAR_HH
 # define AST_CAST_VAR_HH
 
-# include <ast/var.hh>
 # include <ast/ty.hh>
+# include <ast/var.hh>
 
 namespace ast
 {

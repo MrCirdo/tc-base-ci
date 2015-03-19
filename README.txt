@@ -1,6 +1,6 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
-.                             : 2833 131  21
+.                             : 4505 290  15
     lib                       :  260  17  15
         misc                  :  260  17  15
             graph.hh          :    3   1   3
@@ -11,8 +11,8 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :    8   5   1
             variant.hxx       :    1   1   1
-    src                       : 2573 114  22
-        ast                   : 1567  70  22
+    src                       : 4245 273  15
+        ast                   : 1572  70  22
             array-exp.cc      :   26   1  26
             array-exp.hh      :   43   1  43
             array-exp.hxx     :   34   1  34
@@ -47,7 +47,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             object-exp.hxx    :   12   1  12
             object-visitor.hxx:    9   5   1
             op-exp.cc         :   19   1  19
-            pretty-printer.cc :  289   4  72
+            pretty-printer.cc :  294   4  73
             pretty-printer.hh :   30   2  15
             record-exp.cc     :   25   1  25
             record-exp.hh     :   37   1  37
@@ -67,6 +67,9 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             type-constructor.cc:    8   1   8
             type-constructor.hh:   30   1  30
             type-constructor.hxx:   11   1  11
+        astclone              :  107  35   3
+            cloner.cc         :   53  17   3
+            cloner.cc~        :   54  18   3
         bind                  :  457  22  20
             binder.cc         :  158   7  22
             binder.hh         :   33   3  11
@@ -78,17 +81,56 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             renamer.hxx       :   43   2  21
             tasks.cc          :   43   1  43
             tasks.hh          :   49   1  49
+        callgraph             :    4   1   4
+            call-graph-visitor.cc:    4   1   4
+        desugar               :  207   5  41
+            bounds-checking-visitor.cc:  135   1 135
+            bounds-checking-visitor.hh:    7   1   7
+            desugar-visitor.cc:   64   2  32
+            libdesugar.cc     :    1   1   1
         escapes               :   49   2  24
             escapes-visitor.cc:   35   1  35
             escapes-visitor.hh:   14   1  14
-        object                :   35   7   5
+        inlining              :  193   7  27
+            inliner.cc        :  119   1 119
+            inliner.hh        :    7   2   3
+            pruner.cc         :   56   2  28
+            pruner.hh         :   11   2   5
+        object                :  265  63   4
             binder.cc         :   12   2   6
+            desugar-visitor.cc:   79  36   2
             libobject.cc      :    8   2   4
             libobject.hh      :    5   1   5
+            renamer.cc        :   44   8   5
             tasks.cc          :    6   1   6
             tasks.hh          :    4   1   4
+            type-checker.cc   :  107  12   8
+        overload              :  159   3  53
+            binder.cc         :    4   1   4
+            type-checker.cc   :  139   1 139
+            type-checker.hh   :   16   1  16
         parse                 :  465  13  35
             parsetiger.yy     :  432   7  61
             scantiger.ll      :   18   3   6
             tasks.cc          :    2   1   2
             tiger-parser.cc   :   13   2   6
+        type                  :  767  52  14
+            array.cc          :    5   1   5
+            array.hh          :   20   1  20
+            array.hxx         :   10   1  10
+            builtin-types.cc  :   52   2  26
+            builtin-types.hh  :   76   1  76
+            class.cc          :   67   7   9
+            class.hh          :    6   1   6
+            function.cc       :   39   1  39
+            function.hh       :    2   1   2
+            method.cc         :   11   1  11
+            method.hh         :    2   1   2
+            named.cc          :   51   2  25
+            named.hxx         :    2   1   2
+            record.cc         :   38   3  12
+            record.hh         :    1   1   1
+            type-checker.cc   :  365  20  18
+            type-checker.hh   :   13   2   6
+            type-checker.hxx  :    5   3   1
+            type.hxx          :    2   2   1

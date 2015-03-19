@@ -7,8 +7,8 @@
 # define AST_RECORD_EXP_HH
 
 # include <ast/exp.hh>
-# include <ast/name-ty.hh>
 # include <ast/field-init.hh>
+# include <ast/name-ty.hh>
 
 namespace ast
 {

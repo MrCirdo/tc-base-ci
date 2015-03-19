@@ -7,8 +7,8 @@
 # define AST_METHOD_CALL_EXP_HH
 
 # include <ast/call-exp.hh>
-# include <ast/var.hh>
 # include <ast/method-dec.hh>
+# include <ast/var.hh>
 
 namespace ast
 {

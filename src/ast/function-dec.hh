@@ -6,9 +6,10 @@
 #ifndef AST_FUNCTION_DEC_HH
 # define AST_FUNCTION_DEC_HH
 
+# include <ast/dec.hh>
 # include <ast/exp.hh>
 # include <ast/name-ty.hh>
-# include <ast/dec.hh>
+# include <ast/type-constructor.hh>
 # include <ast/var-dec.hh>
 # include <ast/any-decs.hh>
 
@@ -16,7 +17,7 @@ namespace ast
 {
 
   /// FunctionDec.
-  class FunctionDec : public Dec
+  class FunctionDec : public Dec, public TypeConstructor
   {
     /** \name Ctor & dtor.
      ** \{ */

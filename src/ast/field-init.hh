@@ -6,8 +6,8 @@
 #ifndef AST_FIELD_INIT_HH
 # define AST_FIELD_INIT_HH
 
-# include <ast/exp.hh>
 # include <ast/ast.hh>
+# include <ast/exp.hh>
 # include <misc/symbol.hh>
 
 namespace ast

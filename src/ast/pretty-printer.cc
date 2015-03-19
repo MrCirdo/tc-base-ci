@@ -11,6 +11,8 @@
 #include <ast/pretty-printer.hh>
 #include <ast/libast.hh>
 
+#include <type/class.hh>
+
 namespace ast
 {
 

@@ -6,8 +6,8 @@
 #ifndef AST_FIELD_HH
 # define AST_FIELD_HH
 
-# include <ast/name-ty.hh>
 # include <ast/ast.hh>
+# include <ast/name-ty.hh>
 # include <misc/symbol.hh>
 
 namespace ast

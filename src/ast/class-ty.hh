@@ -6,9 +6,9 @@
 #ifndef AST_CLASS_TY_HH
 # define AST_CLASS_TY_HH
 
+# include <ast/decs-list.hh>
 # include <ast/name-ty.hh>
 # include <ast/ty.hh>
-# include <ast/decs-list.hh>
 
 namespace ast
 {

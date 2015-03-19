@@ -53,3 +53,13 @@ Some of these classes also inherit from other classes.
 /Escapable/
   VarDec            (NameTy type_name, Exp init)
 
+/Typable/
+  /Dec/             (symbol name)
+  /Exp/             ()
+  /Ty/              ()
+
+/TypeConstructor/
+  /Ty/              ()
+  FunctionDec       (VarDecs formals, NameTy result, Exp body)
+  TypeDec           (Ty ty)
+

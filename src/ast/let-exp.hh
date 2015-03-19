@@ -6,8 +6,8 @@
 #ifndef AST_LET_EXP_HH
 # define AST_LET_EXP_HH
 
-# include <ast/exp.hh>
 # include <ast/decs-list.hh>
+# include <ast/exp.hh>
 # include <misc/contract.hh>
 
 namespace ast

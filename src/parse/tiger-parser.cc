@@ -123,6 +123,8 @@ namespace parse
   TigerParser::parse_input(Tweast& s, bool extensions)
   {
     std::swap(extensions, enable_extensions_p_);
+    // Merge all aggregated Tweasts into a single one.
+    s.flatten();
   // FIXME: Some code was deleted here.
   }
 

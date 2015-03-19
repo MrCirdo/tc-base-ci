@@ -24,6 +24,7 @@ namespace parse
     , public MetavarMap<ast::Var>
     , public MetavarMap<ast::NameTy>
     , public MetavarMap<ast::DecsList>
+    , public MetavarMap<parse::Tweast>
   {
   public:
     Tweast();
@@ -38,6 +39,9 @@ namespace parse
     /// Metavariables manipulator.
     template <typename T> T* take(unsigned s);
 
+    /// Move the contents of all aggregated Tweast metavariables into
+    /// the current Tweast.
+    void flatten();
 
     /// Get the current input string.
     std::string input_get() const;
@@ -51,10 +55,13 @@ namespace parse
     using MetavarMap<ast::Var>::append_;
     using MetavarMap<ast::NameTy>::append_;
     using MetavarMap<ast::DecsList>::append_;
+    using MetavarMap<Tweast>::append_;
 
     /// Fake append (default case, i.e. when \a data is not a metavariable).
     template <typename T> T& append_(unsigned&, T& data) const;
 
+    template <typename T>
+    void move_metavars_(Tweast& tweast, std::string& input);
 
   protected:
     /// The next identifier suffix to create.

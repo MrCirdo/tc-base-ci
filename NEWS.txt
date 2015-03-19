@@ -1,3 +1,13 @@
+New in 1.38, 2015-03-19:
+
+* Support Pyhton 3
+
+  Fix compatibility with python 3.
+
+* Update pretty printer
+
+  Print attributes bindings.
+
 New in 1.37, 2015-02-26:
 
 * More targets

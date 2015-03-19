@@ -6,8 +6,8 @@
 #ifndef AST_SIMPLE_VAR_HH
 # define AST_SIMPLE_VAR_HH
 
-# include <ast/var.hh>
 # include <ast/var-dec.hh>
+# include <ast/var.hh>
 # include <misc/symbol.hh>
 
 namespace ast

@@ -6,10 +6,10 @@
 #ifndef AST_VAR_DEC_HH
 # define AST_VAR_DEC_HH
 
+# include <ast/dec.hh>
+# include <ast/escapable.hh>
 # include <ast/exp.hh>
 # include <ast/name-ty.hh>
-# include <ast/escapable.hh>
-# include <ast/dec.hh>
 
 namespace ast
 {

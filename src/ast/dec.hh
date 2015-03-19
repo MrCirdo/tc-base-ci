@@ -7,13 +7,14 @@
 # define AST_DEC_HH
 
 # include <ast/ast.hh>
+# include <ast/typable.hh>
 # include <misc/symbol.hh>
 
 namespace ast
 {
 
   /// Dec.
-  class Dec : public Ast
+  class Dec : public Ast, public Typable
   {
     /** \name Ctor & dtor.
      ** \{ */
@@ -23,6 +24,15 @@ namespace ast
     /// Destroy a Dec node.
     virtual ~Dec();
     /** \} */
+
+    /// \name Visitors entry point.
+    /// \{ */
+  public:
+    /// Accept a const visitor \a v.
+    virtual void accept(ConstVisitor& v) const override = 0;
+    /// Accept a non-const visitor \a v.
+    virtual void accept(Visitor& v) override = 0;
+    /// \}
 
     /** \name Accessors.
      ** \{ */

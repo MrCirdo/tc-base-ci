@@ -6,8 +6,8 @@
 #ifndef AST_NAME_TY_HH
 # define AST_NAME_TY_HH
 
-# include <ast/type-dec.hh>
 # include <ast/ty.hh>
+# include <ast/type-dec.hh>
 # include <misc/symbol.hh>
 
 namespace ast

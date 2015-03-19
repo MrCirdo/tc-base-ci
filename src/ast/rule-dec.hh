@@ -6,8 +6,8 @@
 #ifndef AST_RULE_DEC_HH
 # define AST_RULE_DEC_HH
 
-# include <ast/exp.hh>
 # include <ast/dec.hh>
+# include <ast/exp.hh>
 
 namespace ast
 {
