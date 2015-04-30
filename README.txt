@@ -1,6 +1,6 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
-.                             : 4505 290  15
+.                             : 4920 345  14
     lib                       :  260  17  15
         misc                  :  260  17  15
             graph.hh          :    3   1   3
@@ -11,7 +11,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :    8   5   1
             variant.hxx       :    1   1   1
-    src                       : 4245 273  15
+    src                       : 4660 328  14
         ast                   : 1572  70  22
             array-exp.cc      :   26   1  26
             array-exp.hh      :   43   1  43
@@ -32,7 +32,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             field-var.cc      :   23   1  23
             field-var.hh      :   42   1  42
             field-var.hxx     :   34   1  34
-            function-dec.hh~  :    2   1   2
+            function-dec.hh   :    2   1   2
             if-exp.cc         :   26   1  26
             if-exp.hh         :   51   1  51
             if-exp.hxx        :   34   1  34
@@ -114,6 +114,16 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             scantiger.ll      :   18   3   6
             tasks.cc          :    2   1   2
             tiger-parser.cc   :   13   2   6
+        temp                  :   57  16   3
+            identifier.hxx    :   57  16   3
+        translate             :  304  38   8
+            exp.cc            :   47   6   7
+            level.cc          :    3   1   3
+            translation.cc    :  148  10  14
+            translation.hh    :    6   1   6
+            translator.cc     :  100  20   5
+        tree                  :   54   1  54
+            fragment.cc       :   54   1  54
         type                  :  767  52  14
             array.cc          :    5   1   5
             array.hh          :   20   1  20

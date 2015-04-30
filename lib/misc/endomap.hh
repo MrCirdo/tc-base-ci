@@ -42,7 +42,7 @@ namespace misc
     /// \}
 
     /// Return a duplicate of \a this.
-    virtual endomap* clone() const;
+    virtual endomap* clone() const override;
 
     /// Return a reference to the value associated to \a t.
     ///

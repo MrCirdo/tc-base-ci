@@ -7,7 +7,7 @@ AC_PREREQ([2.64])
 ## Package set up.  ##
 ## ---------------- ##
 
-AC_INIT([LRDE Tiger Compiler], [1.38], [tiger@lrde.epita.fr], [tc],
+AC_INIT([LRDE Tiger Compiler], [1.39], [tiger@lrde.epita.fr], [tc],
         [http://tiger.lrde.epita.fr])
 
 # Auxiliary files.
@@ -203,6 +203,8 @@ AM_CONDITIONAL([IA32_FREEBSD],
 AM_CONDITIONAL([SUPPORTED_IA32],
                [echo "$host" | grep -q '^\(i.86\|x86_64\).*linux\|^\(i.86\|amd64\).*freebsd'])
 
+# HAVM.
+TC_PROG([havm], [>=0.26], [HAVM], [The Tree Virtual Machine])
 
 
 ## ----------- ##

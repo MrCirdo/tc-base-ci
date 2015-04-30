@@ -22,49 +22,53 @@ namespace ast
     /** \name Ctor & dtor.
      ** \{ */
   public:
+    /// Convenient abbreviation.
+    template <typename Type>
+    using const_t = typename Const<Type>::type;
+
     /// Destroy a GenVisitor.
     virtual ~GenVisitor();
     /** \} */
 
     /// The entry point: visit \a e.
-    virtual void operator()(typename Const<Ast>::type& e);
-    virtual void operator()(typename Const<ArrayExp>::type&) = 0;
-    virtual void operator()(typename Const<ArrayTy>::type&) = 0;
-    virtual void operator()(typename Const<AssignExp>::type&) = 0;
-    virtual void operator()(typename Const<BreakExp>::type&) = 0;
-    virtual void operator()(typename Const<CallExp>::type&) = 0;
-    virtual void operator()(typename Const<CastExp>::type&) = 0;
-    virtual void operator()(typename Const<CastVar>::type&) = 0;
-    virtual void operator()(typename Const<ClassTy>::type&) = 0;
-    virtual void operator()(typename Const<DecsList>::type&) = 0;
-    virtual void operator()(typename Const<Field>::type&) = 0;
-    virtual void operator()(typename Const<FieldInit>::type&) = 0;
-    virtual void operator()(typename Const<FieldVar>::type&) = 0;
-    virtual void operator()(typename Const<ForExp>::type&) = 0;
-    virtual void operator()(typename Const<FunctionDec>::type&) = 0;
-    virtual void operator()(typename Const<IfExp>::type&) = 0;
-    virtual void operator()(typename Const<IntExp>::type&) = 0;
-    virtual void operator()(typename Const<LetExp>::type&) = 0;
-    virtual void operator()(typename Const<MethodCallExp>::type&) = 0;
-    virtual void operator()(typename Const<MethodDec>::type&) = 0;
-    virtual void operator()(typename Const<NameTy>::type&) = 0;
-    virtual void operator()(typename Const<NilExp>::type&) = 0;
-    virtual void operator()(typename Const<ObjectExp>::type&) = 0;
-    virtual void operator()(typename Const<OpExp>::type&) = 0;
-    virtual void operator()(typename Const<RecordExp>::type&) = 0;
-    virtual void operator()(typename Const<RecordTy>::type&) = 0;
-    virtual void operator()(typename Const<SeqExp>::type&) = 0;
-    virtual void operator()(typename Const<SimpleVar>::type&) = 0;
-    virtual void operator()(typename Const<StringExp>::type&) = 0;
-    virtual void operator()(typename Const<SubscriptVar>::type&) = 0;
-    virtual void operator()(typename Const<TypeDec>::type&) = 0;
-    virtual void operator()(typename Const<VarDec>::type&) = 0;
-    virtual void operator()(typename Const<WhileExp>::type&) = 0;
+    virtual void operator()(const_t<Ast>& e);
+    virtual void operator()(const_t<ArrayExp>&) = 0;
+    virtual void operator()(const_t<ArrayTy>&) = 0;
+    virtual void operator()(const_t<AssignExp>&) = 0;
+    virtual void operator()(const_t<BreakExp>&) = 0;
+    virtual void operator()(const_t<CallExp>&) = 0;
+    virtual void operator()(const_t<CastExp>&) = 0;
+    virtual void operator()(const_t<CastVar>&) = 0;
+    virtual void operator()(const_t<ClassTy>&) = 0;
+    virtual void operator()(const_t<DecsList>&) = 0;
+    virtual void operator()(const_t<Field>&) = 0;
+    virtual void operator()(const_t<FieldInit>&) = 0;
+    virtual void operator()(const_t<FieldVar>&) = 0;
+    virtual void operator()(const_t<ForExp>&) = 0;
+    virtual void operator()(const_t<FunctionDec>&) = 0;
+    virtual void operator()(const_t<IfExp>&) = 0;
+    virtual void operator()(const_t<IntExp>&) = 0;
+    virtual void operator()(const_t<LetExp>&) = 0;
+    virtual void operator()(const_t<MethodCallExp>&) = 0;
+    virtual void operator()(const_t<MethodDec>&) = 0;
+    virtual void operator()(const_t<NameTy>&) = 0;
+    virtual void operator()(const_t<NilExp>&) = 0;
+    virtual void operator()(const_t<ObjectExp>&) = 0;
+    virtual void operator()(const_t<OpExp>&) = 0;
+    virtual void operator()(const_t<RecordExp>&) = 0;
+    virtual void operator()(const_t<RecordTy>&) = 0;
+    virtual void operator()(const_t<SeqExp>&) = 0;
+    virtual void operator()(const_t<SimpleVar>&) = 0;
+    virtual void operator()(const_t<StringExp>&) = 0;
+    virtual void operator()(const_t<SubscriptVar>&) = 0;
+    virtual void operator()(const_t<TypeDec>&) = 0;
+    virtual void operator()(const_t<VarDec>&) = 0;
+    virtual void operator()(const_t<WhileExp>&) = 0;
 
-    virtual void operator()(typename Const<FunctionDecs>::type&) = 0;
-    virtual void operator()(typename Const<MethodDecs>::type&) = 0;
-    virtual void operator()(typename Const<TypeDecs>::type&) = 0;
-    virtual void operator()(typename Const<VarDecs>::type&) = 0;
+    virtual void operator()(const_t<FunctionDecs>&) = 0;
+    virtual void operator()(const_t<MethodDecs>&) = 0;
+    virtual void operator()(const_t<TypeDecs>&) = 0;
+    virtual void operator()(const_t<VarDecs>&) = 0;
 
     /// Helper to visit nodes manipulated via a pointer.
     template <class E> void operator()(E* e);
@@ -89,7 +93,7 @@ namespace ast
 
         \code
         template <typename E>
-        void accept(typename Const<E>::type* e);
+        void accept(const_t<E>* e);
         \endcode
 
         won't work directly.  Of course, one can help the compiler,

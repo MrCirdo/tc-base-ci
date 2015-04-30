@@ -1,6 +1,19 @@
+New in 1.39, 2015-04-30:
+
+* Start upgrading visitor
+
+  Use a type alias template to shorten type names. Nonetheless
+  since it may lead to conflicts with students codes, it's just
+  an introduction.
+
+* Fix check routines
+
+  - Fix marks for studistcheck
+  - Fix distcheck
+
 New in 1.38, 2015-03-19:
 
-* Support Pyhton 3
+* Support Python 3
 
   Fix compatibility with python 3.
 

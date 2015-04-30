@@ -60,7 +60,7 @@ namespace type
      ** \{ */
   public:
     /// The type pointed to ultimately.
-    const Type& actual() const;
+    virtual const Type& actual() const override;
 
     /** \brief Check that the definition of this named type is sound,
      ** i.e. that there is no recursive dependency.  */

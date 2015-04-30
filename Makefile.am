@@ -9,10 +9,11 @@ AM_DEFAULT_SOURCE_EXT = .cc
 
 BUILT_SOURCES =
 CLEANFILES = $(EXTRA_PROGRAMS)
-EXTRA_DIST =
+EXTRA_DIST = $(dist_TESTS)
 MAINTAINERCLEANFILES =
-TESTS = $(check_PROGRAMS)
+TESTS = $(check_PROGRAMS) $(dist_TESTS)
 check_PROGRAMS =
+dist_TESTS =
 dist_noinst_DATA =
 
 # Our tests should be run only if the sources are updated: they are
