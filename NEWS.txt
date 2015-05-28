@@ -1,3 +1,7 @@
+New in 1.41, 2015-05-27:
+
+* Maintenance for arm backend
+
 New in 1.40, 2015-05-25:
 
 * No significant changes 

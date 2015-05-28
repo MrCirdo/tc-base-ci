@@ -1,6 +1,6 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
-.                             : 5184 357  14
+.                             : 5911 400  14
     lib                       :  260  17  15
         misc                  :  260  17  15
             graph.hh          :    3   1   3
@@ -11,7 +11,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :    8   5   1
             variant.hxx       :    1   1   1
-    src                       : 4924 340  14
+    src                       : 5651 383  14
         ast                   : 1572  70  22
             array-exp.cc      :   26   1  26
             array-exp.hh      :   43   1  43
@@ -118,6 +118,26 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             scantiger.ll      :   18   3   6
             tasks.cc          :    2   1   2
             tiger-parser.cc   :   13   2   6
+        target                :  727  43  16
+            arm               :   97  10   9
+                arm-assembly.cc:    7   2   3
+                arm-codegen.cc:   45   4  11
+                call.brg      :    9   1   9
+                epilogue.cc   :   33   1  33
+                move.brg      :    3   2   1
+            ia32              :  187  10  18
+                call.brg      :    9   1   9
+                epilogue.cc   :   76   1  76
+                gas-assembly.cc:   11   2   5
+                gas-codegen.cc:   88   4  22
+                move.brg      :    3   2   1
+            mips              :  443  23  19
+                call.brg      :   10   1  10
+                epilogue.cc   :   76   1  76
+                move.brg      :    3   2   1
+                runtime.s     :  214   6  35
+                spim-assembly.cc:   51   9   5
+                spim-codegen.cc:   89   4  22
         temp                  :   57  16   3
             identifier.hxx    :   57  16   3
         translate             :  304  38   8

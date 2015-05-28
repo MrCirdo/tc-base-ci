@@ -1,0 +1,37 @@
+# call.brg                                               -*- c++ -*-
+
+call: Call
+{
+  auto call = tree.cast<Call>();
+  tree_list_type& children = call->children_get();
+  auto i = children.begin();
+
+  auto function = i->cast<Name>();
+  ++i;
+
+  // Store the first aguments in the dedicated registers.
+  for (auto a = MCPU.argument_regs().begin();
+       i != children.end() && a != MCPU.argument_regs().end();
+       ++i, ++a)
+  {
+    REDUCE(*i, MB_NTERM_exp);
+    EMIT(ARM_ASSEMBLY.move_build((*i)->asm_get(), *a));
+  }
+
+  // FIXME: Some code was deleted here (Store all the other arguments in frame).
+
+  // Now all the arguments are stored, we can safely jump to the
+  // label (i.e. the function).
+  temp::temp_list_type res(MCPU.caller_save_regs().begin(),
+                           MCPU.caller_save_regs().end());
+  res.insert(res.begin(),
+             MCPU.argument_regs().begin(),
+             MCPU.argument_regs().end());
+  res.push_back(MCPU.result_reg());
+
+  EMIT(ARM_ASSEMBLY.call_build(function->label_get(),
+                               MCPU.argument_regs(),
+                               res));
+
+  tree->asm_set(MCPU.result_reg());
+}

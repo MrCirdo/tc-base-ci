@@ -1,0 +1,26 @@
+# call.brg                                               -*- c++ -*-
+
+call: Call
+{
+  auto call = tree.cast<Call>();
+  tree_list_type& children = call->children_get();
+  tree_list_type::iterator i = children.begin();
+
+  auto function = i->cast<Name>();
+  ++i;
+
+  // Consider that an IA-32 CPU does not have registers dedicated to
+  // argument storage
+
+  // FIXME: Some code was deleted here (Store all the arguments in frame).
+
+  // Now all the arguments are stored, we can safely jump to the
+  // label (i.e. the function).
+  temp::temp_list_type res(MCPU.caller_save_regs().begin(),
+                           MCPU.caller_save_regs().end());
+  res.push_back(MCPU.result_reg());
+  EMIT(IA32_ASSEMBLY.call_build(function->label_get(),
+                                res));
+
+  tree->asm_set(MCPU.result_reg());
+}

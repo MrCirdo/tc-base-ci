@@ -1,0 +1,46 @@
+# move_load.brg                                          -*- c++ -*-
+
+move: Move(exp, Mem(b : Binop(binop_left : Const, binop_right : exp)))
+{
+  auto binop = b.cast<Binop>();
+
+  precondition(binop->oper_get() == Binop::sub or
+               binop->oper_get() == Binop::add);
+
+  auto const_left = binop_left.cast<Const>();
+  short sign = 1;
+
+  precondition(binop_right);
+  precondition(binop_left);
+
+  if (binop->oper_get() == Binop::sub)
+    sign = -1;
+  EMIT(IA32_ASSEMBLY.load_build(binop_right->asm_get(),
+                                sign * const_left->value_get(),
+                                tree->left_get()->asm_get()));
+}
+
+move: Move(exp, Mem(b : Binop(binop_left : exp, binop_right : Const)))
+{
+  auto binop = b.cast<Binop>();
+
+  precondition(binop->oper_get() == Binop::sub or
+               binop->oper_get() == Binop::add);
+
+  auto const_right = binop_right.cast<Const>();
+  short sign = 1;
+
+  precondition(binop_right);
+  precondition(binop_left);
+
+  if (binop->oper_get() == Binop::sub)
+    sign = -1;
+  EMIT(IA32_ASSEMBLY.load_build(binop_left->asm_get(),
+                                sign * const_right->value_get(),
+                                tree->left_get()->asm_get()));
+}
+
+move: Move(e : exp, Mem(b : binop))
+{
+  EMIT(IA32_ASSEMBLY.load_build(b->asm_get(), e->asm_get()));
+}
