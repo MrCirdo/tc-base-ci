@@ -6,6 +6,7 @@
 #include <sstream>
 
 #include <misc/symbol.hh>
+#include <misc/set.hh>
 
 #include <ast/all.hh>
 #include <parse/libparse.hh>
@@ -649,18 +650,25 @@ namespace object
     // FIXME Replace it by a set of pairs? Is used to know what class/method
     // pair we already have seen for the sub dispatch functions.
     dispatch_list_type sub_dispatches;
+    misc::set<const type::Class*> handled_classes;
     for (const ast::TypeDec* t : e.decs_get())
-      if (const type::Class* cls = class_type_query(*t))
-        handle_class(e, cls, functions, sub_dispatches);
-      else
-        {
-          /* FIXME: In the rest of the visitor, the
-             simply-clone-this-node case is handled before the
-             desugar-this-node case.  */
-          // Otherwise, clone the type declaration.
-          ast::TypeDec* typedec = recurse(*t);
-          assertion(typedec);
-          types_ << *typedec << '\n';
+      {
+          const type::Class* cls = class_type_query(*t);
+          if (cls && !handled_classes.has(cls))
+          {
+              handled_classes.insert(cls);
+              handle_class(e, cls, functions, sub_dispatches);
+          }
+          else
+          {
+              /* FIXME: In the rest of the visitor, the
+                 simply-clone-this-node case is handled before the
+                 desugar-this-node case.  */
+              // Otherwise, clone the type declaration.
+              ast::TypeDec* typedec = recurse(*t);
+              assertion(typedec);
+              types_ << *typedec << '\n';
+          }
       }
 
     ast::DecsList* funs_list = parse::parse(functions);

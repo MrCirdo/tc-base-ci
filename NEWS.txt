@@ -1,3 +1,9 @@
+New in 1.42, 2015-06-05:
+
+* Fix pruning of unused function declarations
+
+* Add tests for bounds-checking
+
 New in 1.41, 2015-05-27:
 
 * Maintenance for arm backend

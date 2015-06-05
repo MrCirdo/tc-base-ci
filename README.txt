@@ -1,6 +1,6 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
-.                             : 5911 400  14
+.                             : 6053 404  14
     lib                       :  260  17  15
         misc                  :  260  17  15
             graph.hh          :    3   1   3
@@ -11,7 +11,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :    8   5   1
             variant.hxx       :    1   1   1
-    src                       : 5651 383  14
+    src                       : 5793 387  14
         ast                   : 1572  70  22
             array-exp.cc      :   26   1  26
             array-exp.hh      :   43   1  43
@@ -87,19 +87,23 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             canon.cc          :   67   6  11
             libcanon.cc       :   20   1  20
             traces.cc         :  177   5  35
-        desugar               :  207   5  41
-            bounds-checking-visitor.cc:  135   1 135
+        desugar               :  211   5  42
+            bounds-checking-visitor.cc:  139   1 139
             bounds-checking-visitor.hh:    7   1   7
             desugar-visitor.cc:   64   2  32
             libdesugar.cc     :    1   1   1
         escapes               :   49   2  24
             escapes-visitor.cc:   35   1  35
             escapes-visitor.hh:   14   1  14
-        inlining              :  193   7  27
+        inlining              :  207   7  29
             inliner.cc        :  119   1 119
             inliner.hh        :    7   2   3
-            pruner.cc         :   56   2  28
-            pruner.hh         :   11   2   5
+            pruner.cc         :   69   2  34
+            pruner.hh         :   12   2   6
+        liveness              :  124   4  31
+            flowgraph.hxx     :   36   2  18
+            interference-graph.cc:   45   1  45
+            liveness.cc       :   43   1  43
         object                :  265  63   4
             binder.cc         :   12   2   6
             desugar-visitor.cc:   79  36   2
