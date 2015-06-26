@@ -113,6 +113,9 @@ namespace type
     /** \name Type resolution.
      ** \{ */
   public:
+    /** \brief Find the common super class.  */
+    const Class* common_root(const Class& other) const;
+
     /** \brief Check that the definition of this class is sound,
      ** i.e. that there is no recursive inheritance.  */
     bool sound() const;

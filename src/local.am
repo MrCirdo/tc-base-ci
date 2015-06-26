@@ -78,4 +78,5 @@ include src/translate/local.am
 include src/canon/local.am
 include src/assem/local.am
 include src/liveness/local.am
+include src/regalloc/local.am
 include src/target/local.am

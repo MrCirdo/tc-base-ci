@@ -53,6 +53,8 @@ namespace object
     virtual void operator()(const ast::VarDec& e) override;
     /// Desugar manifest objects.
     virtual void operator()(const ast::ObjectExp& e) override;
+    /// Desugar polymorphic branching.
+    virtual void operator()(const ast::IfExp& e) override;
     /// Desugar polymorphic assignments.
     virtual void operator()(const ast::AssignExp& e) override;
     /// Add object casts around arguments when needed.

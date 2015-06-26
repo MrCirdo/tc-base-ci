@@ -50,6 +50,7 @@ namespace object
     // ---------------- //
 
     // Method exp.
+    virtual void operator()(ast::IfExp& e);
     virtual void operator()(ast::ObjectExp& e);
     virtual void operator()(ast::MethodCallExp& e);
 

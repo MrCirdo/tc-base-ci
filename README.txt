@@ -1,6 +1,6 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
-.                             : 6053 404  14
+.                             : 6440 434  14
     lib                       :  260  17  15
         misc                  :  260  17  15
             graph.hh          :    3   1   3
@@ -11,7 +11,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :    8   5   1
             variant.hxx       :    1   1   1
-    src                       : 5793 387  14
+    src                       : 6180 417  14
         ast                   : 1572  70  22
             array-exp.cc      :   26   1  26
             array-exp.hh      :   43   1  43
@@ -104,15 +104,15 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             flowgraph.hxx     :   36   2  18
             interference-graph.cc:   45   1  45
             liveness.cc       :   43   1  43
-        object                :  265  63   4
+        object                :  334  65   5
             binder.cc         :   12   2   6
-            desugar-visitor.cc:   79  36   2
+            desugar-visitor.cc:  105  37   2
             libobject.cc      :    8   2   4
             libobject.hh      :    5   1   5
             renamer.cc        :   44   8   5
             tasks.cc          :    6   1   6
             tasks.hh          :    4   1   4
-            type-checker.cc   :  107  12   8
+            type-checker.cc   :  150  13  11
         overload              :  159   3  53
             binder.cc         :    4   1   4
             type-checker.cc   :  139   1 139
@@ -122,6 +122,9 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             scantiger.ll      :   18   3   6
             tasks.cc          :    2   1   2
             tiger-parser.cc   :   13   2   6
+        regalloc              :  302  27  11
+            color.cc          :  299  26  11
+            regallocator.cc   :    3   1   3
         target                :  727  43  16
             arm               :   97  10   9
                 arm-assembly.cc:    7   2   3
@@ -152,13 +155,13 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             translator.cc     :  100  20   5
         tree                  :   54   1  54
             fragment.cc       :   54   1  54
-        type                  :  767  52  14
+        type                  :  783  53  14
             array.cc          :    5   1   5
             array.hh          :   20   1  20
             array.hxx         :   10   1  10
             builtin-types.cc  :   52   2  26
             builtin-types.hh  :   76   1  76
-            class.cc          :   67   7   9
+            class.cc          :   80   8  10
             class.hh          :    6   1   6
             function.cc       :   39   1  39
             function.hh       :    2   1   2
@@ -168,7 +171,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             named.hxx         :    2   1   2
             record.cc         :   38   3  12
             record.hh         :    1   1   1
-            type-checker.cc   :  365  20  18
+            type-checker.cc   :  368  20  18
             type-checker.hh   :   13   2   6
             type-checker.hxx  :    5   3   1
             type.hxx          :    2   2   1

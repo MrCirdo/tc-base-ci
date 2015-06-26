@@ -1,3 +1,9 @@
+New in 1.43, 2015-06-26:
+
+* Fix error when computing object type inside ifexp
+
+* Update comments to fit implementation
+
 New in 1.42, 2015-06-05:
 
 * Fix pruning of unused function declarations

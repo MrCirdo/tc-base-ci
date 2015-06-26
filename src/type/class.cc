@@ -31,6 +31,8 @@ namespace type
   // FIXME: Some code was deleted here.
   }
 
+  // FIXME: Some code was deleted here (Find common super class).
+
   // FIXME: Some code was deleted here (Super class soundness test).
 
   // FIXME: Some code was deleted here (Print).

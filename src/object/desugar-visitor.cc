@@ -733,6 +733,12 @@ namespace object
   }
 
   void
+  DesugarVisitor::operator()(const ast::IfExp& e)
+  {
+  // FIXME: Some code was deleted here.
+  }
+
+  void
   DesugarVisitor::operator()(const ast::AssignExp& e)
   {
     // If this is not an object assignment, delegate to the cloner.

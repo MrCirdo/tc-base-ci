@@ -36,6 +36,9 @@ namespace liveness
         is a work-list algorithm which keeps track of what must be
         recalculated.
 
+        In the opposite of the algorithm 17.6, we switch in and out sets
+        uses. For example, old <- out[n] => old <- in[n].
+
         \attention When displayed, the Liveness graph is a good means to
         check that the compiler works properly, including \em after the
         register allocation: we want to check that the liveness of the

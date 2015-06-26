@@ -74,6 +74,12 @@ namespace object
   `-----------------*/
 
   void
+  TypeChecker::operator()(ast::IfExp& e)
+  {
+  // FIXME: Some code was deleted here.
+  }
+
+  void
   TypeChecker::operator()(ast::ObjectExp& e)
   {
   // FIXME: Some code was deleted here.
