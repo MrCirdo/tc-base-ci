@@ -1,3 +1,2270 @@
+2016-02-16  Etienne Renault  <renault@lrde.epita.fr>
+
+	dev/install-generic: ask for local install
+
+	*  dev/install-generic: Here.
+
+2016-02-16  Etienne Renault  <renault@lrde.epita.fr>
+
+	Update URL for new versions
+
+	* dev/install-bison,
+	* dev/install-havm,
+	* dev/install-monoburg,
+	* dev/install-nolimips: Here.
+
+2016-02-16  Etienne Renault  <renault@lrde.epita.fr>
+
+	make check: use unique directories in /tmp
+
+	Multiple runs of make check can overlap and share the
+	same directory. This is obviously not something we want
+	(especilly from the buildfarm point of view).
+
+	* tests/tc-check.in: here.
+
+2016-02-12  Etienne Renault  <renault@lrde.epita.fr>
+
+	Update havm and monoburg versions
+
+	* configure.ac: here.
+
+2016-02-12  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	tc-1: give parse_input
+
+	* src/parse/tiger-parser.cc: Here.
+
+2016-02-11  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	tc-1: test-symbol does not require scoped map
+
+	Fix make check for tc-base-1.
+
+	* lib/misc/test-symbol.cc: Here.
+
+2016-02-10  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	overfun-object: add FIXMEs and remove files until tc-4
+
+	* dev/stagize: Remove files here.
+	* src/object/overfun-binder.cc: FIXMEs here,
+	* src/object/overfun-binder.hh: here
+	* src/object/overfun-type-checker.cc: here,
+	* src/object/overfun-type-checker.hh: here.
+
+2016-02-10  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	tc-2: remove useless FIXMEs
+
+	escapable, typable and type-constructor should not be added until
+	tc-3.
+
+	* dev/stagize: Here.
+
+2016-02-10  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	default-visitor: fix fixme in callexp and functiondec
+
+	* src/ast/default-visitor.hxx: Here.
+
+2016-02-10  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	parse: object parsing should be possible since tc-1
+
+	* dev/stagize: Here.
+
+2016-02-10  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	tc-1: hide fixme of other stages
+
+	* lib/misc/graph.hh: Here.
+	* lib/misc/graph.hxx: Here.
+	* lib/misc/scoped-map.hh: Here.
+	* lib/misc/scoped-map.hxx: Here.
+	* src/parse/tasks.cc: Here.
+
+2016-02-05  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.44, for 2018-tc-1.0
+
+	* NEWS.txt, Makefile.am, configure.ac: here.
+
+2016-01-25  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	tests: overfun-object: fix tc-err files
+
+	* tests/overfun-object-bind/*.tc-err: Here.
+	* tests/overfun-object-type/*.tc-err: Here.
+
+2016-01-25  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	tests: add generated .hir and .hpr files
+
+	* tests/bounds-check/*.hir: Here.
+	* tests/bounds-check/*.hpr: Here.
+	* tests/object-good/*.hir: Here.
+	* tests/object-good/*.hpr: Here.
+	* tests/overfun-object-good/*.hir: Here.
+	* tests/overfun-object-good/*.hpr: Here.
+
+2016-01-25  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	build: update the C++ standard to C++14
+
+	* tests/tc-check.in,
+	* configure.ac: Update the flags and the compiler requirements.
+	GCC supports C++14 starting with gcc 5.0
+	Clang supports C++14 starting with clang 3.4
+
+2016-01-25  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	scan: add address at end of id to avoid ice with object desugar
+
+	WIP: We should probably find a better way of solving this.
+
+	`let type A /* 0x42 */ = int in end`
+	would be renamed as
+	`let type A /* 0x42 */_17 = int in end`
+	hence would fail if parsed again like it is done in the object desugar.
+	The first line now corresponds to:
+	`let type A__0x42 = int in end`
+
+	* src/parse/scantiger.ll: Here.
+	* tests/good/address.*: Test it.
+
+2016-01-15  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	bind: only display class member binding after type checking
+
+	Do not display class member binding when the type checker wasn't passed
+	before to avoid errors when type checking a file which only went through
+	the binder.
+
+	* src/ast/pretty-printer.cc: Here.
+	* src/ast/pretty-printer.hh: Here.
+
+2016-01-15  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	scoped-map: avoid return 0 for pointers with enable if
+
+	If the get method fails to find the element, it has 2 different
+	behaviors depending on whether the element is a pointer or not.
+	If it's a pointer the function returns a nullptr, otherwise it
+	raises an error.
+	Dispatch these errors in function defined with enable if to
+	avoid having to return 0 to fit the type of the function.
+
+	* lib/misc/scoped-map.hh: Here.
+	* lib/misc/scoped-map.hxx: Here.
+
+2016-01-03  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	overfun-object: add tests for incorrect binding/type-checking
+
+	* tests/tc-check.in: Here.
+	* tests/overfun-object-bind/*: Binding.
+	* tests/overfun-object-type/*: Type checking.
+
+2016-01-03  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	overfun-object: add tests in overfun-object-good
+
+	Change ARM test number to 115 to allowtest suite to pass with ARM
+	failing.
+
+	* tests/tc-check.in: Add test category.
+	* Makefile.am: Adjust options for generated tests.
+	* tests/overfun-object-good/*.err: Here.
+	* tests/overfun-object-good/*.out: Here.
+	* tests/overfun-object-good/*.sta: Here.
+	* tests/overfun-object-good/*.tig: Here.
+
+2016-01-03  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	style: tests: stop using tabs
+
+	* tests/tc-check.in: Here.
+
+2016-01-02  Axel Manuel  <axel.manuel@epita.fr>
+
+	tests: add tests for pruning of used functions in decs
+
+	* tests/inline/use-in-chunk.*: Add tests and generated files.
+
+2016-01-02  Axel Manuel  <axel.manuel@epita.fr>
+
+	pruner: fix pruning of used functions
+
+	* src/inlining/pruner.*: here
+
+2015-12-23  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	overfun-object: add desugar and renamer
+
+	Add support for renaming program with overload and object.
+	Usable through new task 'overfun-object-rename'.
+	Add support for desugaring program with overload and object.
+	Usable through new task 'overfun-object-desugar'.
+	(Closes #71)
+
+	* src/object/tasks.cc: Here.
+	* src/object/tasks.hh: Here.
+
+2015-12-23  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	overfun-object: add type checker
+
+	Add support for type checking program with overload and object.
+	Usable through new task 'overfun-object-types-compute'.
+
+	* src/object/overfun-type-checker.hh: Here,
+	* src/object/overfun-type-checker.cc: here.
+	* src/object/type-checker.hh: Virtual inheritence here,
+	* src/overload/type-checker.hh: and here.
+	* src/object/tasks.hh: Add to tasks here,
+	* src/object/tasks.cc: here.
+	* src/object/libobject.hh: Add to lib here,
+	* src/object/libobject.cc: here.
+
+2015-12-23  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	overfun-object: add binder
+
+	Add support for binding program with overload and object.
+	Usable through new task 'overfun-object-bindings-compute'.
+
+	* src/object/overfun-binder.hh: Here,
+	* src/object/overfun-binder.cc: here.
+	* src/object/binder.hh: Virtual inheritence here,
+	* src/overload/binder.hh: and here.
+	* src/object/tasks.hh: Add to tasks here,
+	* src/object/tasks.cc: here,
+	* src/object/libobject.hh: Add to lib here,
+	* src/object/libobject.cc: here.
+
+2015-12-23  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	overload: remove useless extern declaration
+
+	* src/overload/tasks.hh: Here.
+
+2015-12-23  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	style: fix typo and blank spaces
+
+	* build-aux/m4/boost.m4: Here.
+	* src/object/desugar-visitor.cc: Here.
+
+2015-12-14  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	codegen: add generated files
+
+	We want to be able to detect differences in generated files easily.
+	Adding them to the repository will make sure of this.
+
+	* src/target/arm/arm-codegen.cc: Here.
+	* src/target/arm/arm-codegen.hh: Here.
+	* src/target/ia32/gas-codegen.cc: Here.
+	* src/target/ia32/gas-codegen.hh: Here.
+	* src/target/mips/spim-codegen.cc: Here.
+	* src/target/mips/spim-codegen.hh: Here.
+
+2015-12-14  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	build: adjust to Flex 2.6
+
+	The new version of Flex made incompatible changes with the previous
+	version. Deal with it.
+
+	* build-aux/m4/flex-version.m4 (FLEX_VERSION): Define the version of flex.
+	* configure.ac (config.h): Call FLEX_VERSION.
+	* lib/misc/flex-lexer.hh: Depend on the Flex version.
+	Add support for references.
+
+2015-12-14  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	arm: add default case to `cjump_inst`
+
+	* src/target/arm/arm-assembly.cc: Add a default case in order to supress
+	a compiler warning.
+
+2015-12-14  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	type: add missing `virtual` and `override`
+
+	* src/type/method.hh: Supress compiler warnings.
+
+2015-11-06  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	symbol: fix generated file call to name_get
+
+	* dev/transform-matcher-gen: Here.
+
+2015-11-05  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	symbol: object_get -> get in unique and remove symbol equivalents
+
+	* lib/misc/symbol.cc: Here.
+	* lib/misc/symbol.hh: Here.
+	* lib/misc/symbol.hxx: Here.
+	* lib/misc/test-symbol.cc: Here.
+	* lib/misc/unique.hh: Here.
+	* lib/misc/unique.hxx: Here.
+	* src/assem/fragment.cc: Here.
+	* src/desugar/bounds-checking-visitor.cc: Here.
+	* src/object/desugar-visitor.cc: Here.
+	* src/object/type-checker.cc: Here.
+	* src/parse/tiger-parser.cc: Here.
+	* src/transform/matcher.cc: Here.
+	* src/type/type-checker.cc: Here.
+
+2015-11-05  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	unique: remove virtual for non-virtual member functions
+
+	* lib/misc/symbol.hh: Here.
+	* lib/misc/unique.hh: Fix typo here.
+
+2015-11-05  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	gcc-ice: comment on destructor file change avoiding ice
+
+	The internal compiler error has been reported here :
+	https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68220
+
+	* src/tree/fragment.cc: Here.
+
+2015-11-05  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	variant: remove bad get tests made useless by boost 1.58
+
+	* lib/misc/test-variant.cc: Here.
+
+2015-11-05  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	gcc-5: do not inline ProcFrag destructor causing gcc-5 to ice
+
+	* src/tree/fragment.hxx: From here...
+	* src/tree/fragment.cc: to here.
+
+2015-11-03  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	style: use `unique_ptr` instead of `auto_ptr`
+
+	* src/target/arm/test-target.cc,
+	* src/target/ia32/test-target.cc,
+	* src/target/mips/test-target.cc:
+	`auto_ptr` is deprecated and really dangerous. C++11 brought
+	`unique_ptr` and move semantics to do the job right.
+
+2015-11-02  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	style: use pragma once
+
+	* src/ast/*.hh,
+	* src/ast/*.hxx: Regen.
+	* lib/misc/*.hh,
+	* lib/misc/*.hxx,
+	* src/*/*.hh,
+	* src/*/*.hxx,
+	* src/common.hxx,
+	* src/version.hxx:
+	Here.
+	* dev/ast-all-gen,
+	* dev/ast-cloner-gen,
+	* dev/ast-default-visitor-gen,
+	* dev/ast-fwd-gen,
+	* dev/ast-nodes-gen,
+	* dev/ast-pretty-printer-gen,
+	* dev/ast-visitor-gen,
+	* dev/reheader,
+	* dev/tools.py,
+	* dev/transform-all-gen,
+	* dev/transform-proxy-visitors-gen:
+	Update the scripts to generate pragma once.
+
+2015-11-02  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	style: visitor: use type alias template in all the visitors
+
+	* src/assem/visitor.hh,
+	* src/assem/visitor.hxx,
+	* src/ast/default-visitor.hh,
+	* src/ast/default-visitor.hxx,
+	* src/ast/non-object-visitor.hh,
+	* src/ast/non-object-visitor.hxx,
+	* src/ast/object-visitor.hh,
+	* src/ast/object-visitor.hxx,
+	* src/tree/visitor.hh,
+	* src/tree/visitor.hx:
+	* src/ast/visitor.hxx,
+	Here.
+
+2015-08-11  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: add more "unreachable" annotations
+
+	* lib/misc/contract.hh: Use pragma once.
+	Fix TitleCase for macro argument names.
+	(unreached): Rename as...
+	(unreachable): this.
+
+	* src/assem/instr.cc, src/ast/non-object-visitor.hxx,
+	* src/bind/binder.cc, src/canon/traces.cc,
+	* src/desugar/desugar-visitor.cc, src/object/type-checker.cc,
+	* src/target/arm/tree.brg, src/target/ia32/tree.brg,
+	* src/target/mips/tree.brg, src/translate/exp.cc,
+	* src/translate/translation.cc, src/translate/translator.cc,
+	* src/tree/call.cc, src/tree/eseq.cc, src/tree/seq.cc,
+	* src/type/type-checker.cc:
+	Adjust.
+
+	* src/target/ia32/gas-assembly.cc, src/target/mips/spim-assembly.cc:
+	Use unreachable to avoid GCC warnings about return type.
+
+2015-08-11  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: use pragma once
+
+	* src/temp/identifier.hh, src/temp/temp.hh: here.
+
+2015-08-11  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: avoid warnings about override
+
+	* src/ast/default-visitor.hh,
+	* dev/transform-proxy-visitors-gen,
+	* src/transform/proxy-visitors.hh,
+	* src/liveness/interference-graph.hh: here.
+
+2015-08-11  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: fix compatibility with Boost 1.58
+
+	Currently it dies with a missing definition.
+	See https://groups.google.com/forum/#!topic/boost-devel-archive/EYlnhQKB-3M.
+	Reported by Pierre De Abreu.
+
+	* src/target/mips/cpu.cc: Don't include boost/variant/get.hpp,
+	temp/temp.hh does it for us actually.
+
+2015-06-26  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.43, for 2017-tc-9.0
+
+	* NEWS.txt, configure.ac: here.
+
+2015-06-24  Axel Manuel  <axel.manuel@epita.fr>
+
+	tests: Add tests for IfExp with record or class
+
+	* tests/object-good/branching-class.tig: here
+	* tests/object-good/function-returning-parent.tig: here
+	* tests/object-type/calling-son-method.tig: here
+	* tests/object-type/function-returning-son.tig: here
+	* tests/type/different-record-nil.tig: here
+
+2015-06-24  Axel Manuel  <axel.manuel@epita.fr>
+
+	object: ifexp added in type-checker and desugar
+
+	* src/object/type-checker.*: here
+	* src/object/desugar-visitor.*: here
+	* src/type/class.*: here
+
+2015-06-24  Axel Manuel  <axel.manuel@epita.fr>
+
+	type: protect invalid record equality
+
+	* src/type/type-checker.cc: here
+
+2015-06-10  Pierre DE ABREU  <pierre.deabreu@epita.fr>
+
+	misc: change some tc8 and tc9 comments to fit with our implementation
+
+	* Some comments were not that correct. For example, TC8 and liveness
+	graph comments state that we follow the algorithm 17.6 of Modern
+	Compiler Implementation in JAVA. But in our implementation, in
+	and out sets are switched.
+
+	* In TC9, some comments may be confusing. For exemple in tempmap_get(),
+	it was said that we should use precolored and already colored node, but
+	we actually use coalesced and already colored nodes. It could be
+	confusing for students since we already have a precolored nodes set.
+
+2015-06-05  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.42, for 2017-tc-8.0
+
+	* NEWS.txt, configure.ac: here.
+
+2015-06-05  Axel Manuel  <manuel_c@yaka.epita.fr>
+
+	tests: inline generated files Add generated files.
+
+	* tests/inline/call.*: added.
+	* tests/inline/multi-chunks.*: added.
+	* tests/inline/mutually-recursive-functions.*: added.
+	* tests/inline/partial-unused.*: added.
+	* tests/inline/prune-chunk.*: added.
+	* tests/inline/recursive-function.*: added.
+	* tests/inline/scope-functions.*: added.
+	* tests/inline/shadowing-functions.*: added.
+	* tests/inline/unused-function.*: added.
+
+2015-06-05  Axel Manuel  <manuel_c@yaka.epita.fr>
+
+	tests: inline
+
+	Add a directory to grade TC-D only on specific files.
+
+	* tests/Makefile.am: add category inline for gen-all-outputs.
+	* tests/tc-check.in: launch testing on inline directory.
+	* tests/good/call.tig: move to tests/inline/call.tig.
+	* tests/inline/multi-chunks.tig: added.
+	* tests/inline/mutually-recursive-functions.tig: added.
+	* tests/inline/partial-unused.tig: added.
+	* tests/inline/prune-chunk.tig: added.
+	* tests/inline/recursive-function.tig: added.
+	* tests/inline/scope-functions.tig: added.
+	* tests/inline/shadowing-functions.tig: added.
+	* tests/inline/unused-function.tig: added.
+
+2015-06-05  Axel Manuel  <manuel_c@yaka.epita.fr>
+
+	pruning: fix pruning of unused functiondecs
+
+	* src/inline/pruner.cc: here.
+
+2015-06-02  Pierre DE ABREU  <pierre.deabreu@epita.fr>
+
+	bounds-check: add tests for alias boxing/unboxing
+
+	* These tests checks : alias as a 'return type', in an ArrayExp,
+	and both combined.
+
+	* This patch includes a new test directory : bounds-check. We needed
+	a new directory since the new tests are neither `good' or
+	bad files. They compile, but fail at runtime.
+
+	* Add section `nolimips_with_bounds_check' in `tc-check.in'. The
+	previous section (`nolimips_check') was not enough, since it was
+	used on `good', `escapes' and `runtime' directories. We had to
+	create a new category, as well as a new directory, since these
+	directories are sometimes used without the bounds checking option.
+	We could have used them for our tests, but the result should have
+	been something that does not fail at runtime. It could have worked
+	if we wanted only to check if the desugar was really working,
+	but without checking those tests really failed at runtime.
+
+2015-06-02  Pierre DE ABREU  <pierre.deabreu@epita.fr>
+
+	bounds-check: bypass aliases for boxes names
+
+	* Uses of aliases broke this visitor. Boxes names
+	where computed from the alias name, not from the
+	actual type.
+
+	* Now compute boxes name using the boxed array map
+	and the actual type.
+
+2015-06-02  Pierre DE ABREU  <pierre.deabreu@epita.fr>
+
+	object-desugar: add test checking desugar with alias
+
+	* This new test checks that the object-desugar works with
+	an alias on a class, since last versions didn't work with
+	any aliases (function redefinition).
+
+	* Add object-desugar tests in tc-check.in, in the desugar
+	category (105). I don't understand why there was nothing
+	checking it...
+
+2015-06-02  Pierre DE ABREU  <pierre.deabreu@epita.fr>
+
+	object: bypass alias during object-desugar.
+
+	* Since every TypeDec which represent a class is desugared,
+	any alias leaded to a function redefinition. Now use a set
+	to know if we have to handle the class or if it's already
+	been done.
+
+2015-05-28  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.41, for 2017-tc-7.0
+
+	* NEWS.txt, configure.ac: here.
+
+2015-05-25  Matthieu Simon  <simon_f@epita.fr>
+
+	arm/call.brg: Replace a bad old comment
+
+	ARM backend uses argument registers when making
+	a call instruction.
+
+2015-05-25  Matthieu Simon  <simon_f@epita.fr>
+
+	Hide Arm backend sources for student
+
+	The hidden part are the same than the IA32 backend.
+
+2015-05-25  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.40, for 2017-tc-6.0
+
+	* NEWS.txt, configure.ac: here.
+
+2015-04-30  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.39, for 2017-tc-5.0
+
+	* NEWS.txt, configure.ac: here.
+
+2015-03-25  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: visitor: use a type alias template to shorten type names
+
+	I'd like to do that in the other visitors too, but maybe it will be a
+	problem for students in their own code.  So to avoid conflicts, do it
+	only here for the time being.
+
+	* dev/ast-visitor-gen: Introduce an alias template and use it.
+	* src/ast/visitor.hh: Regen.
+
+2015-03-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: add a few missing 'override'
+
+	* lib/misc/endomap.hh, src/type/named.hh: here.
+
+2015-03-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	regalloc: fix marks for studistcheck T=9
+
+	* src/regalloc/color.cc: Here.
+	Fix style issues.
+	* src/regalloc/color.hh: Ditto.
+
+2015-03-20  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: fix distcheck
+
+	* Makefile.am (dist_TESTS): New.
+	* ti/local.am: Be sure to ship ti/fact.tig.
+
+2015-03-19  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.38, for 2017-tc-4.0
+
+	* NEWS.txt, configure.ac: here.
+
+2015-03-17  Pierre DE ABREU  <pierre.deabreu@epita.fr>
+
+	pretty-printer: print object attribute bindings
+
+	Since attributes bindings were not printed we could not do:
+
+	  tc --object-types-compute -BA file.tig > tmp.tig
+	  tc --object-types-compute tmp.tig.
+
+	For every fieldvar, if typing has been done, we check if the current
+	var is an object. If so, we try to print the correct binding of the
+	attribute.
+
+2015-03-17  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen
+
+2015-03-17  Akim Demaille  <akim@lrde.epita.fr>
+
+	python: compatibility with Python 3
+
+	Many changes:
+	- use print_function
+	- use ', '.join(args)
+	- use open() instead of file()
+	- use '...'.lower()
+	- be sure to sort the includes
+	- fix the comparison functions for sort()
+
+2015-02-26  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.37, for 2017-tc-3.0
+
+	* NEWS.txt, configure.ac: here.
+
+2015-02-17  Matthieu Simon  <simon_f@epita.fr>
+
+	mips: clean target files
+
+	* src/target/mips/binop.brg,
+	* src/target/mips/call.brg,
+	* src/target/mips/cjump.brg,
+	* src/target/mips/exp.brg
+	* src/target/mips/move.brg,
+	* src/target/mips/move_load.brg,
+	* src/target/mips/move_store.brg,
+	* src/target/mips/stm.brg,
+	* src/target/mips/temp.brg:
+	Use `auto'.
+
+	* src/target/mips/mem.brg:
+	Refractor Move construction.
+
+	* src/target/mips/codegen.cc,
+	* src/target/mips/codegen.hh: Delete.
+
+	* src/target/mips/cpu.cc,
+	* src/target/mips/spim-assembly.cc,
+	* src/target/mips/spim-assembly.hh:
+	Replace boost::lexical_cast<std::string>
+	by std::to_string.
+
+	* src/target/mips/prologue.hh,
+	* src/target/mips/epilogue.cc,
+	* src/target/mips/local.am,
+	* src/target/mips/target.cc,
+	* src/target/mips/target.hh,
+	* src/regalloc/test-regalloc.cc:
+	Add `Spim' prefix to Codegen class.
+
+	* src/target/mips/spim-layout.cc:
+	Use '\n' instead of std::endl.
+
+2015-02-17  Matthieu Simon  <simon_f@epita.fr>
+
+	target: add list_initializer in Cpu class
+
+	* src/target/arm/cpu.cc,
+	* src/target/cpu.cc,
+	* src/target/cpu.hh,
+	* src/target/ia32/cpu.cc,
+	* src/target/mips/cpu.cc:
+
+	Allow to use `argument_reg', `caller_save_reg',
+	`calle_save_reg' and `special_reg' with list_initializer.
+
+2015-02-17  Matthieu Simon  <simon_f@epita.fr>
+
+	ia32: clean target files
+
+	*  src/target/ia32/binop.brg,
+	*  src/target/ia32/call.brg,
+	*  src/target/ia32/cjump.brg,
+	*  src/target/ia32/exp.brg,
+	*  src/target/ia32/stm.brg,
+	*  src/target/ia32/move_load.brg,
+	*  src/target/ia32/move_store.brg,
+	*  src/target/ia32/temp.brg:
+	Use `auto'.
+
+	*  src/target/ia32/mem.brg:
+	Refractor construction of Move.
+
+	*  src/target/ia32/codegen.cc,
+	*  src/target/ia32/codegen.hh: Delete.
+
+	*  src/target/ia32/prologue.hh,
+	*  src/target/ia32/epilogue.cc,
+	*  src/target/ia32/local.am,
+	*  src/target/ia32/target.cc,
+	*  src/target/ia32/target.hh:
+	Add `Gas' prefix to `Codegen' class.
+
+	*  src/target/ia32/gas-assembly.cc,
+	*  src/target/ia32/gas-assembly.hh,
+	*  src/target/ia32/gas-layout.cc:
+	Use '\n' instead of std::endl.
+
+2015-02-17  Matthieu Simon  <simon_f@epita.fr>
+
+	Add arm backend files
+
+	* src/target/arm/arm-assembly.cc,
+	* src/target/arm/arm-assembly.hh,
+	* src/target/arm/arm-layout.cc,
+	* src/target/arm/arm-layout.hh,
+	* src/target/arm/binop.brg,
+	* src/target/arm/call.brg,
+	* src/target/arm/cjump.brg,
+	* src/target/arm/cpu.cc,
+	* src/target/arm/cpu.hh,
+	* src/target/arm/epilogue.cc,
+	* src/target/arm/exp.brg,
+	* src/target/arm/fwd.hh,
+	* src/target/arm/local.am,
+	* src/target/arm/mem.brg,
+	* src/target/arm/move.brg,
+	* src/target/arm/move_load.brg,
+	* src/target/arm/move_store.brg,
+	* src/target/arm/prologue.hh,
+	* src/target/arm/runtime.s,
+	* src/target/arm/stm.brg,
+	* src/target/arm/target.cc,
+	* src/target/arm/target.hh,
+	* src/target/arm/temp.brg,
+	* src/target/arm/test-target.cc,
+	* src/target/arm/tree.brg: New.
+
+	* src/target/local.am:
+	Add 'arm' folder build rules.
+
+	* src/target/tasks.cc,
+	* src/target/tasks.hh,
+	* src/target/tiger_target.i:
+	Update to provide "--target-arm" option.
+
+	* tests/tc-check.in:
+	Add Arm backend's tests.
+
+2015-02-17  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: make the sigalarm more verbose
+
+	On the BF we have some failures that are hard to interpret.  Let's try
+	to see if something does not work properly in our sigalarm set up.
+
+	* tests/tc-check.in: here.
+
+2015-02-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	Version 1.35, for 2017-tc-2.0
+
+	* NEWS.txt, configure.ac: here.
+
+2015-02-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: comment changes
+
+	* src/ast/pretty-printer.cc: here.
+
+2015-02-10  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: put stc into its own directory
+
+	* src/stc.cc: Rename as...
+	* src/stc/stc.cc: this.
+	* src/stc/local.am: New.
+	* src/local.am, dev/stagize: Adjust.
+
+2015-02-10  Pierre DE ABREU  <pierre.deabreu@epita.fr>
+
+	misc: get rid of misc::basedir and misc::basename
+
+	* Use boost::filesystem parent_path instead and
+	filename instead.
+
+2015-02-10  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: address warnings
+
+	* lib/misc/contract.hh, lib/misc/contract.cc (__FailedCondition):
+	Always compile it.  It's not big, and some components might style
+	require it even if globally NDEBUG is set.
+	* lib/misc/test-graph.cc, src/type/test-type.cc: here.
+
+2015-02-10  Akim Demaille  <akim@lrde.epita.fr>
+
+	bistromatig: improve tests
+
+	* bistromatig/bistromatig-check: Be sure to propagate failures to the
+	exit status.
+	* bistromatig/local.am: Style change.
+
+2015-02-10  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: students don't need to check for TC
+
+	* configure.ac: here.
+
+2015-02-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: regen
+
+	* tests/type/test22.tc-err: here.
+
+2015-02-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	bind: don't fail to recognize bindings when 0 is displayed 0x0
+
+	Bind addresses should have two or more digits.  That's in order to
+	avoid '0x0' being recognized as part of the name, because in that
+	case, the built-in type "int" will be rendered as "int /* 0x0 */", as
+	of course not recognized as such (and likewise for "string").
+
+	Funnily enough it was not a problem with listdc++, because it
+	prints the address 0 as "0", which is therefore not recognized by
+	the following definition of"bind_addr", and is just discarded as
+	plain comment.  Libc++ on the other hand prints 0 as "0x0", which
+	triggered the aforementionned problem.
+
+	The fix is simple: we want at least two xdigits. */
+
+	* src/parse/scantiger.ll: here.
+	While at it, use [:xdigit:].
+
+2015-02-05  Léo Ercolanelli  <leo.ercolanelli@gmail.com>
+
+	tasks: fix boolean switch callbacks
+
+	Callbacks for options without arguments were call independently of
+	whether the option had been set or not. This is no longer the case,
+	callbacks only have effect is the option is specified on the command
+	line.
+
+	* ti/tiopts.cc, src/task/task-register.cc: Here.
+
+2015-02-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	parser: use yyo
+
+	* src/parse/parsetiger.yy (%printer): here.
+
+2015-02-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	1.35a
+
+	* configure.ac: here.
+
+2015-02-04  Etienne Renault  <renault@lrde.epita.fr>
+
+	Target new branch for 2017.
+
+	* Makefile.am: here.
+
+2015-02-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	Version 1.35, for 2017-tc-1.0
+
+	* configure.ac, src/bind/local.am, src/local.am: here.
+
+2015-02-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: std::unary_function and std::binary_function are obsolete
+
+	* dev/ast-visitor-gen, lib/misc/xalloc.hh, src/ast/visitor.hh,
+	* src/canon/canon.cc, src/canon/canon.hh, src/canon/traces.cc,
+	* src/canon/traces.hh, src/regalloc/regallocator.cc:
+	Don't use them.
+	Don't use std::bind2nd (or bind1st) at all.
+	Prefer std::bind, or better yet, a lambda.
+
+2015-02-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: avoid std::endl
+
+	git s '"\s*<<\s*std::endl' '\\n"'
+
+2015-02-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: fix the relative path to the parser
+
+	* src/parse/local.am: Here.
+	* src/parse/location.hh, src/parse/parsetiger.cc,
+	* src/parse/position.hh: Regen.
+
+2015-02-04  Léo Ercolanelli  <leo.ercolanelli@gmail.com>
+
+	tasks: improve verbosity of command line errors
+
+	The missing/invalid options are now explicitly mentioned in the error
+	message.
+
+	* ti/tiopts.cc, src/task/task-register.cc: Here.
+
+2015-02-04  Léo Ercolanelli  <leo.ercolanelli@gmail.com>
+
+	ti: fix memory leak
+
+	Fix memory leak if early exiting while parsing `help', `version', or
+	`usage' from the command line.
+
+	* ti/tiopts.cc, ti/ti.cc: Here.
+
+2015-02-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: update boost.m4
+
+	* build-aux/m4/boost.m4: here.
+
+2015-02-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	tc-check: longer timeout
+
+	Go from 4s to 5s.  We have occasional kill -9 on the BF.
+	Unfortunately, it is not clear if we fired it ourselves, as I don't
+	see the "sigalarm" message in the log.
+
+	* tests/tc-check.in: here.
+
+2015-02-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	dev: start updating the doc
+
+	* dev/tc.texi: here.
+
+2015-02-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: get rid of dev/Makefile
+
+	* dev/Makefile.am: Replace by...
+	* dev/local.am: this.
+
+2015-02-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: ti: fix indentation
+
+	* ti/ti.cc: here.
+
+2015-02-04  Léo Ercolanelli  <leo.ercolanelli@gmail.com>
+
+	tasks: fix memory leak
+
+	Fix the memory leak which occurred when exiting early while parsing
+	`--help', `--usage' or `--version'.`
+
+	* src/stc.cc,
+	* src/task/task-register.cc
+	* src/tc.cc: Here.
+
+2015-02-04  Léo Ercolanelli  <leo.ercolanelli@gmail.com>
+
+	tasks: remove argp
+
+	* lib/argp: Here.
+
+	* .gitignore, Makefile.am, bootstrap, configure.ac,
+	* dev/make-git-tc-base, src/local.am:
+	Remove references to argp.
+
+2015-02-04  Léo Ercolanelli  <leo.ercolanelli@gmail.com>
+
+	tasks: replace argp by boost.program_options
+
+	Boost.program_options is supposed to be integrated as vanilla C++ in an
+	upcoming C++ standard, that's the opportunity to break the dependency
+	for argp, and removing the last bits of C.
+
+	* src/task/task.cc,
+	* src/task/task.hxx,
+	* src/task/task.hh:
+	Remove the `arg' and `argname' members and their corresponding
+	accessors.  Replace the `key' member by the `fullname' one. Easier to
+	use with boost.  Remove the `check' virtual method, now handled by boost
+	itself.  Let the compiler generate the destructor.  The constructor no
+	longer register the task, to differentiate tasks with or without
+	arguments.
+
+	* src/task/{boolean,int,string,...}-task.cc,
+	* src/task/{boolean,int,string,...}-task.hh:
+	Make those classes inherits from `task::ArgumentTask' or
+	`task::SimpleTask' whether they expect arguments or not.
+
+	* src/task/simple-task.hh,
+	* src/task/simple-task.cc,
+	* src/task/argument-task.hh,
+	* src/task/argument-task.hxx: New.
+
+	* src/task/task-register.hh:
+	Add an overloaded version of `register_task' to register `ArgumentTasks'
+	. The common code is factorized in the `register_task_' private method.
+	Replace the `argp' back-end by `boost.program_options'.
+
+	* ti/tiopts.hh,
+	* ti/tiopts.hxx,
+	* ti/tiopts.cc: Replace the `argp' back-end by `boost.program_options'.
+
+	* src/task/fwd.hh
+	Add a forward declaration of `ArgumentTask' and `SimpleTask' for
+	`TaskRegister' to use.
+
+	* ti/Makefile.am,
+	* src/task/local.mk:
+	Add compilation and link flags for `boost.program_options'.
+
+	* tests/tc-check.in:
+	Replace `--prelude=' by `--no-prelude'; the first is not supported
+	anymore.
+
+	* configure.ac:
+	Add checks and substitutions for `boost.program_options'.
+
+2015-02-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: get rid of dead targets
+
+	* Makefile.am (doc, html): No need to bounce to doc/, where there is
+	anyway no Makefiles.
+
+2015-02-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: get rid of bistromatig/Makefile
+
+	* bistromatig/Makefile.am: Replace with...
+	* bistromatig/local.am: this.
+
+2015-02-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: fixes
+
+	* Makefile.am: Be sure to run the check_PROGRAMS tests
+	* src/bind/test-bind.cc: Be sure to do something, even with NDEBUG.
+
+2015-02-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	bf: enhance check step
+
+	* buildfarm/check: Subsume the "distcheck" part.
+	The goal is to get rid of the buildfarm/distcheck, check should suffice.
+	It will also be used for studistcheck.
+
+2015-02-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	studistcheck: do not try to run make check/distcleancheck
+
+	Of course the tests will not work when there are gaps, there are no
+	reason to compile and run the tests.  And distcleancheck is performed
+	by regular distcheck, we don't need it here.
+
+	* Makefile.am: here.
+
+2015-02-03  Akim Demaille  <akim@lrde.epita.fr>
+
+	monoburg++: fix --help
+
+	* build-aux/bin/monoburg++.in: Add -r.
+
+2015-02-03  Akim Demaille  <akim@lrde.epita.fr>
+
+	misc: clean up integration of boost::filesystem::path
+
+	* src/parse/local.am: Move the lib from here...
+	* lib/misc/local.am: to where it belongs.
+	* src/parse/tiger-parser.hh (operator+): Remove: useless (and should not
+	be here anyway).
+	(open_files_): Store paths.
+	* src/parse/tiger-parser.cc: Adjust.
+	Use misc::path instead of the longer boost::filesystem::path.
+	* src/parse/libparse.cc: Likewise.
+
+2015-02-03  Pierre DE ABREU  <pierre.deabreu@epita.fr>
+
+	misc: replace hand-made path by boost::filesystem::path
+
+	* lib/misc/path.cc, lib/misc/path.hh, lib/misc/path.hxx,
+	* lib/misc/test-path.cc: Remove.
+	Use boost::filesystem::path instead.
+
+	* configure.ac: Look for it.
+
+2015-02-03  Akim Demaille  <akim@lrde.epita.fr>
+
+	astdumper: style fixes
+
+	* src/ast/dumper.cc, src/ast/dumper.hh, src/ast/dumper.hxx: here.
+
+2015-02-03  Roland Levillain  <roland@lrde.epita.fr>
+
+	ast: fix dumping of RecordExp nodes.
+
+	* src/ast/dumper.cc (ast::Dumper::operator() (const RecordExp&)):
+	Display attribute `type_name'.
+
+2015-02-03  Roland Levillain  <roland@lrde.epita.fr>
+
+	ast: control TikZ-style output in AST dumping using misc::xalloc.
+
+	* src/ast/tasks.hh, src/ast/tasks.cc
+	(tikz-style): New task.
+	(ast-tikz-dump): Remove task.
+	* src/ast/libast.hh, src/ast/libast.cc
+	(ast::tikz_style): New misc::xalloc slot.
+	(ast::dump): Remove last argument (tikz_p).
+	* src/ast/dumper.hh, src/ast/dumper.hxx, src/ast/dumper.cc
+	(ast::Dumper::tikz_p_): Remove member.
+	(ast::Dumper::Dumper): Adjust.
+	(ast::Dumper::dump, ast::Dumper::node_): Use tikz_style (ostr_)
+	instead of tikz_p_.
+	Update documentation.
+
+2015-02-03  Roland Levillain  <roland@lrde.epita.fr>
+
+	ast: add a TikZ-style output to the AST dumper.
+
+	* src/ast/dumper.hh, src/ast/dumper.hxx, src/ast/dumper.cc
+	(ast::Dumper::tikz_p_): New Boolean controlling the activation of
+	the TikZ-style output.
+	(ast::Dumper::Dumper): Adjust ctor.
+	(ast::Dumper::node_): New internal methods, printing nodes à la
+	TikZ if requested.
+	Use them...
+	(ast::Dumper::operator()):
+	...in these methods.
+	(ast::Dumper::dump): Print nodes à la TikZ if requested.
+	* src/ast/libast.hh, src/ast/libast.cc (ast::dump):
+	Add an additional argument to control the activation of the
+	TikZ-style output.
+	* src/ast/tasks.hh, src/ast/tasks.cc (ast-tikz-dump): New task.
+
+2015-02-03  Roland Levillain  <roland@lrde.epita.fr>
+
+	ast: factor a bit the AST dumper.
+
+	* src/ast/dumper.hh, src/ast/dumper.hxx
+	(ast::Dumper::dump (const T*)): New method.
+	Use it...
+	* src/ast/dumper.cc
+	(ast::Dumper::operator() (const FunctionDec&, const std::string&))
+	(ast::Dumper::operator() (const VarDec& e)):
+	...here, to factor the traversals of optional nodes.
+
+2015-02-03  Roland Levillain  <roland@lrde.epita.fr>
+
+	ast: add an AST dumper, printing a program using the abstract syntax.
+
+	* src/ast/dumper.hh, src/ast/dumper.hxx, src/ast/dumper.cc: New.
+	* src/ast/libast.hh, src/ast/libast.cc (ast::dump): New function.
+	* src/ast/tasks.hh, src/ast/tasks.cc (ast-dump): New task.
+	* src/ast/local.mk (ast_libast_la_SOURCES):
+	Add src/ast/dumper.hh, src/ast/dumper.hxx and src/ast/dumper.cc.
+	* dev/stagize: Don't ship the AST dumper in student tarballs.
+
+2015-02-02  Akim Demaille  <akim@lrde.epita.fr>
+
+	news: update
+
+2015-02-02  Akim Demaille  <akim@lrde.epita.fr>
+
+	bistromatig: use some sugar for concat
+
+	* bistromatig/bigint.tih: here.
+
+2015-02-02  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: get rid of debian/Makefile
+
+	* debian/Makefile.am: Replace with...
+	* debian/local.am: this.
+	* Makefile.am, configure.ac: Adjust.
+
+2015-02-02  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: remove duplicate "recheck"
+
+	* Makefile.am: This is handled by Automake.
+
+2015-02-02  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: rename all the local.mk into local.am
+
+	This is for consistency: these files are Automake files, not
+	Makefiles.
+
+2015-02-02  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: get rid of ti/Makefile.am
+
+	* ti/Makefile.am: Rename as...
+	* ti/local.am: this.
+
+	* Makefile.am, configure.ac, lib/misc/local.mk, src/ast/local.mk,
+	* src/astclone/local.mk, src/bind/local.mk, src/desugar/local.mk,
+	* src/liveness/local.mk, src/object/local.mk, src/parse/local.mk,
+	* src/regalloc/local.mk, src/target/ia32/local.mk,
+	* src/target/mips/local.mk, src/temp/local.mk, src/transform/local.mk,
+	* src/type/local.mk, tcsh/python/Makefile.am:
+	Adjust.
+	In particular, use check_PROGRAMS for binaries tests, instead of
+	TESTS, so that we can also have TESTS contain things like *.tig
+	files.
+
+2015-02-02  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: get rid of lib/Makefile.am
+
+	* lib/Makefile.am: Replace with...
+	* lib/local.am: this.
+	* Makefile.am, configure.ac, lib/misc/local.mk: Adjust.
+
+2015-02-02  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: put argp under the responsibility of the top-level Makefile
+
+	* lib/Makefile.am (SUBDIRS): Move to...
+	* Makefile.am: here.
+
+2015-02-02  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: get rid of doc/Makefile.am
+
+	* doc/Makefile.am: Rename as...
+	* doc/local.am: this.
+	* Makefile.am, configure.ac: Adjust.
+
+2015-02-02  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: turn src/Makefile.am into src/local.am
+
+	I aim at having a single Makefile, which is far simpler to deal with.
+
+	* src/Makefile.am: Rename as...
+	* src/local.am: this.
+	* Makefile.am: Adjust.
+
+	* dev/stagize,
+	* dev/transform-all-gen,
+	* dev/transform-proxy-visitors-gen,
+	* src/assem/local.mk,
+	* src/ast/ast-nodes.mk,
+	* src/ast/ast.yml,
+	* src/ast/local.mk,
+	* src/astclone/local.mk,
+	* src/bind/local.mk,
+	* src/callgraph/local.mk,
+	* src/canon/local.mk,
+	* src/desugar/local.mk,
+	* src/escapes/local.mk,
+	* src/frame/local.mk,
+	* src/inlining/local.mk,
+	* src/liveness/local.mk,
+	* src/object/local.mk,
+	* src/overload/local.mk,
+	* src/parse/local.mk,
+	* src/regalloc/local.mk,
+	* src/target/ia32/local.mk,
+	* src/target/local.mk,
+	* src/target/mips/local.mk,
+	* src/task/local.mk,
+	* src/temp/local.mk,
+	* src/transform/local.mk,
+	* src/translate/local.mk,
+	* src/tree/local.mk,
+	* src/type/local.mk,
+	* tcsh/README.txt:
+	Adjust, i.e., mostly prepend src where needed.
+
+2015-02-02  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: flex++: support --root
+
+	* build-aux/bin/flex++.in: Implement support.
+	* src/parse/local.mk: Use it.
+
+2015-02-02  Etienne Renault  <renault@lrde.epita.fr>
+
+	studentize: make all TC-* compilable.
+
+	* AUTHORS.txt, dev/ast-cloner-gen, src/ast/object-visitor.hxx,
+	* src/ast/pretty-printer.cc, src/ast/pretty-printer.hh,
+	* src/astclone/cloner.cc, src/bind/binder.cc,
+	* src/bind/renamer.hxx, src/callgraph/call-graph-visitor.cc,
+	* src/canon/canon.cc,
+	* src/desugar/desugar-visitor.cc, src/desugar/libdesugar.cc,
+	* src/inlining/pruner.cc, src/object/desugar-visitor.cc,
+	* src/object/renamer.cc, src/object/type-checker.cc,
+	* src/overload/binder.cc, src/temp/identifier.hxx,
+	* src/translate/translator.cc, src/type/attribute.hxx,
+	* src/type/class.cc: here.
+
+2015-01-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: ast: s/{\s+}/{}/
+
+	* dev/ast-nodes-gen: here.
+	* src/ast: Regen.
+
+2015-01-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: regen
+
+	* tests/object-good/simple-dispatch.-e.ia32.s,
+	* tests/object-good/simple-dispatch.ia32.s: here.
+
+2015-01-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	dev: run 2to3
+
+	* dev/ast-all-gen, dev/ast-cloner-gen, dev/ast-default-visitor-gen,
+	* dev/ast-fwd-gen, dev/ast-graph-gen, dev/ast-ignores-gen,
+	* dev/ast-nodes-gen, dev/ast-nodes-mk-gen, dev/ast-pretty-printer-gen,
+	* dev/ast-readme-gen, dev/ast-visitor-gen, dev/ast.py, dev/tools.py:
+	Here.
+	And use print_function for Python 2.
+
+2015-01-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: s/{\s+}/{}
+
+	If it's empty, just write it empty.
+
+2015-01-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: s/bound checking/bounds checking/
+
+	That's the proper name (e.g., see Wikipedia).
+
+	That's trac ticket #106.
+
+	* src/ast/ast.yml, src/ast/cast-exp.hh, src/ast/cast-var.hh,
+	* src/desugar/libdesugar.cc, src/desugar/libdesugar.hh, src/desugar/local.mk,
+	* src/desugar/tasks.cc, src/desugar/tasks.hh, src/parse/libparse.hh,
+	* tests/good/mini-morpho.tig, tests/tc-check.in:
+	here.
+
+	* src/desugar/bound-checking-visitor.cc,
+	* src/desugar/bound-checking-visitor.hh,
+	* src/desugar/test-bound-checking.cc:
+	Rename as...
+	* src/desugar/bounds-checking-visitor.hh,
+	*src/desugar/bounds-checking-visitor.cc,
+	* src/desugar/test-bounds-checking.cc:
+	these.
+
+2015-01-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: get rid of all the module libraries
+
+	We build one library per module.  This is a nice and elegant idea, but
+	it's also too expensive, both in maintenance and build time (and
+	linking _is_ slow).
+
+	Let's get rid of this and build libtc directly.
+
+	* src/assem/local.mk, src/ast/local.mk, src/astclone/local.mk,
+	* src/bind/local.mk, src/callgraph/local.mk, src/canon/local.mk,
+	* src/desugar/local.mk, src/escapes/local.mk, src/frame/local.mk,
+	* src/inlining/local.mk, src/liveness/local.mk, src/object/local.mk,
+	* src/overload/local.mk, src/parse/local.mk, src/regalloc/local.mk,
+	* src/target/ia32/local.mk, src/target/local.mk,
+	* src/target/mips/local.mk, src/task/local.mk, src/temp/local.mk,
+	* src/transform/local.mk, src/translate/local.mk, src/tree/local.mk,
+	* src/type/local.mk:
+	Massive rewrite to use libtc, and %D%/%C% where applicable.
+
+	* src/Makefile.am: Simplify.
+
+2015-01-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	ast: fix distcheck on TC-2
+
+	* src/ast/ast.yml: here.
+
+2015-01-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: ti: link against libtc instead of individual components
+
+	I don't know why we were not doing that before.  The only difference
+	I see is the "version.cc" file.
+
+	* ti/Makefile.am: here.
+
+2015-01-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	students: ast: provide a better stub
+
+	* src/ast/function-dec.hh: here.
+
+2015-01-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: avoid useless inclusion of misc/xalloc.h
+
+	* src/ast/ast.yml: Remove it from here.
+	* src/bind/tasks.cc, src/escapes/tasks.cc: Adjust.
+
+2015-01-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: ast: no <list>
+
+	* src/ast/any-decs.hh, src/ast/decs.hh, src/ast/test-ast.cc: here.
+
+2015-01-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	ast: get rid of function-decs.hh and the like
+
+	It was nice to have them for consistency: every member of ast:: has
+	its own header to declare it.  However, it became way too large, there
+	are too many files, for no serious gain.  Let's simplify all this.
+
+	These guys are already declared in ast/fwd.hh, that should suffice.
+
+	Was trac ticket #52.
+
+	* src/ast/function-decs.hh: Remove.
+	* src/ast/method-decs.hh: Remove.
+	* src/ast/rule-decs.hh: Remove.
+	* src/ast/type-decs.hh: Remove.
+	* src/ast/var-decs.hh: Remove.
+
+	* src/ast/ast.yml, src/ast/local.mk, dev/ast-all-gen, src/ast/all.hh,
+	* src/parse/parsetiger.yy:
+	Adjust.
+
+2015-01-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: s/endo_map/endomap/
+
+	There is no good reason for this underscore.  Besides, the file name
+	was wrong.  Fix trac issue #49.
+
+	* lib/misc/endomap.hh, lib/misc/endomap.hxx: Do it.
+	Adjust dependencies.
+
+2015-01-29  Etienne Renault  <renault@lrde.epita.fr>
+
+	tests: move tests not related to TC-1.
+
+	* object-syntax/new-in-non-object-program-with-unknown-type.tc-err,
+	* object-syntax/new-in-non-object-program-with-unknown-type.tc-sta,
+	* object-syntax/new-in-non-object-program-with-unknown-type.tig,
+	* object-syntax/object-constructs-in-non-object-program.tc-err,
+	* object-syntax/object-constructs-in-non-object-program.tc-sta,
+	* object-syntax/object-constructs-in-non-object-program.tig: here.
+
+2015-01-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	bf: coverage: ignore Burg files
+
+	* build-aux/bin/coverage: here.
+	* Makefile.am (clean-coverage): New, to please distcheck.
+
+2015-01-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	parser: regen with Bison 3.0.4.19-fbaf
+
+2015-01-29  Etienne Renault  <renault@lrde.epita.fr>
+
+	ast: prefer std::vector to std::list
+
+	* lib/misc/vector.hh: New file that simulates splice on vectors.
+	* lib/misc/local.mk: Add new file.
+
+	* src/ast/any-decs.hh, src/ast/any-decs.hxx, src/ast/ast.yml,
+	* src/ast/decs-list.cc, src/ast/decs-list.hh, src/ast/fwd.hh,
+	* src/object/desugar-visitor.cc, src/parse/libparse.cc,
+	* src/target/ia32/test-target.cc, src/target/mips/test-target.cc,
+	* src/translate/translation.cc, src/translate/translation.hh,
+	* src/translate/translator.cc, src/translate/translator.hh,
+	* src/tree/call.cc, src/tree/call.hh:
+	Apply changes.
+
+2015-01-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	tc-check: simplify: drop support for tarball checking
+
+	The assistants now have their own tools to support tarball checking,
+	which is better suited to their needs (concurrency, log format, etc.).
+	Yet it is not nice for us, since it would require C# etc.
+
+	So let's keep tc-check for the reference compiler, but simplify it by
+	throwing away all the junk for tarball-checking.
+
+	In particular we can _finally_ stop running "make" etc. from tc-check.
+	We are back to a more regular make/make check model.
+
+	* tests/tc-check.in: Cut pieces about tarball checking.
+	* tests/Makefile.am: Simplify the invocation.
+
+2015-01-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	object: desugar: kill useless local variables
+
+	* src/object/desugar-visitor.cc: There are too many variables in
+	there.  For one-time uses, this is a nuisance.
+
+2015-01-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	object: desugar: split a monster function
+
+	* src/object/desugar-visitor.hh, src/object/desugar-visitor.cc
+	(pair_class_method, dispatch_list_type): Scope then in the class.
+	(handle_class): New, to simplify the monster operator() for TypeDecs.
+	This function, handle_class, is still too large, and should be simplified.
+
+2015-01-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	object: desugar: style changes
+
+	* src/object/desugar-visitor.cc: Formatting changes.
+	Prefer range-for loops.
+	Avoid verbose ctors.
+
+2015-01-12  Pierre DE ABREU  <pierre.deabreu@epita.fr>
+
+	object: desugar: add tests for methods dispatching
+
+	These tests exercise the previous commit.
+
+	* tests/object-good/method-dispatch-full.tig,
+	* tests/object-good/method-dispatch-using-function.tig,
+	* tests/object-good/method-dispatch.tig,
+	* tests/object-good/simple-dispatch.tig:
+	New files.
+	Add the other generated files too.
+
+2015-01-12  Pierre DE ABREU  <pierre.deabreu@epita.fr>
+
+	object: desugar: resolve method dispatching issues
+
+	The old dispatching system had some issues. For example, if classes
+	B and C inherited from class A, and only classes A and B implemented
+	a method m, the dispatch was :
+
+	  If self.exact_type = exact_type(A) then
+	      A.m()
+	    else
+	      B.m().
+
+	Note that an object C calling m actually calls B.m() instead of A.m().
+
+	Moreover, if a subclass of A (called D), declared in a later chunk,
+	had implemented m, a scope problem appeared since A's dispatch function
+	was trying to call D.m() which was declared in this later chunk.
+
+	* src/object/desugar-visitor.hh, src/object/desugar-visitor.cc:
+	Change the order of the exact-type checking to ensure a correct
+	dispatching.
+	Add a sub_dispatch function for every chunk if a class overrides a
+	method, to avoid scope and chunk issues.
+	Each sub_dispatch function call the upper one if the exact-type hasn't
+	matched anything. We know which sub-dispatch function to call using a
+	map (Method -> Integer).
+
+2015-01-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	bf: skip the parser
+
+	Something is wrong about the stored location of the file, and genhtml
+	cannot find it.  This should be addressed for real, instead of
+	ignoring the file.
+
+	* build-aux/bin/coverage: here.
+
+2015-01-07  Akim Demaille  <akim@node8.lrde.epita.fr>
+
+	tests: regen
+
+	Regen the IA32 expect outputs.
+
+2015-01-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	ia32: use a more conventional indentation for .globl
+
+	* src/target/ia32/gas-layout.cc: here.
+
+2015-01-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: move away from list, prefer vector
+
+	This is only the first stab, we should get rid of list.
+
+	* src/ast/ast.yml, src/ast/function-dec.hh: Use a vector.
+	It turns out it's even a vector of bools...
+	* src/frame/fwd.hh: Adjust.
+
+2015-01-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: variant: address some stylistic issues
+
+	* lib/misc/variant.hh, lib/misc/variant.hxx: Remove useless comment.
+	Use static_assert at the class level.
+	Use less cryptic and more traditional names for formal parameters.
+	Let the compiler generate the default ctor.
+	Fix Doxygenation.
+
+2015-01-06  Léo Ercolanelli  <leo.ercolanelli@gmail.com>
+
+	lib: replace binary variant by generic variant
+
+	Instead of using a binary wrapper around boost::variant, we now use a
+	generic wrapper which accepts an arbitrary number of types.
+
+	The former implementation of generic variant was using
+	Boost.Preprocessor, which is really tricky to read, so it was provided
+	only "for information".  Now that we assume C++11, the implementation
+	with variadic templates is much more natural, and shall replace both
+	the binary case, and the generic-via-macro case.
+
+	* lib/misc/generic-variant.hh, lib/misc/generic-variant.hxx: Rename as...
+	* lib/misc/variant.hh, lib/misc/variant.hxx: these.
+	Use a variadic template implementation.
+	A failed compilation in case of non-default-constructible type in
+	`variant' constructor is now due to a `static_assert'. Easier than
+	looking through the code to find the comment explaining the failure.
+
+	Adjust the test cases.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	stagize: rename variables for consistency
+
+	* dev/stagize: kept_stages -> kept_categories.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	stagize: it does compile at stage=4, now fix linking issues
+
+	* lib/misc/symbol.hxx, lib/misc/unique.hxx, lib/misc/variant.hxx,
+	* src/parse/tiger-parser.cc, src/type/record.cc, src/type/type.hxx:
+	Be consistent between hidden declarations and definitions.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: simplify ctor/dtor from TigerParser
+
+	* src/parse/tiger-parser.cc, src/parse/tiger-parser.hh:
+	Why would the dtor be virtual?
+	Don't spend time on uninteresting members.
+	Give away the ctor.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	stagize: more consistency fixes
+
+	Be consistent between hidden declarations and definitions: don't
+	hide one but not the other.
+
+	* src/ast/ast.yml, src/bind/binder.hh, src/bind/binder.hxx,
+	* src/type/record.hh, src/type/type-checker.cc: here.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: studentize: use more consistent names
+
+	What is called a stage in stagize is the *number* of a TC delivery (2
+	for tc-2, 5 for tc-5, etc.).  In studentize the "stage" is an
+	identifier for a given feature (ast, type, etc.).
+
+	This is confusing.  Let's rename studentize's "stage" as "category".
+
+	* dev/studentize (--stage): Rename as...
+	(--keep): this.
+	s/stages/categories/g
+	s/stage/category/g
+	* dev/stagize: Adjust.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	stagize: enforce consistency in type
+
+	* src/type/array.cc: Comment out definitions of routines whose declarations
+	are commented.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	stagize: --prune is always right
+
+	* dev/stagize: Even if the stage suggests something different.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	stagize: propagate more changes for "functions"
+
+	* dev/stagize, src/bind/libbind.cc, src/bind/libbind.hh,
+	* src/bind/local.mk, src/parse/parsetiger.yy, src/type/fwd.hh,
+	* src/type/type-checker.hh: here.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	stagize: handle "functions" in type and bind
+
+	* dev/stagize, src/ast/pretty-printer.cc, src/bind/binder.cc,
+	* src/type/local.mk, src/type/type-checker.hh, src/type/types.hh:
+	Mark what's related to the "functions" limitation.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	stagize: default-visitor: don't use undefined members
+
+	Currently the default visitor provide some kind of help: it lists
+	the names of the expected attributes.  While this can provide some
+	help, it also means that the project cannot compile.
+
+	* src/ast/default-visitor.hxx: Studentize the handling on hidden AST nodes.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	stagize: remove OO stuff when "functions" is pruned
+
+	* dev/stagize, src/ast/default-visitor.hxx, src/ast/local.mk: here.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	ast: regen: studentize marks are now inside class definitions, not around
+
+	* src/ast/array-exp.hh, src/ast/assign-exp.hh, src/ast/break-exp.hh,
+	* src/ast/call-exp.hh, src/ast/escapable.hh, src/ast/field-var.hh,
+	* src/ast/if-exp.hh, src/ast/let-exp.hh, src/ast/method-call-exp.hh,
+	* src/ast/object-exp.hh, src/ast/record-exp.hh,
+	* src/ast/record-ty.hh, src/ast/seq-exp.hh, src/ast/string-exp.hh,
+	* src/ast/typable.hh, src/ast/type-constructor.hh, src/ast/var.cc,
+	* src/ast/var.hh: here.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	stagize: don't hide class definitions, hide their content
+
+	Still in order to help students bootstrap the project, let's
+	provide at least the definition of the classes, so that when,
+	for instance, we compile "IntExp", it does not fail because "Exp"
+	is not defined at all.
+
+	It is debatable whether we should hide inheritance.  I did not
+	in this patch, but that would make sense.
+
+	* dev/ast-nodes-gen: Comment out the *content* of the class, not
+	its name.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	stagize: don't hide Var
+
+	* src/ast/ast.yml: here.
+	Var is really a very small class, and because other classes derive
+	from it, the pruned project fails to compile.
+	It is not worth the trouble.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	stagize: "functions" marks for the default visitor
+
+	* src/ast/default-visitor.hh, src/ast/default-visitor.hxx: here,
+	consistently with ast.yml.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	stagize: get ready to get rid of function support
+
+	* dev/studentize: Accept comments in the conf file.
+	* dev/studentize_tc.conf (functions): New.
+	* src/ast/ast.yml: Use it.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: clearer paragraphs
+
+	* src/ast/ast.yml: Add empty lines to emphasize the different parts.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	stagize: accept --prune=tcsh
+
+	* Makefile.am, configure.ac: Put tcsh support under stagize control.
+	* dev/studentize_tc.conf (tcsh): New module.
+	* dev/stagize: Handle it.
+	* bootstrap: Beware that tcsh/ might not exist.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	stagize: be ready for modules that are not below src/
+
+	* dev/stagize (module_directory): New.
+	Use it.
+
+2014-12-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	bf: use distcheck instead of check to run distchecks
+
+	The "distcheck" script restores the rights, which is needed because
+	Teamcity fails to remove the files when the rights are not sufficient.
+
+	* buildfarm/package: Rename as...
+	* buildfarm/distcheck: this.
+	Use the command line arguments.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: I hate typedef
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen: parser
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	parser: provide a better starting point
+
+	* src/parse/parsetiger.yy: Also give an initial definition of decs.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	bf: allow to use "check" for more types of targets
+
+	* buildfarm/bootstrap: Handle the symlink issue here.
+	* buildfarm/check: Pass the command line arguments to make.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: add support for studistcheck
+
+	"make studistcheck T=2" allows to check TC-2.
+
+	* Makefile.am: here.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	stagize: leave a stub for AUTHORS.txt
+
+	* dev/stagize: here.
+	Otherwise the initial tarball does not "make".
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: avoid cascades of "if"s, group conditions
+
+	* dev/ast-nodes-gen: here.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen
+
+	* src/target/ia32/codegen.cc, src/target/ia32/codegen.hh,
+	* src/target/mips/codegen.cc, src/target/mips/codegen.hh: Regen.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	monoburg: simplify the wrapper
+
+	I don't know exactly what was the point of monoburg++ initially, but
+	the result is that the #line are wrecked, which is really bad (can't
+	use Emacs' compilation-mode simply).  Clearly monoburg++ was designed
+	after bison++, but the latter has a more complex role, as it does not
+	know what files are generated.  Here, we know.
+
+	* build-aux/bin/monoburg++.in: Stop messing around with the input and output
+	files.
+	* src/target/ia32/local.mk, src/target/mips/local.mk: Simplify accordingly.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen: parser
+
+	* src/parse/parsetiger.cc, src/parse/parsetiger.hh: regen.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: parser: provide a better starting point
+
+	* src/parse/parsetiger.yy: Provide the support for integers as
+	starting point.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: parser: group exp/dec sections
+
+	* src/parse/parsetiger.yy: For some reason, the exp is split.
+	Move decs where it belongs (IMHO).
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	parser: fix student marks
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: studentize: untabify
+
+	* dev/studentize: here.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	studentize: don't mess with my git repo!!!
+
+	A stupid studentize call messed with my git repo...
+
+	* dev/studentize: Better use of File::Find.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	bison++: remove stray debug trace
+
+	* build-aux/bin/bison++.in: here.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen: parser
+
+	* src/parse/location.hh, src/parse/parsetiger.hh,
+	* src/parse/position.hh: Neutralize root in CPP guards.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	bison++: neutralize the root in the cpp guards
+
+	* build-aux/bin/bison++.in: here.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen: parser
+
+	* src/parse/location.hh, src/parse/parsetiger.cc,
+	* src/parse/parsetiger.hh, src/parse/position.hh: Regen.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	bison++: neutralize the #line dependencies
+
+	Currently we have #lines that looks like:
+
+	  #line 352 "../../src/parse/parsetiger.yy"
+
+	or even
+
+	  #line 352 "/Users/akim/src/lrde/tc/src/parse/parsetiger.yy"
+
+	which is a pain in the neck, as it depends on how the project was
+	configured.  Introduce -r/--root to specify the root for relative
+	paths.
+
+	* build-aux/bin/bison++.in: Here.
+	Use it.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	parser: use %empty
+
+	* src/parse/parsetiger.yy: here.
+	And consistently put it first.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	parser: provide a simpler initial parser/scanner
+
+	* src/parse/scantiger.ll: Don't use useless static variables.
+	Sure, it is more costly at runtime to create it each time, but that's
+	not the point of tc.  Besides, in that case, make it an instance
+	variable of the scanner object.
+	(int): Give part of it as an initial help for students.
+	Put Flex options first.
+	* src/parse/parsetiger.yy: Likewise: support "int".
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: space issues in the parser
+
+	* src/parse/parsetiger.yy: here.
+
+2014-12-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: no useless typedef
+
+	As a matter of fact/style, there should be no typedef at all, only
+	using.
+
+	* src/tree/tree.hh: here.
+
+2014-12-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: sort when the order is irrelevant
+
+	* dev/studentize_tc.conf: here.
+
+2014-12-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: let stagize support genuine options
+
+	* dev/stagize (getopt): New.
+	* Makefile.am: Adjust to use it.
+
+2014-12-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: catch more macro expansion failures
+
+	* configure.ac: Catch Automake and Libtool macros.
+
+2014-12-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	parser: enforce exception safety and code simplicity thanks to shared_ptr
+
+	* src/parse/tiger-parser.cc: Fix space issues.
+	Use a shared_ptr to ensure that the istream is always closed and deleted.
+
+2014-12-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: use default value and avoid longuish initializations in ctors
+
+	* src/parse/tiger-parser.cc, src/parse/tiger-parser.hh: here.
+
+2014-12-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	bf: add coverage support
+
+	* build-aux/bin/coverage: New.
+	* Makefile.am, build-aux/local.mk: Adjust.
+
+2014-12-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	bf: work around Teamcity not supporting synlimks on server-side checkout
+
+	See https://youtrack.jetbrains.com/issue/TW-12684
+
+	* buildfarm/check: Restore the broken file.
+
+2014-12-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	_main: stop checking for overloads
+
+	See commit 21296aee933ba029918f47a8e1f4db0c5c0c603b.
+
+	* tests/Makefile.am: here.
+	* TODO.txt: Update.
+
+2014-12-29  Léo Ercolanelli  <leo.ercolanelli@gmail.com>
+
+	test: fix an ignored test
+
+	* lib/misc/test-generic-variant.cc: here
+
+	An early call to ``exit'' caused the program to ignore the third test.
+
+2014-12-29  Léo Ercolanelli  <leo.ercolanelli@gmail.com>
+
+	doc: update doxygen comments
+
+	* lib/mic/generic-variant.hh: here
+
+	The comments now match the new implementation. All references to boost
+	preprocessor has been removed.
+
+2014-12-29  Léo Ercolanelli  <leo.ercolanelli@gmail.com>
+
+	lib: rewrite misc::generic_variant with c++11
+
+	The previous implementation (using boost preprocessor) caused
+	compilation failures on 'lib/misc/test-generic-variant.cc'. Indeed the
+	code was interesting, but hard to fix; that's why it is now based on
+	variadic templates and not on boost macros anymore.
+
+	* lib/misc/generic_variant.hh: here
+	* lib/misc/generic_variant.hxx: here
+
+2014-12-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	argp: avoid useless warning
+
+	At some point, we should move away from argp.  See what Boost
+	provides for instance, as it might be the choice for C++17.
+
+	* lib/argp/argp-help.c: here.
+
+2014-12-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	flex++: update
+
+	Address compatibility issues with Flex.
+
+	* build-aux/bin/flex++.in: Update from vcsn.
+
+2014-12-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: use std::tie instead of boost::tie
+
+	Some unqualified uses of tie are not satisfied.  Use std instead of
+	boost.
+
+	* lib/misc/graph.hxx, lib/misc/test-graph.cc,
+	* src/callgraph/libcallgraph.cc, src/inlining/inliner.cc,
+	* src/liveness/flowgraph.hxx, src/liveness/interference-graph.cc,
+	* src/liveness/liveness.cc, src/regalloc/color.cc: here.
+
+2014-12-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	graph: avoid std::endl
+
+	There's no need to flush at each end of line!
+
+	* lib/misc/graph.hxx: here.
+
+2014-12-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: be able to run _without_ Valgrind
+
+	* tests/Makefile.am, tests/tc-check.in: here.
+	Be sure to die soon enough if valgrind is not found.
+
+2014-12-02  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: take valgrind into account for the time out
+
+	This is really hard on the build farm.
+
+	* tests/tc-check.in (run): Cut it some slack when running Valgrind.
+
+2014-10-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: try to simplify tc-check
+
+	tc-check is too complex, we need to simplify it.
+
+	* tests/tc-check.in (--srcdir): New option.
+	* tests/Makefile.am: Use it.
+	It should be noted that it seems that --srcdir duplicates the explicit
+	argument which is given.
+	What is wrong is that tc-check seems to expect being run from the src
+	tree, and I think it should be run from the builddir.
+
+2014-10-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	lib: fix a new dependency from Boost.Graph
+
+	* lib/misc/graph.hh: here.
+
+2014-10-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	buildfarm: tools for automated checks
+
+	These are taken from vcsn.
+
+	* buildfarm/bootstrap: New.
+	* buildfarm/build: New.
+	* buildfarm/check: New.
+	* buildfarm/common: New.
+	* buildfarm/configure: New.
+	* buildfarm/coverage: New.
+	* buildfarm/package: New.
+
+2014-10-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	todo: one more test case
+
+	* TODO.txt: here.
+
+2014-10-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: fix indentation
+
+	* src/parse/scantiger.ll: here.
+
+2014-07-21  Roland Levillain  <roland@lrde.epita.fr>
+
+	Simplify the implementation of tree::Exp and tree::Stm.
+
+	* src/tree/exp.hh (Exp::Exp()): Remove explicit default ctor.
+	(Exp::~Exp): Define dtor as explicitly defaulted.
+	* src/tree/stm.hh (Stm::Stm(), Stm::~Stm):
+	Define as explicitly defaulted.
+	* src/tree/exp.cc,
+	* src/tree/stm.cc:
+	Remove.
+	* src/tree/local.mk (tree_libtree_la_SOURCES): Adjust.
+
+2014-07-21  Roland Levillain  <roland@lrde.epita.fr>
+
+	Adjust hidden code.
+
+	* src/inlining/inliner.hh,
+	* src/inlining/pruner.cc:
+	Here.
+
+2014-07-21  Roland Levillain  <roland@lrde.epita.fr>
+
+	Fix instructions for students.
+
+	* src/ast/object-visitor.hxx: Here.
+
+2014-07-03  Roland Levillain  <roland@lrde.epita.fr>
+
+	Regen ChangeLog.
+
 2014-07-03  Roland Levillain  <roland@lrde.epita.fr>
 
 	Update AX_CHECK_COMPILE_FLAG.

@@ -1,3 +1,10 @@
+New in 1.45, 2016-02-18:
+
+* General Maintenance
+
+  - Propagate changes for new version of Havm and Monoburg
+  - Remove useless FIXME
+
 New in 1.44, 2016-02-05:
 
 * General Maintenance
