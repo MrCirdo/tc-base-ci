@@ -21,7 +21,6 @@ noinst_LTLIBRARIES = %D%/libmisc.la
   %D%/endomap.hh %D%/endomap.hxx                                \
   %D%/pair.hh %D%/pair.hxx                                      \
   %D%/ref.hh %D%/ref.hxx                                        \
-  %D%/scoped-map.hh %D%/scoped-map.hxx                          \
   %D%/select-const.hh                                           \
   %D%/set.hh %D%/set.hxx                                        \
   %D%/separator.hh %D%/separator.hxx                            \
@@ -30,6 +29,8 @@ noinst_LTLIBRARIES = %D%/libmisc.la
   %D%/unique.hh %D%/unique.hxx                                  \
   %D%/variant.hh %D%/variant.hxx %D%/vector.hh                  \
   %D%/xalloc.hh %D%/xalloc.hxx %D%/xalloc.cc
+
+%C%_libmisc_la_SOURCES += %D%/scoped-map.hh %D%/scoped-map.hxx
 
 %C%_libmisc_la_LDFLAGS = $(BOOST_SYSTEM_LDFLAGS) $(BOOST_FILESYSTEM_LDFLAGS)
 %C%_libmisc_la_LIBADD  = $(BOOST_SYSTEM_LIBS)    $(BOOST_FILESYSTEM_LIBS)

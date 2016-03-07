@@ -14,5 +14,13 @@
 
 namespace misc
 {
+  // FIXME: Some code was deleted here.
+
+  template <typename Key, typename Data>
+  inline std::ostream&
+  operator<<(std::ostream& ostr, const scoped_map<Key, Data>& tbl)
+  {
+    return tbl.dump(ostr);
+  }
 
 } // namespace misc

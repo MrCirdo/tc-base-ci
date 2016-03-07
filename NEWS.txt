@@ -1,3 +1,9 @@
+New in 1.46, 2016-03-07:
+
+* General Maintenance
+
+  - Add missing FIXMEs
+
 New in 1.45, 2016-02-18:
 
 * General Maintenance
