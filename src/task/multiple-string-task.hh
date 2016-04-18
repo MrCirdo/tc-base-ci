@@ -24,7 +24,7 @@ namespace task
                        std::string deps);
 
   public:
-    virtual void execute() const override;
+    void execute() const override;
 
   public:
     callback_type& execute_;

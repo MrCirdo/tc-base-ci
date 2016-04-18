@@ -40,7 +40,8 @@ lcov --remove $base.info.tmp -o $base.info      \
    '*/target/*/epilogue.cc'                     \
    '*/target/*/prologue.hh'                     \
    '*/target/*/runtime*.cc'                     \
-   '*/target/*/runtime*.hh'
+   '*/target/*/runtime*.hh'                     \
+   '*/llvmtranslate/runtime.cc'
 
 genhtml --legend --demangle-cpp                 \
      --output-directory $base.cov.html          \

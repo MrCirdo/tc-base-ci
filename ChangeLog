@@ -1,3 +1,481 @@
+2016-04-18  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	type: class: use vectors
+
+	* src/type/class.hh: Here.
+	* src/type/class.hxx: Here.
+
+2016-04-18  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	tc-4: overfun-object: hide tasks
+
+	* src/object/tasks.cc: Here.
+
+2016-04-18  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	object-desugar: fresh-id should be given
+
+	* src/type/class.cc: Here.
+
+2016-04-18  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	type-checker: remove useless namespace specifier
+
+	* src/type/type-checker.cc: Here.
+
+2016-04-18  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	type: record: use vector instead of list
+
+	* src/type/record.hh: Here.
+
+2016-04-18  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	builtin-types: Nil is no longer a builtin-type
+
+	* src/type/builtin-types.hh: Here.
+
+2016-04-17  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	tc-4: use more auto declarations
+
+	* src/type/pretty-printer.cc,
+	* src/type/type-checker.cc: Here.
+
+2016-04-16  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	tc-4: remove nested stagize annotations
+
+	* src/type/type-checker.cc,
+	* src/type/type-checker.hxx: FIXMEs are not displayed if there are
+	nested annotations.
+
+2016-04-16  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	tc-4: refactor check_type function
+
+	* type-checker.cc,
+	* type-checker.hh,
+	* type-checker.hxx: Use a template function instead of two similar
+	functions.
+
+2016-04-16  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	tc-4: use more auto declarations
+
+	* src/object/type-checker.cc,
+	* src/object/type-checker.hh,
+	* src/type/type-checker.cc: Here.
+
+2016-04-16  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	tc-4: remove useless includes
+
+	* src/type/builtin-types.cc: Remove leftovers from Nil.
+
+2016-04-16  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	tc-4: add missing FIXME directive
+
+	* src/object/type-checker.cc,
+	* src/type/attribute.hxx: The FIXME directive was not displayed, since
+	the wrong annotation was used.
+
+2016-04-15  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: try to understand why sometimes we are killed
+
+	On occasion the BF shows some tests that fail with signal 9, which is
+	expected to be related to the timeout mechanism.  However, there is no
+	trace in the logs from the timeout mechanism, although there should be
+	some.
+
+	So something is wrong here.  Try to make things more explicit to help
+	understanding the problem when it happens.
+
+	Maybe we should find a means to limit the resources given to the child
+	process instead, including time.
+
+	* tests/tc-check.in (run): Use higher-res clocks.
+
+2016-04-15  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: fix the testing of some prerequisites
+
+	It's not always easy to install all the requirements on a given
+	machine (e.g., the ARM tool chain).  So rather than dying when they
+	are missing, just warn about them.
+
+	Also, stop checking for requirements that are not defined...
+
+	* configure.ac: More prereqs.
+	* tests/tc-check.in: Use them.
+
+2016-04-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: frame: no virtual with override
+
+2016-04-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: translate: no virtual with override
+
+2016-04-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: lib: no virtual with override
+
+2016-04-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: overload: no virtual with override
+
+2016-04-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: object: no virtual with override
+
+2016-04-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: escapes: no virtual with override
+
+2016-04-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: liveness: no virtual with override
+
+2016-04-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: regalloc: no virtual with override
+
+2016-04-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: desugar: no virtual with override
+
+2016-04-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: callgraph: no virtual with override
+
+2016-04-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: transform: no virtual with override
+
+2016-04-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: llvmtranslate: no virtual with override
+
+2016-04-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: assem: no virtual with override
+
+2016-04-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: target: no virtual with override
+
+2016-04-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: task: no virtual with override
+
+2016-04-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: inlining: no virtual with override
+
+2016-04-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	style: tree: no virtual with override
+
+2016-04-13  Akim Demaille  <akim@lrde.epita.fr>
+
+	type: minor clean up
+
+	* src/type/named.hh: Don't add virtual to override.
+	* src/type/named.cc (indent): Remove dead code.
+	(sound): I _hate_ variable definitions without an initial value.
+	And `auto` is nice.
+
+2016-04-13  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: LLVMCONFIG -> LLVM_CONFIG, and factor requirements
+
+	* build-aux/m4/tc-prog.m4: Accept non-literal version requirements.
+	* configure.ac: Factor the version requirements.
+	(LLVMCONFIG): Rename as...
+	(LLVM_CONFIG): this.
+	Remove redundant comments.
+	* src/llvmtranslate/local.am: Adjust.
+
+2016-04-13  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: point to pyyaml via pip
+
+	* bootstrap: here.
+
+2016-04-11  Etienne Renault  <renault@lrde.epita.fr>
+
+	readme: update description
+
+	* src/tree/README.txt: Here.
+
+2016-04-08  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.47
+
+	* .last-cl-gen, ChangeLog, NEWS.txt, configure.ac: Here.
+
+2016-04-04  Etienne Renault  <renault@lrde.epita.fr>
+
+	coverage: ignore runtime.
+
+	* build-aux/bin/coverage: Here.
+
+2016-03-30  Etienne Renault  <renault@lrde.epita.fr>
+
+	tests: prefer user-defined macros
+
+	* tests/tc-check.in: Here.
+
+2016-03-29  Etienne Renault  <renault@lrde.epita.fr>
+
+	Force clang-3.8
+
+	* configure.ac: Here.
+
+2016-03-29  Etienne Renault  <renault@lrde.epita.fr>
+
+	clang: do not redefine CLANG variable
+
+	src/llvmtranslate/local.am: Here.
+
+2016-03-29  Etienne Renault  <renault@lrde.epita.fr>
+
+	llvm-config: prefer macro for portability
+
+	* src/llvmtranslate/local.am: Here.
+
+2016-03-27  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: include llvm headers as system headers
+
+	* src/llvmtranslate/local.am: `llvm-config --cppflags` returns flags
+	like: `-I/usr/include`, which are the include paths for the LLVM
+	headers. Since LLVM doesn't use the exact compilation flags we do, some
+	warnings might fire for us, and we don't want the compilation output to
+	be dirty. Including them as system headers, using `-isystem` instead of
+	`-I` hides the warnings coming from LLVM's headers (except #warning
+	directives).
+
+2016-03-27  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: require llvm 3.8
+
+	* configure.ac: Here.
+
+2016-03-27  Pierre-Louis Dagues  <pl.dagues@gmail.com>
+
+	llvm: remove explicit names from store instructions
+
+	* src/llvmtranslate/translator.cc: Stores do not have a name in the IR.
+	  The name passed as an argument was taken as boolean which added the volatile
+	  attribute and removed possible optimisations.
+
+2016-03-27  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: remove support for llvm 3.6
+
+	* ../configure.ac: Update `llc` and `llvm-config`'s version.
+	* ../src/llvmtranslate/translator.cc: Remove macros.
+
+2016-03-27  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: runtime: document the runtime specialized for LLVM
+
+	* src/llvmtranslate/tiger-runtime.c: Add doxygen directives for
+	builtins.
+
+2016-03-27  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: add llvm checks to tc-check
+
+	* tests/tc-check.in: Add llvm_check[_one] that calls the following:
+	`tc --llvm-runtime-display --llvm-display` to generate the LLVM IR,
+	`llc` to generate the assembly from the LLVM IR and `gcc` to link.
+
+2016-03-27  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: add the llvmtranslate module
+
+	* src/llvmtranslate/fwd.hh: llvm forward declarations.
+	* src/llvmtranslate/libllvmtranslate.cc,
+	* src/llvmtranslate/libllvmtranslate.hh: FrameBuilder, EscapeCollector
+	and the whole llvm translate pure interface.
+	* src/llvmtranslate/local.am: `runtime.cc` generation and llvm flags.
+	* src/llvmtranslate/tasks.cc,
+	* src/llvmtranslate/tasks.hh: `--llvm-compute`, `--llvm-display`,
+	`--llvm-runtime-display`.
+	* src/llvmtranslate/tiger-runtime.c: The LLVM-adapted tiger runtime.
+	* src/llvmtranslate/llvm-type-visitor.cc,
+	* src/llvmtranslate/llvm-type-visitor.hh: The type translator.
+	* src/llvmtranslate/translator.cc,
+	* src/llvmtranslate/translator.hh,
+	* src/llvmtranslate/translator.hxx: The translator visitor.
+	* src/local.am: Include `llvmtranslate/local.am`
+
+2016-03-25  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: add dependencies to the build system
+
+	* configure.ac: Add Clang, llc and llvm-config,
+	* dev/stagize,
+	* dev/studentize_tc.conf: Add the llvmtranslate module.
+
+2016-03-25  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	type: replace the `dump` method with a type visitor
+
+	* src/type/README.txt,
+	* src/type/array.cc,
+	* src/type/array.hh,
+	* src/type/attribute.cc,
+	* src/type/attribute.hh,
+	* src/type/attribute.hxx,
+	* src/type/builtin-types.cc,
+	* src/type/builtin-types.hh,
+	* src/type/class.cc,
+	* src/type/class.hh,
+	* src/type/field.cc,
+	* src/type/field.hh,
+	* src/type/field.hxx,
+	* src/type/function.cc,
+	* src/type/function.hh,
+	* src/type/named.cc,
+	* src/type/named.hh,
+	* src/type/nil.cc,
+	* src/type/nil.hh,
+	* src/type/record.cc,
+	* src/type/record.hh,
+	* src/type/type.hh,
+	* src/type/type.hxx: Remove dump.
+	* src/type/pretty-printer.cc,
+	* src/type/pretty-printer.hh: The type visitor that prints the nodes.
+	* src/type/type-checker.cc,
+	* src/type/type-checker.hxx: Include the PrettyPrinter.
+	* src/type/local.am: Add pretty-printer.cc/hh.
+
+2016-03-25  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	type: add a `record_type_` to the `Nil` type
+
+	Sometimes, visitors need to know the real type the `Nil` type is
+	actually representing (like the LLVM translator, since it needs to have
+	typed null pointers).
+	In order to do this, the type-checker has been updated to check for nil
+	types wherever they can appear, and set the expected `type::Record` as a
+	`record_type_` of a `type::Nil`. This implies that `type::Nil` is not a
+	sigleton anymore.
+
+	* src/ast/ast.yml: Add TypeConstructor to `NilExp`.
+	* src/ast/nil-exp.cc,
+	* src/ast/nil-exp.hh,
+	* src/ast/README-student.txt,
+	* src/ast/README.txt,
+	* src/ast/ast.gv: Regen.
+	* src/type/test-type.cc,
+	* src/object/desugar-visitor.cc,
+	* src/type/type-checker.hxx
+	* src/overload/type-checker.cc: Remove usage of `Nil::instance()`.
+	* src/type/builtin-types.cc,
+	* src/type/builtin-types.hh: Remove the Nil singleton.
+	* src/type/nil.cc,
+	* src/type/nil.hh: Add the Nil type.
+	* src/type/local.am: Add nil.cc and nil.hh.
+	* src/type/types.hh,
+	* src/type/record.cc: Include nil.hh.
+	* src/type/type-checker.cc: Add the `record_type_` binding.
+
+2016-03-25  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	type: add a visitor on `type::Type`s
+
+	* src/type/visitor.hh,
+	* src/type/visitor.hxx: The generic `type::Type` visitor.
+	* src/type/default-visitor.hh,
+	* src/type/default-visitor.hxx: The default `type::Type` visitor.
+	* src/type/array.cc,
+	* src/type/array.hh,
+	* src/type/builtin-types.cc,
+	* src/type/builtin-types.hh,
+	* src/type/class.cc,
+	* src/type/class.hh,
+	* src/type/function.cc,
+	* src/type/function.hh,
+	* src/type/method.cc,
+	* src/type/method.hh,
+	* src/type/named.cc,
+	* src/type/named.hh,
+	* src/type/record.cc,
+	* src/type/record.hh,
+	* src/type/type.hh: Add the accept methods.
+	* src/type/fwd.hh: Add forward declarations to the visitors.
+	* src/type/local.am: Add the visitor files.
+	* src/type/README.txt: Update documentation.
+
+2016-03-25  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	tests: arm: add arm dependencies to required programs
+
+	* tests/tc-check.in: Here.
+
+2016-03-25  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	tests: arm: use correct cross compiler and library
+
+	* tests/tc-check.in: Here.
+
+2016-03-07  Etienne Renault  <renault@lrde.epita.fr>
+
+	 Version 1.46, for 2018-tc-3.0
+
+	* NEWS.txt, configure.ac: Here.
+
+2016-03-07  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	scoped-map: fixmes displayed at tc-3, remove scoped-map before
+
+	* dev/stagize: Remove them here.
+	* lib/misc/local.am: Here.
+	* lib/misc/scoped-map.hh: Here.
+	* lib/misc/scoped-map.hxx: Here.
+	* lib/misc/test-scoped.cc: Here.
+
+2016-03-07  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.45, for 2018-tc-2.0
+
+	* .last-cl-gen, ChangeLog,
+	* NEWS.txt,  configure.ac: Here.
+
+	NEWS.txt, Makefile.am, configure.ac: here.
+
+2016-03-07  Etienne Renault  <renault@lrde.epita.fr>
+
+	dev/install-generic: ask for local install
+
+	*  dev/install-generic: Here.
+
+2016-03-07  Etienne Renault  <renault@lrde.epita.fr>
+
+	Update URL for new versions
+
+	* dev/install-bison,
+	* dev/install-havm,
+	* dev/install-monoburg,
+	* dev/install-nolimips: Here.
+
+2016-03-07  Etienne Renault  <renault@lrde.epita.fr>
+
+	make check: use unique directories in /tmp
+
+	Multiple runs of make check can overlap and share the
+	same directory. This is obviously not something we want
+	(especilly from the buildfarm point of view).
+
+	* tests/tc-check.in: here.
+
 2016-02-16  Etienne Renault  <renault@lrde.epita.fr>
 
 	dev/install-generic: ask for local install

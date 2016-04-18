@@ -20,7 +20,7 @@ namespace task
                 std::string deps);
 
   public:
-    virtual void execute() const override;
+    void execute() const override;
 
   private:
     bool& flag_;

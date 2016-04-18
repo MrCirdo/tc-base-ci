@@ -150,7 +150,7 @@ namespace misc
     /// \brief Add an edge between two vertices.
     ///
     /// This is just a wrapper around boost::add_edge.
-    virtual void
+    void
     edge_add(const vertex_descriptor& v1,
              const vertex_descriptor& v2) override;
     /// \}
@@ -189,7 +189,7 @@ namespace misc
     ///
     /// Use this method instead of boost::add_edge directly to keep
     /// the order between the ends of an edge.
-    virtual void
+    void
     edge_add(const vertex_descriptor& v1, const
              vertex_descriptor& v2) override;
   };

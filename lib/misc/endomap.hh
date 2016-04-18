@@ -41,7 +41,7 @@ namespace misc
     /// \}
 
     /// Return a duplicate of \a this.
-    virtual endomap* clone() const override;
+    endomap* clone() const override;
 
     /// Return a reference to the value associated to \a t.
     ///
@@ -53,7 +53,7 @@ namespace misc
     virtual T& operator[](const T& t);
 
     /// Lookup for \a t, returning it if unknown.
-    virtual T operator()(const T& t) const override;
+    T operator()(const T& t) const override;
 
 
   protected:

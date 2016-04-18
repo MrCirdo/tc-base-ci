@@ -1,3 +1,23 @@
+New in 1.48, 2016-04-18
+
+* General maintenance
+  - replace list by vector int type/class
+  - Ajust given code
+  - Remove nested annotations
+
+New in 1.47, 2016-04-08:
+
+* Add support for LLVM
+  - add llvm translate module
+  - replace the dump method with a visitor
+  - add a record_type to the Nil type
+  - add --llvm-runtime-display and --llvm-display
+
+* General Maintenance
+  - arm: fix dependencies and use correct cross compiler
+  - llvm: require llvm-3.8
+
+
 New in 1.46, 2016-03-07:
 
 * General Maintenance

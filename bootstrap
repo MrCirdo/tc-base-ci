@@ -150,6 +150,8 @@ except ImportError:
 -----------------------------------------------------------------------
 If the last error is "./bootstrap: Python module \`yaml' is required"
 Then you need to install Python bindings for libyaml (http://pyyaml.org/).
+
+Try 'sudo pip install pyyaml'.
 EOF
       (exit $rv); exit $rv
     }

@@ -17,8 +17,8 @@ AC_DEFUN([TC_PROG],
 AC_CHECK_PROGS([$3], [$1])
 
 m4_pushdef([version_re], [[^ *\([<>]\|[<>!=]=\) *\([0-9][0-9.]*\) *$]])dnl
-m4_bmatch([$2],
-          version_re, [m4_bregexp([$2], version_re,
+m4_bmatch(m4_quote($2),
+          version_re, [m4_bregexp(m4_quote($2), version_re,
                                   [tc_ver='\2'; tc_req='\1'])],
           [m4_fatal([$0: invalid argument 2: "$2"])])
 m4_popdef([version_re])dnl

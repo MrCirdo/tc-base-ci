@@ -20,8 +20,8 @@ namespace task
                     std::string deps);
 
   public:
-    virtual void execute() const override;
-    virtual deps_type
+    void execute() const override;
+    deps_type
     resolve_dependencies(tasks_list_type& active_tasks) const override;
   };
 

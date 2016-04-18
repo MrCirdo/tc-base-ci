@@ -48,6 +48,8 @@ namespace ast
   class StringExp;
   class SubscriptVar;
   class Ty;
+  class Typable;
+  class TypeConstructor;
   class TypeDec;
   class Var;
   class VarDec;

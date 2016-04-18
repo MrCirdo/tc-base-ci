@@ -20,8 +20,8 @@ namespace task
             std::string deps);
 
   public:
-    virtual void execute() const override;
-    virtual void arg_set(const std::string& arg) const override;
+    void execute() const override;
+    void arg_set(const std::string& arg) const override;
 
   private:
     int& var_;

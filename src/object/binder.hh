@@ -31,10 +31,10 @@ namespace object
     // Visiting /Exp/.  //
     // ---------------- //
 
-    virtual void operator()(ast::ForExp& e) override;
+    void operator()(ast::ForExp& e) override;
 
     /// Visit a Variable instantiation.
-    virtual void operator()(ast::SimpleVar& e) override;
+    void operator()(ast::SimpleVar& e) override;
 
 
     // ---------------- //
@@ -42,10 +42,10 @@ namespace object
     // ---------------- //
 
     /// Visit a type name.
-    virtual void operator()(ast::NameTy& e) override;
+    void operator()(ast::NameTy& e) override;
 
     /// Visit a class definition.
-    virtual void operator()(ast::ClassTy& e) override;
+    void operator()(ast::ClassTy& e) override;
 
 
     // ---------------- //
@@ -61,13 +61,13 @@ namespace object
     void visit_dec_body(D& e);
 
     // Visit a variable declaration.
-    virtual void operator()(ast::VarDec&) override;
+    void operator()(ast::VarDec&) override;
 
     /// Visit a chunk of Function declarations.
-    virtual void operator()(ast::FunctionDecs&) override;
+    void operator()(ast::FunctionDecs&) override;
 
     /// No longer used.
-    virtual void operator()(ast::MethodDec&) override;
+    void operator()(ast::MethodDec&) override;
 
   private:
     /// Are we (immediately) within a class definition?

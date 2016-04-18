@@ -1,13 +1,19 @@
 dnl Catch macros that are not expanded.
 m4_pattern_forbid([^(AM|AX|LT|TC)_])
 
+m4_define([TC_CLANG_PREREQ],    [3.8])
+m4_define([TC_GCC_PREREQ],      [5.0])
+m4_define([TC_HAVM_PREREQ],     [0.27])
+m4_define([TC_LLC_PREREQ],      [3.8])
+m4_define([TC_NOLIMIPS_PREREQ], [0.10])
+
 AC_PREREQ([2.64])
 
 ## ---------------- ##
 ## Package set up.  ##
 ## ---------------- ##
 
-AC_INIT([LRDE Tiger Compiler], [1.46], [tiger@lrde.epita.fr], [tc],
+AC_INIT([LRDE Tiger Compiler], [1.48], [tiger@lrde.epita.fr], [tc],
         [http://tiger.lrde.epita.fr])
 
 # Auxiliary files.
@@ -38,15 +44,15 @@ cxx_version=$($CXX --version |
   sed -n ['/^[^0-9]*\([0-9][0-9.]*[0-9]\).*$/{s//\1/;p;q;}'])
 case $($CXX --version) in
   (*clang*)
-    AS_VERSION_COMPARE([$cxx_version], [3.4],
-      [AC_MSG_WARN([clang++ >= 3.4 is required, have $cxx_version])])
+    AS_VERSION_COMPARE([$cxx_version], [TC_CLANG_PREREQ],
+      [AC_MSG_WARN([clang++ >= TC_CLANG_PREREQ is required, have $cxx_version])])
     ;;
   (*g++*)
-    AS_VERSION_COMPARE([$cxx_version], [5.0],
-      [AC_MSG_WARN([g++ >= 5.0 is required, have $cxx_version])])
+    AS_VERSION_COMPARE([$cxx_version], [TC_GCC_PREREQ],
+      [AC_MSG_WARN([g++ >= TC_GCC_PREREQ is required, have $cxx_version])])
     ;;
   (*)
-    AC_MSG_WARN([g++ >= 5.0 or clang++ >= 3.4 is recommended, have none])
+    AC_MSG_WARN([g++ >= TC_GCC_PREREQ or clang++ >= TC_CLANG_PREREQ is recommended, have none])
     ;;
 esac
 
