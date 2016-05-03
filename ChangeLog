@@ -1,3 +1,94 @@
+2016-05-03  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.49 for 2018-tc-5.0
+
+	* .last-cl-gen, ChangeLog, NEWS.txt, configure.ac: Here.
+
+2016-05-03  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: type-visitor: make a better usage of the TypeBuilder
+
+	* src/llvmtranslate/llvm-type-visitor.cc: Use the TypeBuilder for
+	int/string/void, by allowing non-cross-compilable types.
+
+2016-05-03  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: escapes: remove ambigous fixme
+
+	* src/llvmtranslate/escapes-collector.cc: The member is already
+	initialized in the member declaration. It introduces an useless FIXME.
+
+2016-05-02  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: use more move semantics
+
+	* src/llvmtranslate/escapes-collector.cc,
+	* src/llvmtranslate/llvm-type-visitor.cc: Here.
+
+2016-05-02  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: escapes are no longer needed
+
+	Lambda shifting doesn't need the computation of escapings. It's done in
+	a different way, by walking the AST and gathering the escapes for every
+	function. By doing this, the escaping annotations are useless to TC-L.
+
+	* src/llvmtranslate/escapes-collector.cc: Remove usage of escaping.
+	* src/llvmtranslate/tasks.hh: Remove dependency.
+
+2016-05-02  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: remove usage of `getGlobalContext`
+
+	Starting with LLVM 3.8.1, `getGlobalContext` is removed. We now manage
+	our own global context that lives with the module.
+
+	* src/llvmtranslate/fwd.hh: Forward reference to LLVMContext.
+	* src/llvmtranslate/libllvmtranslate.cc,
+	* src/llvmtranslate/libllvmtranslate.hh,
+	* src/llvmtranslate/tasks.cc,
+	* src/llvmtranslate/tasks.hh: Create the context in llvm-compute then move
+	it around in the global state of the tasks.
+	* src/llvmtranslate/llvm-type-visitor.cc,
+	* src/llvmtranslate/llvm-type-visitor.hh: Store the context here as
+	well.
+	* src/llvmtranslate/translator.cc,
+	* src/llvmtranslate/translator.hh: Store a reference to the context, and
+	pass it around when creating types and basic blocks.
+
+2016-05-02  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: move comments to stagize directives
+
+	* src/llvmtranslate/translator.cc: Here.
+
+2016-05-02  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: runtime: avoid copying the runtime code in `runtime_string`
+
+	* src/llvmtranslate/libllvmtranslate.hh,
+	* src/llvmtranslate/local.am: Return a `const char*` instead of a
+	`std::string`. LLVM's `parseAssemblyString` takes a `llvm::StringRef` as
+	an argument for the string to be parsed. This means that we can actually
+	avoid a copy by passing a `const char*` to that function. Ideally, we
+	would need a `std::string_view`, but we have to wait for C++17 for that.
+
+2016-04-20  Pierre DE ABREU  <pierre.deabreu@epita.fr>
+
+	llvm: insert else and end block on creation for IfExp
+
+	* Inserting else and end block directly when they are
+	created during IfExp nodes translation. It allows us to be
+	consistent with what is done for WhileExp node.
+
+	* src/llvmtranslate/translator.cc: Here.
+
+2016-04-18  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.48 for 2018-tc-4.0
+
+	* .last-cl-gen, ChangeLog, NEWS.txt, configure.ac: Here.
+
 2016-04-18  Sebastien Piat  <spiat@lrde.epita.fr>
 
 	type: class: use vectors
