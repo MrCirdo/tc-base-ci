@@ -1,3 +1,12 @@
+New in 1.50, 2016-05-19
+
+* General maintenance
+   - Simplify code
+   - Updates according to coding-style
+   - Remove useless hidden block
+   - Simplify type checker for classes
+   - Update llvm dependencies to please gcc
+
 New in 1.49, 2016-05-03
 
 * General maintenance of LLVM

@@ -1,6 +1,6 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
-.                             : 5490 409  13
+.                             : 5712 421  13
     lib                       :  250  14  17
         misc                  :  250  14  17
             scoped-map.hh     :   71   2  35
@@ -9,7 +9,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :    8   5   1
             variant.hxx       :    1   1   1
-    src                       : 5240 395  13
+    src                       : 5462 407  13
         ast                   : 1605  73  21
             array-exp.cc      :   26   1  26
             array-exp.hh      :   43   1  43
@@ -81,6 +81,10 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             tasks.hh          :   46   1  46
         callgraph             :    4   1   4
             call-graph-visitor.cc:    4   1   4
+        canon                 :  264  12  22
+            canon.cc          :   67   6  11
+            libcanon.cc       :   20   1  20
+            traces.cc         :  177   5  35
         desugar               :  211   5  42
             bounds-checking-visitor.cc:  139   1 139
             bounds-checking-visitor.hh:    7   1   7
@@ -94,11 +98,11 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             inliner.hh        :    7   2   3
             pruner.cc         :   60   2  30
             pruner.hh         :   11   2   5
-        llvmtranslate         :  256  42   6
-            escapes-collector.cc:   39   8   4
+        llvmtranslate         :  254  42   6
+            escapes-collector.cc:   37   8   4
             llvm-type-visitor.cc:    5   4   1
             translator.cc     :  212  30   7
-        object                :  401  71   5
+        object                :  397  71   5
             binder.cc         :   12   2   6
             desugar-visitor.cc:  105  37   2
             libobject.cc      :    8   2   4
@@ -110,7 +114,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             renamer.cc        :   44   8   5
             tasks.cc          :   17   2   8
             tasks.hh          :    4   1   4
-            type-checker.cc   :  157  14  11
+            type-checker.cc   :  153  14  10
         overload              :  159   3  53
             binder.cc         :    4   1   4
             type-checker.cc   :  139   1 139
@@ -120,8 +124,8 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             scantiger.ll      :   18   3   6
             tasks.cc          :    2   1   2
             tiger-parser.cc   :    7   1   7
-        temp                  :   57  16   3
-            identifier.hxx    :   57  16   3
+        temp                  :   53  16   3
+            identifier.hxx    :   53  16   3
         translate             :  304  38   8
             exp.cc            :   47   6   7
             level.cc          :    3   1   3
@@ -130,17 +134,17 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             translator.cc     :  100  20   5
         tree                  :   54   1  54
             fragment.cc       :   54   1  54
-        type                  :  926  67  13
-            array.cc          :   11   1  11
+        type                  :  894  67  13
+            array.cc          :   15   1  15
             array.hh          :   25   1  25
-            array.hxx         :   10   1  10
+            array.hxx         :    5   1   5
             attribute.hxx     :    1   1   1
             builtin-types.cc  :   69   1  69
             builtin-types.hh  :   91   1  91
-            class.cc          :   48   6   8
+            class.cc          :   46   6   7
             class.hh          :    2   1   2
             default-visitor.hxx:   11   5   2
-            function.cc       :   39   1  39
+            function.cc       :   27   1  27
             function.hh       :    2   1   2
             method.cc         :   11   1  11
             method.hh         :    2   1   2
@@ -150,7 +154,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             pretty-printer.cc :   55   7   7
             record.cc         :   28   2  14
             record.hh         :    1   1   1
-            type-checker.cc   :  448  22  20
+            type-checker.cc   :  431  22  19
             type-checker.hh   :   13   2   6
             type-checker.hxx  :   20   5   4
             type.hxx          :    2   2   1

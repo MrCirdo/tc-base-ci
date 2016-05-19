@@ -1,3 +1,237 @@
+2016-05-19  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.50 for 2018-tc-6.0
+
+	* .last-cl-gen, ChangeLog, NEWS.txt, configure.ac: Here.
+
+2016-05-16  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: don't use -isystem for STL headers
+
+	* src/llvmtranslate/local.am: We were using `-isystem /usr/include` in
+	order to avoid warnings coming from LLVM's headers. It looks like this
+	is no longer allowed in `gcc-6.1.1`, since it includes the STL using the
+	same CPP flags.
+	We should probably find a better solution to hide LLVM's warnings.
+	More info here: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70129
+
+2016-05-16  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	tests: inline: unsure parameter types are respected
+
+	* tests/inline/argument-nil.err: Here.
+	* tests/inline/argument-nil.out: Here.
+	* tests/inline/argument-nil.sta: Here.
+	* tests/inline/argument-nil.tig: Here.
+
+2016-05-16  Sebastien Piat  <piat_s@yaka.epita.fr>
+
+	tests: test for void operations
+
+	* tests/type/void-op.tc-err: Here.
+	* tests/type/void-op.tc-sta: Here.
+	* tests/type/void-op.tig: Here.
+
+2016-05-13  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	tests: add mutual example from assignments
+
+	* tests/good/mutuals.err: Here.
+	* tests/good/mutuals.hir: Here.
+	* tests/good/mutuals.out: Here.
+	* tests/good/mutuals.sta: Here.
+	* tests/good/mutuals.tig: Here.
+
+2016-05-13  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	type: check for invalid conditions in while and ifs
+
+	* tests/type/invalid-cond-if.tig: Here.
+	* tests/type/invalid-cond-while.tig: Here.
+
+2016-05-10  Remi Billon  <billon_r@yaka.epita.fr>
+
+	type: class: update compatible_with
+
+	Now, instead of browsing all the super classes of the `other` type,
+	we simply search the class `other` in our vector of subclasses.
+
+	* src/type/class.cc: Here.
+
+2016-05-10  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	type-checker: this code is not given do not hide it
+
+	* src/type/type-checker.cc: Here.
+
+2016-05-10  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	llvm: escape-collector: do not call default-visitor on simplevars
+
+	* src/llvmtranslate/escapes-collector.cc: Here.
+
+2016-05-10  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	array: constructors should be in the .cc file
+
+	* src/type/array.cc: Here.
+	* src/type/array.hxx: Here.
+
+2016-05-10  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	llvm: translator: do not hide code in already hidden block
+
+	* src/llvmtranslate/translator.cc: Here.
+
+2016-05-10  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	tc-check: fix indentation
+
+	* ../../tests/tc-check.in: Here.
+
+2016-05-10  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	tests: bound-check: tests for aliases
+
+	* tests/bounds-check/test30.*: Here.
+
+2016-05-10  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	identifier: respect coding style and avoid double checking
+
+	* src/temp/identifier.hxx: Here.
+
+2016-05-10  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	identifier: rely on misc::symbol constructor
+
+	* src/temp/identifier.hxx: Here.
+
+2016-05-10  Sebastien Piat  <spiat@lrde.epita.fr>
+
+	tests: type: check for actual soundness
+
+	* tests/type/sound.tig: Here.
+	* tests/object-type/sound-object.tig: Here.
+
+2016-05-10  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	type-checker: if-exp: use variables and avoid multiple actuals
+
+	* src/object/type-checker.cc: Here.
+
+2016-05-10  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	type: class: fix sound
+
+	* src/type/class.cc: Here.
+
+2016-05-10  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	type-checker: class-ty: do not use pointer
+
+	* src/object/type-checker.cc: Here.
+
+2016-05-10  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	type-checker: use created variables
+
+	* src/type/type-checker.cc: Here.
+
+2016-05-10  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	type-checker: call-exp: simplify
+
+	* src/type/type-checker.cc: Here.
+
+2016-05-10  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	type: if-exp: check for classes compared to nil
+
+	```
+	let
+	  class A {}
+	in
+	  if (1) then
+	    nil
+	  else
+	    new A
+	end
+	```
+	Should have type A.
+
+	* src/type/type-checker.cc: Here.
+
+2016-05-10  Sébastien Piat  <spiat@lrde.epita.fr>
+
+	type: function: simplify compatible_with
+
+	* src/type/function.cc: Here.
+
+2016-05-04  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.49 for 2018-tc-5.0
+
+	* .last-cl-gen, ChangeLog, NEWS.txt, configure.ac: Here.
+
+2016-05-03  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: type-visitor: make a better usage of the TypeBuilder
+
+	* src/llvmtranslate/llvm-type-visitor.cc: Use the TypeBuilder for
+	int/string/void, by allowing non-cross-compilable types.
+
+2016-05-03  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: escapes: remove ambigous fixme
+
+	* src/llvmtranslate/escapes-collector.cc: The member is already
+	initialized in the member declaration. It introduces an useless FIXME.
+
+2016-05-03  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: use more move semantics
+
+	* src/llvmtranslate/escapes-collector.cc,
+	* src/llvmtranslate/llvm-type-visitor.cc: Here.
+
+2016-05-03  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: escapes are no longer needed
+
+	Lambda shifting doesn't need the computation of escapings. It's done in
+	a different way, by walking the AST and gathering the escapes for every
+	function. By doing this, the escaping annotations are useless to TC-L.
+
+	* src/llvmtranslate/escapes-collector.cc: Remove usage of escaping.
+	* src/llvmtranslate/tasks.hh: Remove dependency.
+
+2016-05-03  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: remove usage of `getGlobalContext`
+
+	Starting with LLVM 3.8.1, `getGlobalContext` is removed. We now manage
+	our own global context that lives with the module.
+
+	* src/llvmtranslate/fwd.hh: Forward reference to LLVMContext.
+	* src/llvmtranslate/libllvmtranslate.cc,
+	* src/llvmtranslate/libllvmtranslate.hh,
+	* src/llvmtranslate/tasks.cc,
+	* src/llvmtranslate/tasks.hh: Create the context in llvm-compute then move
+	it around in the global state of the tasks.
+	* src/llvmtranslate/llvm-type-visitor.cc,
+	* src/llvmtranslate/llvm-type-visitor.hh: Store the context here as
+	well.
+	* src/llvmtranslate/translator.cc,
+	* src/llvmtranslate/translator.hh: Store a reference to the context, and
+	pass it around when creating types and basic blocks.
+
+2016-05-03  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	llvm: move comments to stagize directives
+
+	* src/llvmtranslate/translator.cc: Here.
+
 2016-05-03  Etienne Renault  <renault@lrde.epita.fr>
 
 	Version 1.49 for 2018-tc-5.0

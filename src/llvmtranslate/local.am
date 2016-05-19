@@ -47,7 +47,7 @@ nodist_src_libtc_la_SOURCES += %D%/runtime.cc
 ## EXTRA_DIST += %D%/tiger_llvmtranslate.i
 
 ## LLVM flags are found using `llvm-config`.
-AM_CXXFLAGS += `$(LLVM_CONFIG) --cppflags | sed "s/-I/-isystem/g"`
+AM_CXXFLAGS += `$(LLVM_CONFIG) --cppflags`
 src_libtc_la_LDFLAGS +=			\
   `$(LLVM_CONFIG) --ldflags`			\
   `$(LLVM_CONFIG) --libs core linker asmparser`	\
