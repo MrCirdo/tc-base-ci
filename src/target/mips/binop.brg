@@ -1,0 +1,22 @@
+# binop.brg                                              -*- c++ -*-
+
+binop: Binop(left : exp, right : Const)
+{
+  auto binop = tree.cast<Binop>();
+  auto cst = right.cast<Const>();
+
+  EMIT(MIPS_ASSEMBLY.binop_build(binop->oper_get(),
+                                 left->asm_get(),
+                                 cst->value_get(),
+                                 tree->asm_get()));
+}
+
+binop: Binop(left : exp, right : exp)
+{
+  auto binop = tree.cast<Binop>();
+
+  EMIT(MIPS_ASSEMBLY.binop_build(binop->oper_get(),
+                                 left->asm_get(),
+                                 right->asm_get(),
+                                 tree->asm_get()));
+}

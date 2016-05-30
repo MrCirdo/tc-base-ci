@@ -1,0 +1,82 @@
+dist_noinst_DATA += %D%/runtime.s
+
+CLEANFILES += %D%/runtime.cc
+%D%/runtime.cc: $(srcdir)/%D%/runtime.s
+	$(AM_V_GEN)$(AWK)						\
+	   'BEGIN {							\
+	     print("#include \"target/mips/spim-assembly.hh\"");	\
+	     print("");							\
+	     print("namespace target {");				\
+	     print("namespace mips {");					\
+	     print("const char* SpimAssembly::runtime(bool) const");	\
+	     print("{");						\
+	     print("  return \"\\");					\
+	   }								\
+	   /^\#(<<|>>)/ {						\
+	     next;							\
+	   }								\
+	   {								\
+	     gsub(/[\\\"]/, "\\\\&", $$0);				\
+	     print($$0 "\\n\\");}					\
+	   END {							\
+	     print("\";");						\
+	     print("}");						\
+	     print("} // namespace mips");				\
+	     print("} // namespace target");				\
+	     print("");							\
+	   }'								\
+	  $< >$@.tmp
+	$(AM_V_at)mv $@.tmp $@
+
+BUILT_SOURCES += %D%/spim-codegen.hh %D%/spim-codegen.cc
+
+EXTRA_DIST +=                                   \
+  $(MIPS_CODEGEN_GRAMMAR)                       \
+  %D%/prologue.hh                               \
+  %D%/epilogue.cc
+MIPS_CODEGEN_GRAMMAR =                          \
+  %D%/binop.brg                                 \
+  %D%/call.brg                                  \
+  %D%/cjump.brg                                 \
+  %D%/exp.brg                                   \
+  %D%/mem.brg                                   \
+  %D%/move.brg                                  \
+  %D%/move_store.brg                            \
+  %D%/move_load.brg                             \
+  %D%/stm.brg                                   \
+  %D%/temp.brg                                  \
+  %D%/tree.brg
+
+EXTRA_DIST += $(srcdir)/%D%/spim-codegen.stamp
+# The dependency is on monoburg++.in and not monoburg++, since
+# monoburg++ is regenerated at distribution time, and voids the time
+# stamps (which we don't want!).
+$(srcdir)/%D%/spim-codegen.stamp: $(MIPS_CODEGEN_GRAMMAR) $(srcdir)/%D%/prologue.hh $(srcdir)/%D%/epilogue.cc $(MONOBURGXX_IN)
+	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) $(MONOBURGXX)
+	$(AM_V_at)rm -f $@ $@.tmp
+	$(AM_V_at)touch $@.tmp
+	$(AM_V_at)$(MONOBURGXX) $(srcdir)/%D%/tree.brg    \
+	  -r $(srcdir)/src \
+	  -s $(srcdir)/%D%/spim-codegen.cc \
+	  -d $(srcdir)/%D%/spim-codegen.hh \
+	  -n TARGET_MIPS_CODEGEN --quiet
+	$(AM_V_at)mv -f $@.tmp $@
+$(srcdir)/%D%/spim-codegen.hh $(srcdir)/%D%/spim-codegen.cc: $(srcdir)/%D%/spim-codegen.stamp
+	$(AM_V_GEN)if test -f $@; then				\
+	  touch $@;						\
+	else							\
+	  rm -f $(srcdir)/%D%/spim-codegen.stamp;		\
+	  $(MAKE) $(AM_MAKEFLAGS) %D%/spim-codegen.stamp;	\
+	fi
+
+src_libtc_la_SOURCES +=				\
+  %D%/cpu.hh %D%/cpu.cc				\
+  %D%/spim-layout.hh %D%/spim-layout.cc		\
+  %D%/spim-assembly.hh %D%/spim-assembly.cc	\
+  %D%/spim-codegen.hh %D%/spim-codegen.cc			\
+  %D%/target.hh %D%/target.cc
+
+nodist_src_libtc_la_SOURCES += %D%/runtime.cc
+
+check_PROGRAMS += %D%/test-target
+%C%_test_target_LDADD = src/libtc.la

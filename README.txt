@@ -1,6 +1,6 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
-.                             : 5712 421  13
+.                             : 6438 464  13
     lib                       :  250  14  17
         misc                  :  250  14  17
             scoped-map.hh     :   71   2  35
@@ -9,7 +9,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :    8   5   1
             variant.hxx       :    1   1   1
-    src                       : 5462 407  13
+    src                       : 6188 450  13
         ast                   : 1605  73  21
             array-exp.cc      :   26   1  26
             array-exp.hh      :   43   1  43
@@ -124,6 +124,26 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             scantiger.ll      :   18   3   6
             tasks.cc          :    2   1   2
             tiger-parser.cc   :    7   1   7
+        target                :  726  43  16
+            arm               :   97  10   9
+                arm-assembly.cc:    7   2   3
+                arm-codegen.cc:   45   4  11
+                call.brg      :    9   1   9
+                epilogue.cc   :   33   1  33
+                move.brg      :    3   2   1
+            ia32              :  186  10  18
+                call.brg      :    9   1   9
+                epilogue.cc   :   76   1  76
+                gas-assembly.cc:   10   2   5
+                gas-codegen.cc:   88   4  22
+                move.brg      :    3   2   1
+            mips              :  443  23  19
+                call.brg      :   10   1  10
+                epilogue.cc   :   76   1  76
+                move.brg      :    3   2   1
+                runtime.s     :  214   6  35
+                spim-assembly.cc:   51   9   5
+                spim-codegen.cc:   89   4  22
         temp                  :   53  16   3
             identifier.hxx    :   53  16   3
         translate             :  304  38   8

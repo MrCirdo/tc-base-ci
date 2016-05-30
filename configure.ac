@@ -13,7 +13,7 @@ AC_PREREQ([2.64])
 ## Package set up.  ##
 ## ---------------- ##
 
-AC_INIT([LRDE Tiger Compiler], [1.50], [tiger@lrde.epita.fr], [tc],
+AC_INIT([LRDE Tiger Compiler], [1.51], [tiger@lrde.epita.fr], [tc],
         [http://tiger.lrde.epita.fr])
 
 # Auxiliary files.
@@ -210,6 +210,9 @@ AM_CONDITIONAL([IA32_FREEBSD],
 AM_CONDITIONAL([SUPPORTED_IA32],
                [echo "$host" | grep -q '^\(i.86\|x86_64\).*linux\|^\(i.86\|amd64\).*freebsd'])
 
+# MonoBURG.
+TC_PROG([monoburg], [>= 1.0.6], [MONOBURG], [MonoBURG code generator generator])
+AX_CONFIG_SCRIPTS([build-aux/bin/monoburg++])
 # HAVM.
 TC_PROG([havm], [>=TC_HAVM_PREREQ], [HAVM], [The Tree Virtual Machine])
 TC_PROG([llc],         [>=TC_CLANG_PREREQ], [LLC],         [The LLVM system compiler])

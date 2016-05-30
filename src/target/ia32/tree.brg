@@ -1,0 +1,33 @@
+/**                                                      -*- C++ -*-
+ ** \file target/ia32/codegen.hh
+ ** \brief Entry point of the Tree grammar.
+ */
+
+%include prologue.hh
+
+%% // Here starts the tree `grammar' description.
+
+# MonoBURG grammar (for input files) should be changed so that these
+# options appear in the prelude (before the first %% token).
+%cxx-ref
+%no-glib
+%no-exported-symbols
+
+%namespace target
+%namespace ia32
+
+# The order here has to be the same as in tree.hh
+%term Const = 0 Name Temp Binop Mem Call Eseq Move Sxp Jump Cjump Seq Label
+%start stm
+
+# Fake rule to pacify monoburg output
+stm: Eseq
+{
+  unreachable();
+}
+%include exp.brg
+%include stm.brg
+
+%% End of description
+
+%include epilogue.cc

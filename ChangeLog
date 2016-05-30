@@ -1,3 +1,23 @@
+2016-05-30  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.51 for 2018-tc-1.0
+
+	* .last-cl-gen, ChangeLog, NEWS.txt, configure.ac: Here.
+
+2016-05-28  Francis Visoiu Mistrih  <visoiu_f@epita.fr>
+
+	target: use {} instead of explicit calls to Ts and Ls
+
+	* src/target/arm/arm-assembly.cc,
+	* src/target/ia32/gas-assembly.cc,
+	* src/target/mips/spim-assembly.cc: Here.
+
+2016-05-19  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.50 for 2018-tc-6.0
+
+	* .last-cl-gen, ChangeLog, NEWS.txt, configure.ac: Here.
+
 2016-05-19  Etienne Renault  <renault@lrde.epita.fr>
 
 	Version 1.50 for 2018-tc-6.0

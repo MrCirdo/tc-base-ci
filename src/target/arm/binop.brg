@@ -1,0 +1,58 @@
+# binop.brg                                              -*- c++ -*-
+
+binop: Binop(left : exp, right : Const)
+{
+  auto binop = tree.cast<Binop>();
+  auto cst = right.cast<Const>();
+
+  if (binop->oper_get() == tree::Binop::div)
+  {
+    temp::Temp arg1 = *MCPU.argument_regs().begin();
+    temp::Temp arg2 = *std::next(MCPU.argument_regs().begin());
+
+    EMIT(ARM_ASSEMBLY.move_build(left->asm_get(), arg1));
+    EMIT(ARM_ASSEMBLY.move_build(cst->value_get(), arg2));
+
+    temp::temp_list_type res(MCPU.caller_save_regs().begin(),
+                             MCPU.caller_save_regs().end());
+    res.push_back(MCPU.result_reg());
+
+    EMIT(ARM_ASSEMBLY.call_build("div", MCPU.argument_regs(), res));
+    EMIT(ARM_ASSEMBLY.move_build(MCPU.result_reg(), tree->asm_get()));
+  }
+  else
+  {
+    EMIT(ARM_ASSEMBLY.binop_build(binop->oper_get(),
+                                  left->asm_get(),
+                                  cst->value_get(),
+                                  tree->asm_get()));
+  }
+}
+
+binop: Binop(left : exp, right : exp)
+{
+  auto binop = tree.cast<Binop>();
+
+  if (binop->oper_get() == tree::Binop::div)
+  {
+    temp::Temp arg1 = *MCPU.argument_regs().begin();
+    temp::Temp arg2 = *std::next(MCPU.argument_regs().begin());
+
+    EMIT(ARM_ASSEMBLY.move_build(left->asm_get(), arg1));
+    EMIT(ARM_ASSEMBLY.move_build(right->asm_get(), arg2));
+
+    temp::temp_list_type res(MCPU.caller_save_regs().begin(),
+                             MCPU.caller_save_regs().end());
+    res.push_back(MCPU.result_reg());
+
+    EMIT(ARM_ASSEMBLY.call_build("div", MCPU.argument_regs(), res));
+    EMIT(ARM_ASSEMBLY.move_build(MCPU.result_reg(), tree->asm_get()));
+  }
+  else
+  {
+    EMIT(ARM_ASSEMBLY.binop_build(binop->oper_get(),
+                                  left->asm_get(),
+                                  right->asm_get(),
+                                  tree->asm_get()));
+  }
+}
