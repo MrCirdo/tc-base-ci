@@ -1,4 +1,8 @@
-New in 1.50, 2016-05-30
+New in 1.52, 2016-06-06
+
+* General maintenance
+
+New in 1.51, 2016-05-30
 
 * Remove useless typedef
 
