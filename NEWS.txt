@@ -1,3 +1,4 @@
+New in 1.53, 2016-06-24
 New in 1.52, 2016-06-06
 
 * General maintenance

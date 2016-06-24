@@ -48,3 +48,8 @@ $(srcdir)/run.stamp: $(RUN_IN)
 	$(AM_V_at)mv -f $@.tmp $@
 
 TESTS = tcsh.test
+# Check the IA-32 back-end on that platform only.
+if IA32_GNU_LINUX
+  TESTS += tcsh-ia32.test
+endif IA32_GNU_LINUX
+
