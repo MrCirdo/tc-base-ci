@@ -1,3 +1,238 @@
+2017-05-12  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.59 for 2019-tc-6.0
+
+	* .last-cl-gen, ChangeLog, NEWS.txt, configure.ac: here.
+
+2017-05-12  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	tests: remove duplicate tests
+
+	* tests/object-good/instantiate-object.-e.ia32.s,
+	* tests/object-good/instantiate-object.-e.mips.s,
+	* tests/object-good/instantiate-object.-e.u.mips.s,
+	* tests/object-good/instantiate-object.err,
+	* tests/object-good/instantiate-object.hir,
+	* tests/object-good/instantiate-object.hpr,
+	* tests/object-good/instantiate-object.ia32.s,
+	* tests/object-good/instantiate-object.lir,
+	* tests/object-good/instantiate-object.lpr,
+	* tests/object-good/instantiate-object.mips.s,
+	* tests/object-good/instantiate-object.out,
+	* tests/object-good/instantiate-object.pan,
+	* tests/object-good/instantiate-object.sta,
+	* tests/object-good/instantiate-object.tig,
+	* tests/object-good/instantiate-object.u.mips.s,
+	* tests/overfun-object-bind/overfun-extends-different-chunk.tc-err:
+	* Here.
+	* tests/overfun-object-bind/overfun-extends-different-chunk.tc-sta:
+	* Here.
+	* tests/overfun-object-bind/overfun-extends-different-chunk.tig,
+	* tests/overfun-object-bind/overfun-initialize-attribute-with-self.tc-err,
+	* tests/overfun-object-bind/overfun-initialize-attribute-with-self.tc-sta,
+	* tests/overfun-object-bind/overfun-initialize-attribute-with-self.tig:
+	* Here.
+	* tests/overfun-object-bind/overfun-invalid-forward-reference-to-class.tc-err,
+	* tests/overfun-object-bind/overfun-invalid-forward-reference-to-class.tc-sta,
+	* tests/overfun-object-bind/overfun-invalid-forward-reference-to-class.tig,
+	* tests/overfun-object-bind/overfun-self-outside-class.tc-err,
+	* tests/overfun-object-bind/overfun-self-outside-class.tc-sta,
+	* tests/overfun-object-bind/overfun-self-outside-class.tig,
+	* tests/overfun-object-bind/overfun-undeclared-extends.tc-err,
+	* tests/overfun-object-bind/overfun-undeclared-extends.tc-sta,
+	* tests/overfun-object-bind/overfun-undeclared-extends.tig,
+	* tests/overfun-object-bind/overfun-undeclared-function.tc-err,
+	* tests/overfun-object-bind/overfun-undeclared-function.tc-sta,
+	* tests/overfun-object-bind/overfun-undeclared-function.tig,
+	* tests/overfun-object-bind/overfun-undeclared-variable.tc-err,
+	* tests/overfun-object-bind/overfun-undeclared-variable.tc-sta,
+	* tests/overfun-object-bind/overfun-undeclared-variable.tig,
+	* tests/overfun-object-bind/overfun-variable-defined-later.tc-err,
+	* tests/overfun-object-bind/overfun-variable-defined-later.tc-sta,
+	* tests/overfun-object-bind/overfun-variable-defined-later.tig,
+	* tests/overfun-object-good/overload-builtin-instantiate-object.err:
+	* Here.
+	* tests/overfun-object-good/overload-builtin-instantiate-object.hir:
+	* Here.
+	* tests/overfun-object-good/overload-builtin-instantiate-object.hpr:
+	* Here.
+	* tests/overfun-object-good/overload-builtin-instantiate-object.out:
+	* Here.
+	* tests/overfun-object-good/overload-builtin-instantiate-object.sta:
+	* Here.
+	* tests/overfun-object-good/overload-builtin-instantiate-object.tig:
+	* Here.
+	* tests/overfun-object-good/overload-function-instantiate-object.err:
+	* Here.
+	* tests/overfun-object-good/overload-function-instantiate-object.hir:
+	* Here.
+	* tests/overfun-object-good/overload-function-instantiate-object.hpr:
+	* Here.
+	* tests/overfun-object-good/overload-function-instantiate-object.out:
+	* Here.
+	* tests/overfun-object-good/overload-function-instantiate-object.sta:
+	* Here.
+	* tests/overfun-object-good/overload-function-instantiate-object.tig:
+	* Here.
+	* tests/overfun-object-good/overload-function-record-arg-instantiate-object.err,
+	* tests/overfun-object-good/overload-function-record-arg-instantiate-object.hir,
+	* tests/overfun-object-good/overload-function-record-arg-instantiate-object.hpr,
+	* tests/overfun-object-good/overload-function-record-arg-instantiate-object.out,
+	* tests/overfun-object-good/overload-function-record-arg-instantiate-object.sta,
+	* tests/overfun-object-good/overload-function-record-arg-instantiate-object.tig,
+	* tests/overfun-object-good/overload-nil-diambiguated-instantiate-object.err,
+	* tests/overfun-object-good/overload-nil-diambiguated-instantiate-object.hir,
+	* tests/overfun-object-good/overload-nil-diambiguated-instantiate-object.hpr,
+	* tests/overfun-object-good/overload-nil-diambiguated-instantiate-object.out,
+	* tests/overfun-object-good/overload-nil-diambiguated-instantiate-object.sta,
+	* tests/overfun-object-good/overload-nil-diambiguated-instantiate-object.tig,
+	* tests/overfun-object-good/overload-var-type-inference-instantiate-object.err,
+	* tests/overfun-object-good/overload-var-type-inference-instantiate-object.hir,
+	* tests/overfun-object-good/overload-var-type-inference-instantiate-object.hpr,
+	* tests/overfun-object-good/overload-var-type-inference-instantiate-object.out,
+	* tests/overfun-object-good/overload-var-type-inference-instantiate-object.sta,
+	* tests/overfun-object-good/overload-var-type-inference-instantiate-object.tig,
+	* tests/overfun-object-type/overfun-assign-self.tc-err,
+	* tests/overfun-object-type/overfun-assign-self.tc-sta,
+	* tests/overfun-object-type/overfun-assign-self.tig,
+	* tests/overfun-object-type/overfun-attribute-redefined.tc-err,
+	* tests/overfun-object-type/overfun-attribute-redefined.tc-sta,
+	* tests/overfun-object-type/overfun-attribute-redefined.tig,
+	* tests/overfun-object-type/overfun-builtin-object-vs-custom-object.tc-err,
+	* tests/overfun-object-type/overfun-builtin-object-vs-custom-object.tc-sta,
+	* tests/overfun-object-type/overfun-builtin-object-vs-custom-object.tig:
+	* Here.
+	* tests/overfun-object-type/overfun-calling-son-method.tc-err,
+	* tests/overfun-object-type/overfun-calling-son-method.tc-sta,
+	* tests/overfun-object-type/overfun-calling-son-method.tig,
+	* tests/overfun-object-type/overfun-class-extends-itself.tc-err,
+	* tests/overfun-object-type/overfun-class-extends-itself.tc-sta,
+	* tests/overfun-object-type/overfun-class-extends-itself.tig,
+	* tests/overfun-object-type/overfun-contravariant-method.tc-err,
+	* tests/overfun-object-type/overfun-contravariant-method.tc-sta,
+	* tests/overfun-object-type/overfun-contravariant-method.tig,
+	* tests/overfun-object-type/overfun-contravariant-return-type.tc-err:
+	* Here.
+	* tests/overfun-object-type/overfun-contravariant-return-type.tc-sta:
+	* Here.
+	* tests/overfun-object-type/overfun-contravariant-return-type.tig,
+	* tests/overfun-object-type/overfun-covariant-method.tc-err,
+	* tests/overfun-object-type/overfun-covariant-method.tc-sta,
+	* tests/overfun-object-type/overfun-covariant-method.tig,
+	* tests/overfun-object-type/overfun-covariant-return-type.tc-err,
+	* tests/overfun-object-type/overfun-covariant-return-type.tc-sta,
+	* tests/overfun-object-type/overfun-covariant-return-type.tig,
+	* tests/overfun-object-type/overfun-downcast.tc-err,
+	* tests/overfun-object-type/overfun-downcast.tc-sta,
+	* tests/overfun-object-type/overfun-downcast.tig,
+	* tests/overfun-object-type/overfun-duplicate-members.tc-err,
+	* tests/overfun-object-type/overfun-duplicate-members.tc-sta,
+	* tests/overfun-object-type/overfun-duplicate-members.tig,
+	* tests/overfun-object-type/overfun-forward-method-reference-1.tc-err:
+	* Here.
+	* tests/overfun-object-type/overfun-forward-method-reference-1.tc-sta:
+	* Here.
+	* tests/overfun-object-type/overfun-forward-method-reference-1.tig:
+	* Here.
+	* tests/overfun-object-type/overfun-forward-method-reference-2.tc-err:
+	* Here.
+	* tests/overfun-object-type/overfun-forward-method-reference-2.tc-sta:
+	* Here.
+	* tests/overfun-object-type/overfun-forward-method-reference-2.tig:
+	* Here.
+	* tests/overfun-object-type/overfun-function-returning-son.tc-err,
+	* tests/overfun-object-type/overfun-function-returning-son.tc-sta,
+	* tests/overfun-object-type/overfun-function-returning-son.tig,
+	* tests/overfun-object-type/overfun-illegal-redefinition-of-object-1.tc-err,
+	* tests/overfun-object-type/overfun-illegal-redefinition-of-object-1.tc-sta,
+	* tests/overfun-object-type/overfun-illegal-redefinition-of-object-1.tig:
+	* Here.
+	* tests/overfun-object-type/overfun-illegal-redefinition-of-object-2.tc-err,
+	* tests/overfun-object-type/overfun-illegal-redefinition-of-object-2.tc-sta,
+	* tests/overfun-object-type/overfun-illegal-redefinition-of-object-2.tig:
+	* Here.
+	* tests/overfun-object-type/overfun-instantiate-a-string-as-a-class.tc-err,
+	* tests/overfun-object-type/overfun-instantiate-a-string-as-a-class.tc-sta,
+	* tests/overfun-object-type/overfun-instantiate-a-string-as-a-class.tig:
+	* Here.
+	* tests/overfun-object-type/overfun-int-as-super-class.tc-err,
+	* tests/overfun-object-type/overfun-int-as-super-class.tc-sta,
+	* tests/overfun-object-type/overfun-int-as-super-class.tig,
+	* tests/overfun-object-type/overfun-invalid-forward-references-to-members.tc-err,
+	* tests/overfun-object-type/overfun-invalid-forward-references-to-members.tc-sta,
+	* tests/overfun-object-type/overfun-invalid-forward-references-to-members.tig,
+	* tests/overfun-object-type/overfun-method-redefinition-with-different-signature.tc-err,
+	* tests/overfun-object-type/overfun-method-redefinition-with-different-signature.tc-sta,
+	* tests/overfun-object-type/overfun-method-redefinition-with-different-signature.tig,
+	* tests/overfun-object-type/overfun-naive-redef.tc-err,
+	* tests/overfun-object-type/overfun-naive-redef.tc-sta,
+	* tests/overfun-object-type/overfun-naive-redef.tig,
+	* tests/overfun-object-type/overfun-nil-ambiguity.tc-err,
+	* tests/overfun-object-type/overfun-nil-ambiguity.tc-sta,
+	* tests/overfun-object-type/overfun-nil-ambiguity.tig,
+	* tests/overfun-object-type/overfun-order-nil-with-object.tc-err,
+	* tests/overfun-object-type/overfun-order-nil-with-object.tc-sta,
+	* tests/overfun-object-type/overfun-order-nil-with-object.tig,
+	* tests/overfun-object-type/overfun-order-object-with-nil.tc-err,
+	* tests/overfun-object-type/overfun-order-object-with-nil.tc-sta,
+	* tests/overfun-object-type/overfun-order-object-with-nil.tig,
+	* tests/overfun-object-type/overfun-redef.tc-err,
+	* tests/overfun-object-type/overfun-redef.tc-sta,
+	* tests/overfun-object-type/overfun-redef.tig,
+	* tests/overfun-object-type/overfun-unknown-attribute.tc-err,
+	* tests/overfun-object-type/overfun-unknown-attribute.tc-sta,
+	* tests/overfun-object-type/overfun-unknown-attribute.tig,
+	* tests/overfun-object-type/overfun-unknown-method.tc-err,
+	* tests/overfun-object-type/overfun-unknown-method.tc-sta,
+	* tests/overfun-object-type/overfun-unknown-method.tig: Here.
+
+2017-05-11  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	traces: fix typos
+
+	* src/canon/traces.cc: Here.
+
+2017-05-11  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	canon: fix typos
+
+	* src/canon/canon.cc,
+	* src/canon/canon.hh: Here.
+
+2017-04-29  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	regalloc: swap callee-save and caller-save order
+
+	* src/regalloc/color.cc,
+	* src/regalloc/color.hh: Here.
+
+2017-04-17  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	target: ia32: fix function call conventions
+
+	This closes issue #56.
+
+	* src/target/ia32/cpu.cc: Here.
+
+2017-04-17  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	regalloc: color: generalize registers to multiple targets
+
+	* src/regalloc/color.cc,
+	* src/regalloc/color.hh: Here.
+
+2017-04-16  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	style: liveness: clean code
+
+	* src/liveness/liveness.cc: Here.
+
+2017-04-12  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.58 for 2019-tc-5.0
+
+	* .last-cl-gen, ChangeLog, NEWS.txt, configure.ac: here.
+
 2017-04-11  Moray Baruh  <baruh_m@yaka.epita.fr>
 
 	style: translate: clean record exp translation
