@@ -1,0 +1,25 @@
+# exp.brg                                                -*- c++ -*-
+
+%include binop.brg
+exp: binop;
+
+%include call.brg
+exp: call;
+
+%include temp.brg
+exp: temp;
+
+%include mem.brg
+exp: mem;
+
+exp: Const
+{
+  auto cst = tree.cast<Const>();
+  EMIT(IA32_ASSEMBLY.move_build(cst->value_get(), cst->asm_get()));
+}
+
+exp: Name
+{
+  auto name = tree.cast<Name>();
+  EMIT(IA32_ASSEMBLY.move_build(name->label_get(), name->asm_get()));
+}

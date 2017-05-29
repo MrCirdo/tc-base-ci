@@ -1,0 +1,44 @@
+# mem.brg                                                -*- c++ -*-
+
+mem: Mem(binop : Binop(Const, right : exp))
+{
+  rTree move = new tree::Move(new tree::Temp(tree->asm_get()),
+                              new tree::Mem(binop.cast<Binop>()));
+  right->reducible_set(false);
+  REDUCE(move, MB_NTERM_move);
+  right->reducible_set(true);
+}
+
+mem: Mem(binop : Binop(left : exp, Const))
+{
+  rTree move = new tree::Move(new tree::Temp(tree->asm_get()),
+                              new tree::Mem(binop.cast<Binop>()));
+  left->reducible_set(false);
+  REDUCE(move, MB_NTERM_move);
+  left->reducible_set(true);
+}
+
+mem: Mem(binop : Binop(left : exp, right : exp))
+{
+  rTree move = new tree::Move(new tree::Temp(tree->asm_get()),
+                              new tree::Mem(binop.cast<Binop>()));
+  left->reducible_set(false);
+  right->reducible_set(false);
+  REDUCE(move, MB_NTERM_move);
+  left->reducible_set(true);
+  right->reducible_set(true);
+}
+
+
+mem: Mem(c : Const)
+{
+  EMIT(ARM_ASSEMBLY.load_build(c.cast<Const>()->value_get(), tree->asm_get()));
+}
+
+mem: Mem(e : exp)
+{
+  temp::Temp res;
+
+  EMIT(ARM_ASSEMBLY.load_build(e->asm_get(), res));
+  tree->asm_set(res);
+}

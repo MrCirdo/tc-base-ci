@@ -1,3 +1,9 @@
+New in 1.60, 2017-05-19
+
+* General Maintenance
+  - regenerate backends
+  - clean code
+
 New in 1.59, 2017-05-12
 
 * General Maintenance

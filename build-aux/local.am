@@ -11,6 +11,7 @@ dist_noinst_SCRIPTS =                           \
   build-aux/bin/move-if-change
 
 nodist_noinst_SCRIPTS = build-aux/bin/bison++
+nodist_noinst_SCRIPTS += build-aux/bin/monoburg++
 
 EXTRA_DIST += build-aux/tiger-syntax.vim build-aux/tiger-ftdetect.vim
 

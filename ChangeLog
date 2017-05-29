@@ -1,3 +1,126 @@
+2017-05-29  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.60 for 2019-tc-6.0
+
+	* .last-cl-gen, ChangeLog, NEWS.txt, configure.ac: here.
+
+2017-05-26  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	style: target: fix indentations
+
+	* src/target/assembly.cc,
+	* src/target/codegen.cc,
+	* src/target/cpu.cc,
+	* src/target/fwd.hh,
+	* src/target/target.cc,
+	* src/target/target.hh,
+	* src/target/tasks.cc,
+	* src/target/tasks.hh: Here.
+
+2017-05-26  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	mips: regenerate
+
+	* src/target/mips/spim-codegen.cc,
+	* src/target/mips/spim-codegen.hh: Here.
+
+2017-05-26  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	style: mips: fix indentations
+
+	* src/target/mips/cpu.cc,
+	* src/target/mips/cpu.hh,
+	* src/target/mips/epilogue.cc,
+	* src/target/mips/prologue.hh,
+	* src/target/mips/spim-assembly.cc,
+	* src/target/mips/target.cc,
+	* src/target/mips/target.hh: Here.
+
+2017-05-26  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	ia32: regenerate
+
+	* src/target/ia32/gas-codegen.cc,
+	* src/target/ia32/gas-codegen.hh: Here.
+
+2017-05-26  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	style: ia322: fix indentations
+
+	* src/target/ia32/cpu.hh,
+	* src/target/ia32/epilogue.cc,
+	* src/target/ia32/exp.brg,
+	* src/target/ia32/gas-assembly.cc,
+	* src/target/ia32/gas-assembly.hh,
+	* src/target/ia32/gas-layout.cc,
+	* src/target/ia32/mem.brg,
+	* src/target/ia32/move.brg,
+	* src/target/ia32/move_store.brg,
+	* src/target/ia32/prologue.hh,
+	* src/target/ia32/target.cc,
+	* src/target/ia32/target.hh: Here.
+
+2017-05-26  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	ia32: call: simplify arguments storage loop
+
+	* src/target/ia32/call.brg: Here.
+
+2017-05-26  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	arm: regenerate
+
+	* src/target/arm/arm-codegen.cc,
+	* src/target/arm/arm-codegen.hh: Here.
+
+2017-05-26  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	arm: use unsigned int
+
+	* src/target/arm/call.brg: Here.
+
+2017-05-26  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	style: arm: fix indentations
+
+	* src/target/arm/arm-assembly.cc,
+	* src/target/arm/arm-layout.cc,
+	* src/target/arm/cjump.brg,
+	* src/target/arm/cpu.cc,
+	* src/target/arm/cpu.hh,
+	* src/target/arm/epilogue.cc,
+	* src/target/arm/exp.brg,
+	* src/target/arm/mem.brg,
+	* src/target/arm/move.brg,
+	* src/target/arm/move_load.brg,
+	* src/target/arm/move_store.brg,
+	* src/target/arm/prologue.hh,
+	* src/target/arm/target.cc,
+	* src/target/arm/target.hh: Here.
+
+2017-05-26  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	arm: remove useless default ctor
+
+	* src/target/arm/arm-layout.hh: Here.
+
+2017-05-26  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	Revert "regalloc: swap callee-save and caller-save order"
+
+	This reverts commit bd341c1620423f8d895a923edb58ba9cb6d4a4dd.
+
+	This change caused big-exp.tig to fail. Investigate.
+
+	* src/regalloc/color.cc,
+	* src/regalloc/color.hh: Here.
+
+2017-05-12  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.59 for 2019-tc-6.0
+
+	* .last-cl-gen, ChangeLog, NEWS.txt, configure.ac: here.
+
 2017-05-12  Etienne Renault  <renault@lrde.epita.fr>
 
 	Version 1.59 for 2019-tc-6.0
