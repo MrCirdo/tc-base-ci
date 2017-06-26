@@ -1,3 +1,8 @@
+New in 1.62, 2017-06-26
+
+* General Maintenance
+  - fix typos 
+
 New in 1.61, 2017-06-05
 
 * General Maintenance

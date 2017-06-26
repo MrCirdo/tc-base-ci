@@ -1,3 +1,30 @@
+2017-06-26  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.62 for 2019-tc-9.0
+
+	* .last-cl-gen, ChangeLog, NEWS.txt, configure.ac: here.
+
+2017-06-20  Guillaume Marques  <marque_o@yaka.epita.fr>
+
+	style: regalloc: fix typo
+
+	* src/regalloc/color.hh: Here.
+
+2017-06-13  Etienne Renault  <renault@lrde.epita.fr>
+
+	bf: handle environment issues
+
+	* buildfarm/bootstrap, buildfarm/build,
+	* buildfarm/check, buildfarm/common,
+	* buildfarm/configure, buildfarm/coverage,
+	* buildfarm/distcheck: here.
+
+2017-06-05  Etienne Renault  <renault@lrde.epita.fr>
+
+	Version 1.61 for 2019-tc-8.0
+
+	* .last-cl-gen, ChangeLog, NEWS.txt, configure.ac: here.
+
 2017-06-05  Etienne Renault  <renault@lrde.epita.fr>
 
 	Version 1.61 for 2019-tc-8.0
