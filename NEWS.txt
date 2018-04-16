@@ -1,3 +1,7 @@
+New in 1.67, 2018-04-16
+
+* General Maintenance
+
 New in 1.66, 2018-03-09
 
 * General Maintenance
