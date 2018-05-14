@@ -1,6 +1,6 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
-.                             : 5393 400  13
+.                             : 5668 412  13
     lib                       :  249  14  17
         misc                  :  249  14  17
             scoped-map.hh     :   66   2  33
@@ -9,7 +9,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :    8   5   1
             variant.hxx       :    1   1   1
-    src                       : 5144 386  13
+    src                       : 5419 398  13
         ast                   : 1573  70  22
             array-exp.cc      :   26   1  26
             array-exp.hh      :   43   1  43
@@ -80,6 +80,10 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             tasks.hh          :   40   1  40
         callgraph             :    4   1   4
             call-graph-visitor.cc:    4   1   4
+        canon                 :  275  12  22
+            canon.cc          :   64   6  10
+            libcanon.cc       :   20   1  20
+            traces.cc         :  191   5  38
         desugar               :  230   9  25
             bounds-checking-visitor.cc:  139   1 139
             bounds-checking-visitor.hh:    7   1   7
