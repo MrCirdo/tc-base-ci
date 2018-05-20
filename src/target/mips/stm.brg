@@ -1,0 +1,29 @@
+# stm.brg                                                -*- c++ -*-
+
+%include move.brg
+stm: move;
+
+%include cjump.brg
+stm: cjump;
+
+stm: Sxp(exp);
+
+stm: Jump
+{
+  auto jump = tree.cast<Jump>();
+  temp::Label dest = jump->label_get().front();
+  EMIT(MIPS_ASSEMBLY.jump_build(dest));
+}
+
+stm: Seq
+{
+  tree_list_type& children = tree->children_get();
+  for (rTree& t : children)
+    REDUCE(t, MB_NTERM_stm);
+}
+
+stm: Label
+{
+  auto lab = tree.cast<Label>();
+  EMIT(MIPS_ASSEMBLY.label_build(lab->label_get()));
+}

@@ -1,0 +1,87 @@
+#! /bin/sh
+
+# Exit status.
+status=0
+
+# Any tool failure is a failure of the script.
+set -e
+
+: ${MONOBURG=@MONOBURG@}
+
+# monoburg++ INPUT OUTPUT HEADER OPTIONS
+# --------------------------------------
+
+usage ()
+{
+  cat <<EOF
+usage: monoburg++ OPTIONS... INPUT
+
+Options:
+  -h, --help              display this message and exit successfully
+  -d, --header-file=FILE  FILE will be the header file
+  -r, --root=DIR          FILEs are relative to this root
+  -s, --source-file=FILE  set FILE to be the output source code file
+  --verbose               display diffs
+EOF
+  exit 0
+}
+
+## ---------------------- ##
+## Command line parsing.  ##
+## ---------------------- ##
+
+get_options ()
+{
+  while test $# != 0
+  do
+    # Handle --option=value by splitting apart and putting back on argv.
+    case $1 in
+      (--*=*)
+        opt=$(echo "$1" | sed -e 's/=.*//')
+        val=$(echo "$1" | sed -e 's/[^=]*=//')
+        shift
+        set dummy "$opt" "$val" ${1+"$@"}; shift
+        ;;
+    esac
+
+    case $1 in
+      (-h | --help   )    usage;;
+      (-d | --header-file)    shift; header=$1;;
+      (-s | --source-file)    shift; source=$1;;
+      (-r | --root)       shift; root=$1;;
+      (-n | --header-define) opts="$opts $1 $2"; shift;;
+      (--verbose)         verbose=:
+                          move_if_change="$move_if_change --verbose";;
+      (--) shift; opts="$opts $@"; break 2;;
+      (-*) opts="$opts $@";;
+      (*)  input=$1;;
+     esac
+     shift
+  done
+}
+
+
+me=$(basename $0)
+move_if_change='@abs_srcdir@/move-if-change'
+get_options "$@"
+
+
+$MONOBURG $opts -I $(dirname $input) -s $source.tmp -d $header.tmp $input
+
+for file in "$source" "$header"
+do
+  perl -pi \
+       -MFile::Basename -MFile::Spec \
+       -e '
+  # Remove the .tmp extension from temporary files.
+  s{(\Q'"$source"'\E|\Q'"$header"'\E)\.tmp}{$1}g;
+
+  # Replace absolute paths with relative ones, so that we do not
+  # depend on the environment of the user.
+  s{^(?:#line \d+|#include) \K"(.*)"$}
+   {"\"" . File::Spec->abs2rel($1, "'"$root"'") . "\""}ge;
+' \
+       "$file.tmp"
+  $move_if_change "$file.tmp" "$file"
+  chmod -w "$file"
+done
