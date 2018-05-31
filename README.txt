@@ -1,6 +1,6 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
-.                             : 6969 459  15
+.                             : 7082 463  15
     lib                       :  249  14  17
         misc                  :  249  14  17
             scoped-map.hh     :   66   2  33
@@ -9,7 +9,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :    8   5   1
             variant.hxx       :    1   1   1
-    src                       : 6720 445  15
+    src                       : 6833 449  15
         ast                   : 1573  70  22
             array-exp.cc      :   26   1  26
             array-exp.hh      :   43   1  43
@@ -101,6 +101,10 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             pruner.hh         :    9   1   9
             tasks.cc          :   10   2   5
             tasks.hh          :    8   2   4
+        liveness              :  113   4  28
+            flowgraph.hxx     :   32   2  16
+            interference-graph.cc:   43   1  43
+            liveness.cc       :   38   1  38
         llvmtranslate         :  249  42   5
             escapes-collector.cc:   38   8   4
             llvm-type-visitor.cc:    5   4   1
