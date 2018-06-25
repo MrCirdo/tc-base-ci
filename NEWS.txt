@@ -1,3 +1,9 @@
+New in 1.71, 2018-06-25
+
+* Fix Maintenance
+  - fix broken make dist
+  - add gitlab-ci support
+
 New in 1.70, 2018-05-31
 
 * General Maintenance
