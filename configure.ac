@@ -1,7 +1,7 @@
 dnl Catch macros that are not expanded.
 m4_pattern_forbid([^(AM|AX|LT|TC)_])
 
-m4_define([TC_CLANG_PREREQ],    [4.0])
+m4_define([TC_CLANG_PREREQ],    [7.0])
 m4_define([TC_GCC_PREREQ],      [8.1])
 m4_define([TC_HAVM_PREREQ],     [0.27])
 m4_define([TC_NOLIMIPS_PREREQ], [0.10])
@@ -12,7 +12,7 @@ AC_PREREQ([2.64])
 ## Package set up.  ##
 ## ---------------- ##
 
-AC_INIT([LRDE Tiger Compiler], [1.75], [tiger@lrde.epita.fr], [tc],
+AC_INIT([LRDE Tiger Compiler], [1.76], [tiger@lrde.epita.fr], [tc],
         [http://tiger.lrde.epita.fr])
 
 # Auxiliary files.
@@ -40,18 +40,18 @@ AC_PROG_CXX
 # features.  Or course, we should rather check for features, not
 # version numbers.
 cxx_version=$($CXX --version |
-  sed -n ['/^[^0-9]*\([0-9][0-9.]*[0-9]\).*$/{s//\1/;p;q;}'])
+              sed -n ['/.* \([0-9][0-9.]*[0-9]\) .*$/{s//\1/;p;q;}'])
 case $($CXX --version) in
   (*clang*)
     AS_VERSION_COMPARE([$cxx_version], [TC_CLANG_PREREQ],
-      [AC_MSG_WARN([clang++ >= TC_CLANG_PREREQ is required, have $cxx_version])])
+      [AC_MSG_ERROR([clang++ >= TC_CLANG_PREREQ is required, have $cxx_version])])
     ;;
   (*g++*)
     AS_VERSION_COMPARE([$cxx_version], [TC_GCC_PREREQ],
-      [AC_MSG_WARN([g++ >= TC_GCC_PREREQ is required, have $cxx_version])])
+      [AC_MSG_ERROR([g++ >= TC_GCC_PREREQ is required, have $cxx_version])])
     ;;
   (*)
-    AC_MSG_WARN([g++ >= TC_GCC_PREREQ or clang++ >= TC_CLANG_PREREQ is recommended, have none])
+    AC_MSG_ERROR([g++ >= TC_GCC_PREREQ or clang++ >= TC_CLANG_PREREQ is required, have none])
     ;;
 esac
 
@@ -213,6 +213,11 @@ AM_CONDITIONAL([IA32_FREEBSD],
 AM_CONDITIONAL([SUPPORTED_IA32],
                [echo "$host" | grep -q '^\(i.86\|x86_64\).*linux\|^\(i.86\|amd64\).*freebsd'])
 
+# HAVM.
+TC_PROG([havm], [>=TC_HAVM_PREREQ], [HAVM], [The Tree Virtual Machine])
+# Debian does not provide a llvm-config binary
+TC_PROG([llvm-config-7 llvm-config], [>=TC_CLANG_PREREQ], [LLVM_CONFIG], [Print LLVM compilation options])
+TC_PROG([clang-7 clang],             [>=TC_CLANG_PREREQ], [CLANG],       [C language family frontend for LLVM])
 
 
 

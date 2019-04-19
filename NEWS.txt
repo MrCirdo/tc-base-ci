@@ -1,3 +1,8 @@
+New in 1.76, 2019-04-19
+
+* General Maintainance
+  -  configure: fix compiler version check
+
 New in 1.75, 2019-03-01
 
 * General Maintainance
