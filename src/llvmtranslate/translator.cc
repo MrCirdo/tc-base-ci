@@ -6,7 +6,6 @@
 #include <llvm/ADT/Triple.h>
 #include <llvm/Config/llvm-config.h> // LLVM_VERSION_*
 #include <llvm/IR/LLVMContext.h>
-#include <llvm/IR/TypeBuilder.h>
 #include <llvm/IR/Verifier.h> // llvm::verifyFunction
 #include <llvm/Support/Host.h> // llvm::sys
 
@@ -26,14 +25,14 @@ namespace llvmtranslate
     llvm::IntegerType*
     i32_t(llvm::LLVMContext& ctx)
     {
-      return llvm::TypeBuilder<int32_t, false>::get(ctx);
+      return llvm::Type::getInt32Ty(ctx);
     }
 
     inline
     llvm::PointerType*
     i32p_t(llvm::LLVMContext& ctx)
     {
-      return llvm::TypeBuilder<int32_t*, false>::get(ctx);
+      return llvm::Type::getInt32PtrTy(ctx);
     }
 
     llvm::AllocaInst*

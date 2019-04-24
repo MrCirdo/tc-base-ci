@@ -4,7 +4,6 @@
  */
 
 #include <llvm/IR/DerivedTypes.h>
-#include <llvm/IR/TypeBuilder.h>
 
 #include <llvmtranslate/llvm-type-visitor.hh>
 #include <type/types.hh>
@@ -41,13 +40,13 @@ namespace llvmtranslate
   void
   LLVMTypeVisitor::operator()(const type::Void&)
   {
-    type_ = llvm::TypeBuilder<void, false>::get(ctx_);
+    type_ = llvm::Type::getVoidTy(ctx_);
   }
 
   void
   LLVMTypeVisitor::operator()(const type::Int&)
   {
-    type_ = llvm::TypeBuilder<int32_t, false>::get(ctx_);
+    type_ = llvm::Type::getInt32Ty(ctx_);
   }
 
   void
