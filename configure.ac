@@ -3,8 +3,8 @@ m4_pattern_forbid([^(AM|AX|LT|TC)_])
 
 m4_define([TC_CLANG_PREREQ],    [7.0])
 m4_define([TC_GCC_PREREQ],      [8.1])
-m4_define([TC_HAVM_PREREQ],     [0.27])
-m4_define([TC_NOLIMIPS_PREREQ], [0.10])
+m4_define([TC_HAVM_PREREQ],     [0.28])
+m4_define([TC_NOLIMIPS_PREREQ], [0.11])
 
 AC_PREREQ([2.64])
 
@@ -12,7 +12,7 @@ AC_PREREQ([2.64])
 ## Package set up.  ##
 ## ---------------- ##
 
-AC_INIT([LRDE Tiger Compiler], [1.76], [tiger@lrde.epita.fr], [tc],
+AC_INIT([LRDE Tiger Compiler], [1.77], [tiger@lrde.epita.fr], [tc],
         [http://tiger.lrde.epita.fr])
 
 # Auxiliary files.
