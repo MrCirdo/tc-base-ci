@@ -1,0 +1,8 @@
+# temp.brg                                               -*- c++ -*-
+
+temp: Temp
+{
+  auto temp = tree.cast<Temp>();
+
+  temp->asm_set(temp->temp_get());
+}

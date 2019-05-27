@@ -1,3 +1,5 @@
+Bump 1.78, 2019-05-27 for tc-7
+
 New in 1.77, 2019-05-06
 
 *  General Maintainance
