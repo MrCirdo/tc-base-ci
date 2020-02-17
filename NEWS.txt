@@ -1,11 +1,13 @@
-New in 1.81, 2019-02-09
+Bump 1.82, 2020-02-17 for tc-2
+
+New in 1.81, 2020-02-09
 
 *  General Maintainance
    - gitlab-ci: produce static binary
    - reformat code
    - move to C++20
 
-Bump 1.80, 2019-06-24for tc-9
+Bump 1.80, 2019-06-24 for tc-9
 Bump 1.79, 2019-06-03 for tc-8
 Bump 1.78, 2019-05-27 for tc-7
 
