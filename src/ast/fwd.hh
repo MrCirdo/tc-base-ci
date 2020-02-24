@@ -24,6 +24,7 @@ namespace ast
   class ClassTy;
   class Dec;
   class DecsList;
+  class Escapable;
   class Exp;
   class Field;
   class FieldInit;
