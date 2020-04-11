@@ -1,3 +1,9 @@
+New in 1.85, 2020-04-11
+
+*  General Maintainance
+   - object: (type-checker) fix binding spurious members
+   - enable static linking with LLVM
+
 Bump 1.84, 2020-03-23 for tc-4
 Bump 1.83, 2020-02-24 for tc-3
 Bump 1.82, 2020-02-17 for tc-2
@@ -17,7 +23,6 @@ New in 1.77, 2019-05-06
 
 *  General Maintainance
    - gitlab-ci: split different phases 
-
 
 New in 1.76.1, 2019-04-29
 

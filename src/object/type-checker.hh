@@ -101,8 +101,8 @@ namespace object
   private:
     /// Current visited class.
     type::Class* current_ = nullptr;
-    /// Are we within an ast::MethodDec's body?
-    bool within_methoddec_body_p_ = false;
+    /// Are we directly within an ast::ClassTy's body?
+    bool within_class_body_p_ = false;
   };
 
 } // namespace object

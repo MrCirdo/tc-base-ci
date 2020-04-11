@@ -15,7 +15,7 @@ namespace object
   TypeChecker::TypeChecker()
     : super_type()
     , current_(nullptr)
-    , within_methoddec_body_p_(false)
+    , within_class_body_p_(false)
   {
     // Reset the subclasses of Object.  This is required if several
     // trees are processed during the compilation.
@@ -141,11 +141,16 @@ namespace object
 
   void TypeChecker::operator()(ast::MethodDecs& e)
   {
+    precondition(within_class_body_p_);
+    within_class_body_p_ = false;
+
     // Two passes: once on headers, then on bodies.
     for (ast::MethodDec* m : e.decs_get())
       visit_dec_header(*m);
     for (ast::MethodDec* m : e.decs_get())
       visit_dec_body(*m);
+
+    within_class_body_p_ = true;
   }
 
   // Store the type of this method.
@@ -169,10 +174,7 @@ namespace object
   // Type check this method's body.
   void TypeChecker::visit_dec_body(ast::MethodDec& e)
   {
-    precondition(!within_methoddec_body_p_);
-    within_methoddec_body_p_ = true;
     visit_routine_body<type::Method>(e);
-    within_methoddec_body_p_ = false;
   }
 
   /*---------------.
@@ -181,13 +183,30 @@ namespace object
 
   void TypeChecker::operator()(ast::VarDec& e)
   {
+    // Signal that we are not directly inside a class' body, to avoid binding
+    // spurious members.
+    //
+    // For example:
+    // let
+    //   class A =
+    //   {
+    //     var a := let var b := 0 in b end
+    //   }
+    //   var toto := new A
+    // in
+    //   toto.a /* Valid */
+    //   toto.b /* Invalid */
+    // end
+    bool saved_within_class_body = within_class_body_p_;
+    within_class_body_p_ = false;
     super_type::operator()(e);
-    /* If we are inside a class declaration, but not within a
-       method's body, then E is an attribute: record it into the
-       CURRENT_ class.  */
-    if (e.init_get() && current_ && !within_methoddec_body_p_)
+    within_class_body_p_ = saved_within_class_body;
+
+    /* If we are directly inside a class declaration then E is an attribute:
+       record it into the CURRENT_ class.  */
+    if (within_class_body_p_)
       {
-        assertion(e.init_get());
+        assertion(current_);
 
         if (current_->attr_type(e.name_get()))
           error(e, "attribute multiply defined", e.name_get());
@@ -213,6 +232,7 @@ namespace object
   // Handle the members of a class.
   void TypeChecker::visit_dec_members(ast::ClassTy& e)
   {
+    assertion(!within_class_body_p_); // Should be false by the time we get here
     const type::Type* type = nullptr;
   // FIXME: Some code was deleted here.
 
@@ -221,18 +241,15 @@ namespace object
     assertion(class_type);
 
     type::Class* saved_class_type = current_;
+    within_class_body_p_ = true;
     // Make the type writable, so that we can add references to the
     // types of the members.
     current_ = const_cast<type::Class*>(class_type);
-    /* Even if it were the case, pretend we are not within a method,
-       since we are inside a class definition, which ``overrides'' any
-       (outer) enclosing method.  */
-    bool saved_within_methoddec_body_p = within_methoddec_body_p_;
-    within_methoddec_body_p_ = false;
     e.decs_get().accept(*this);
+
     // Set back the status we had before we visited the members.
-    within_methoddec_body_p_ = saved_within_methoddec_body_p;
     current_ = saved_class_type;
+    within_class_body_p_ = false;
   }
 
 } // namespace object
