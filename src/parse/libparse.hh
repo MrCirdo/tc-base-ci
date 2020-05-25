@@ -42,9 +42,8 @@ namespace parse
         misc::file_library& library,
         bool scan_trace_p,
         bool parse_trace_p
-        ,
-        bool enable_object_extensions_p = false
-  );
+        , bool enable_object_extensions_p = false
+       );
 
   /// \brief Parse a Tweast.
   ///

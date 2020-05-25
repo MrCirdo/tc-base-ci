@@ -135,14 +135,14 @@ try:
 except ImportError:
   sys.exit(1)
 '
-  if ! python -c ''; then
+  if ! python3 -c ''; then
     fatal "Python is required"
-  elif ! python -c "$python_check_mod_yaml"; then
+  elif ! python3 -c "$python_check_mod_yaml"; then
     fatal "Python module \`yaml' is required (http://pyyaml.org/)"
   fi
 
   rm -f src/ast/ast-nodes.mk
-  python dev/ast-nodes-mk-gen src/ast <src/ast/ast.yml >src/ast/ast-nodes.mk \
+  python3 dev/ast-nodes-mk-gen src/ast <src/ast/ast.yml >src/ast/ast-nodes.mk \
     || {
       rv=$?
       cat >&2 <<EOF

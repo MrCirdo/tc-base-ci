@@ -11,6 +11,8 @@
 #include <translate/exp.hh>
 #include <translate/level.hh>
 #include <translate/translation.hh>
+#include <translate/fwd.hh>
+#include <translate/tasks.hh>
 #include <translate/translator.hh>
 #include <tree/fragment.hh>
 #include <tree/fragments.hh>
@@ -18,6 +20,9 @@
 
 namespace translate
 {
+
+using namespace translate::tasks;
+
   Translator::Translator()
     : exp_(nullptr)
     , fragments_(new tree::Fragments)

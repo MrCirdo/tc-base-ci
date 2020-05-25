@@ -25,6 +25,7 @@ namespace inlining::tasks
 
   // FIXME: Some code was deleted here (Overload and inline).
 
+
   /*-------------------.
     | Function pruning.  |
     `-------------------*/
@@ -36,5 +37,6 @@ namespace inlining::tasks
                "rename types-compute");
 
   // FIXME: Some code was deleted here (Overload and prune).
+
 
 } // namespace inlining::tasks

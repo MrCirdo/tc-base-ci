@@ -20,7 +20,7 @@ namespace translate::tasks
   void hir_compute()
   {
     fragments = translate(*ast::tasks::the_program
-    );
+                         );
   }
 
   /// Display the HIR.

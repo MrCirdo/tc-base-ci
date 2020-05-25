@@ -14,8 +14,8 @@
 namespace inlining::tasks
 {
   /*-----------.
-    | Inlining.  |
-    `-----------*/
+  | Inlining.  |
+  `-----------*/
 
   void inline_expand()
   {
@@ -24,12 +24,15 @@ namespace inlining::tasks
 
   // FIXME: Some code was deleted here (Overload and inline).
 
+
+
   /*-------------------.
-    | Function pruning.  |
-    `-------------------*/
+  | Function pruning.  |
+  `-------------------*/
 
   void prune() { astclone::apply(::inlining::prune, ast::tasks::the_program); }
 
   // FIXME: Some code was deleted here (Overload and prune).
+
 
 } // namespace inlining::tasks

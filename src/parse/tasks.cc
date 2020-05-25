@@ -29,11 +29,11 @@ namespace parse::tasks
     bool scan_trace = scan_trace_p || getenv("SCAN");
     bool parse_trace = parse_trace_p || getenv("PARSE");
     std::pair<ast::DecsList*, misc::error> result =
-      ::parse::parse(prelude, filename, l, scan_trace,
-                     parse_trace
-                     ,
-                     object::tasks::enable_object_extensions_p
-      );
+      ::parse::parse(prelude, filename, l,
+                     scan_trace, parse_trace
+                     , object::tasks::enable_object_extensions_p
+                     );
+
     // If the parsing completely failed, stop.
     task_error() << result.second;
     if (!result.first)

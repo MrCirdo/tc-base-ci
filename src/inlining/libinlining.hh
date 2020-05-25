@@ -26,6 +26,7 @@ namespace inlining
   */
   template <typename A> A* inline_expand(const A& tree);
 
+
   /*-------------------.
   | Function pruning.  |
   `-------------------*/
@@ -38,5 +39,6 @@ namespace inlining
       \return      the AST whose unused functions have been removed, with
                    bindings and type-checked.  */
   template <typename A> A* prune(const A& tree);
+
 
 } // namespace inlining

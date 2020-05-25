@@ -32,6 +32,7 @@ namespace inlining
 
   template ast::DecsList* inline_expand(const ast::DecsList&);
 
+
   /*-------------------.
   | Function pruning.  |
   `-------------------*/
@@ -50,5 +51,6 @@ namespace inlining
   }
 
   template ast::DecsList* prune(const ast::DecsList&);
+
 
 } // namespace inlining

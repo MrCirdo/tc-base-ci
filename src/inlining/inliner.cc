@@ -39,6 +39,12 @@ namespace inlining
     delete graph;
   }
 
+  const misc::set<const ast::FunctionDec*>&
+  Inliner::rec_funs_get() const
+  {
+    return rec_funs_;
+  }
+
   // FIXME: Some code was deleted here.
 
 } // namespace inlining

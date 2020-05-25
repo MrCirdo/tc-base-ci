@@ -1,3 +1,9 @@
+New in 1.86, 2020-05-25
+
+*  General Maintainance
+  - Use python3 rather than python2
+  - Inliner: bug fixes
+
 New in 1.85, 2020-04-11
 
 *  General Maintainance

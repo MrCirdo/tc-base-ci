@@ -1,6 +1,6 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
-.                             : 5048 404  12
+.                             : 5314 416  12
     lib                       :  233  14  16
         misc                  :  233  14  16
             scoped-map.hh     :   65   2  32
@@ -9,7 +9,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :    8   5   1
             variant.hxx       :    1   1   1
-    src                       : 4815 390  12
+    src                       : 5081 402  12
         ast                   : 1405  70  20
             array-exp.cc      :   20   1  20
             array-exp.hh      :   42   1  42
@@ -80,6 +80,10 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             tasks.hh          :   42   1  42
         callgraph             :    4   1   4
             call-graph-visitor.cc:    4   1   4
+        canon                 :  263  12  21
+            canon.cc          :   63   6  10
+            libcanon.cc       :   20   1  20
+            traces.cc         :  180   5  36
         desugar               :  224   9  24
             bounds-checking-visitor.cc:  131   1 131
             bounds-checking-visitor.hh:    7   1   7
@@ -125,12 +129,12 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             tiger-parser.cc   :    7   1   7
         temp                  :   54  16   3
             identifier.hxx    :   54  16   3
-        translate             :  255  38   6
+        translate             :  258  38   6
             exp.cc            :   34   6   5
             level.cc          :    3   1   3
             translation.cc    :  111  10  11
             translation.hh    :    9   1   9
-            translator.cc     :   98  20   4
+            translator.cc     :  101  20   5
         tree                  :   43   1  43
             fragment.cc       :   43   1  43
         type                  :  785  68  11

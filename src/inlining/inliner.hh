@@ -30,6 +30,11 @@ namespace inlining
   // FIXME: Some code was deleted here.
     /// \}
 
+    /// \name Getters.
+    /// \{
+    const misc::set<const ast::FunctionDec*>& rec_funs_get() const;
+    /// \}
+
   private:
     /// Recursive functions of the program.
     misc::set<const ast::FunctionDec*> rec_funs_;

@@ -9,6 +9,7 @@
 #include <misc/symbol.hh>
 #include <parse/libparse.hh>
 #include <parse/location.hh>
+#include <parse/tasks.hh>
 #include <parse/tiger-parser.hh>
 #include <parse/tweast.hh>
 
@@ -16,13 +17,14 @@
 namespace parse
 {
   // Parse a Tiger file, return the corresponding abstract syntax.
-  std::pair<ast::DecsList*, misc::error> parse(const std::string& prelude,
-                                               const std::string& fname,
-                                               misc::file_library& library,
-                                               bool scan_trace_p,
-                                               bool parse_trace_p
-                                               ,
-                                               bool enable_object_extensions_p
+  std::pair<ast::DecsList*, misc::error>
+  parse(const std::string& prelude,
+        const std::string& fname,
+        misc::file_library& library,
+        bool scan_trace_p,
+        bool parse_trace_p
+        ,
+        bool enable_object_extensions_p
   )
   {
     // Current directory must be that of the file currently processed.
