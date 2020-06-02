@@ -1,6 +1,6 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
-.                             : 5314 416  12
+.                             : 6730 463  14
     lib                       :  233  14  16
         misc                  :  233  14  16
             scoped-map.hh     :   65   2  32
@@ -9,7 +9,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :    8   5   1
             variant.hxx       :    1   1   1
-    src                       : 5081 402  12
+    src                       : 6497 449  14
         ast                   : 1405  70  20
             array-exp.cc      :   20   1  20
             array-exp.hh      :   42   1  42
@@ -127,6 +127,28 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             scantiger.ll      :   18   3   6
             tasks.cc          :    1   1   1
             tiger-parser.cc   :    7   1   7
+        target                : 1416  47  30
+            arm               :  354  12  29
+                arm-assembly.cc:    4   2   2
+                arm-codegen.cc:  130   4  32
+                call.brg      :    9   1   9
+                epilogue.cc   :  119   1 119
+                move.brg      :    2   2   1
+                runtime.s     :   90   2  45
+            ia32              :  526  12  43
+                call.brg      :    9   1   9
+                epilogue.cc   :  177   1 177
+                gas-assembly.cc:    5   2   2
+                gas-codegen.cc:  188   4  47
+                move.brg      :    2   2   1
+                runtime-gnu-linux.s:  145   2  72
+            mips              :  536  23  23
+                call.brg      :   10   1  10
+                epilogue.cc   :  119   1 119
+                move.brg      :    3   2   1
+                runtime.s     :  214   6  35
+                spim-assembly.cc:   58   9   6
+                spim-codegen.cc:  132   4  33
         temp                  :   54  16   3
             identifier.hxx    :   54  16   3
         translate             :  258  38   6

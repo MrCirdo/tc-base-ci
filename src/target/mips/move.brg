@@ -1,0 +1,55 @@
+# move.brg                                               -*- c++ -*-
+
+
+move: Move(Mem(e1 : exp), Mem(e2 : exp))
+{
+  temp::Temp rval;
+
+  auto exp = e2.cast<Exp>();
+  assertion(exp);
+  EMIT(MIPS_ASSEMBLY.load_build(exp->asm_get(), rval));
+
+  exp = e1.cast<Exp>();
+  assertion(exp);
+  EMIT(MIPS_ASSEMBLY.store_build(rval, exp->asm_get()));
+}
+
+%include move_store.brg
+%include move_load.brg
+
+move: Move(Mem(c : Const), e : exp)
+{
+  // FIXME: Some code was deleted here.
+}
+
+move: Move(Mem(e1 : exp), e2: exp)
+{
+  EMIT(MIPS_ASSEMBLY.store_build(e2->asm_get(), e1->asm_get()));
+}
+
+move: Move(dst : temp, src : call)
+{
+  EMIT(MIPS_ASSEMBLY.move_build(src->asm_get(), dst->asm_get()));
+}
+
+move: Move(dst : temp, src : Const)
+{
+  EMIT(MIPS_ASSEMBLY.move_build(src.cast<Const>()->value_get(),
+                                dst->asm_get()));
+}
+
+move: Move(dst : temp, Mem(c : Const))
+{
+  EMIT(MIPS_ASSEMBLY.load_build(c.cast<Const>()->value_get(),
+                                dst->asm_get()));
+}
+
+move: Move(dst : temp, Mem(e : exp))
+{
+  EMIT(MIPS_ASSEMBLY.load_build(e->asm_get(), dst->asm_get()));
+}
+
+move: Move(dst : temp, src : exp)
+{
+  // FIXME: Some code was deleted here.
+}
