@@ -88,7 +88,7 @@ namespace parse
                  << &misc::error::exit;
       }
 
-  // FIXME: Some code was deleted here (Initialize the scanner and parser, then parse and close).
+    // FIXME: Some code was deleted here (Initialize the scanner and parser, then parse and close).
     ast_type res = ast_;
     ast_ = static_cast<ast::Exp*>(nullptr);
 

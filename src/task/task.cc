@@ -61,8 +61,8 @@ namespace task
   std::string Task::normalize(const std::string& task_name)
   {
     std::string normalized_name;
-    ranges::replace_copy(task_name,
-      ranges::inserter(normalized_name, normalized_name.begin()),
+    ranges::replace_copy(
+      task_name, ranges::inserter(normalized_name, normalized_name.begin()),
       '_', '-');
     return normalized_name;
   }

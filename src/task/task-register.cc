@@ -158,7 +158,7 @@ namespace task
     using option = boost::program_options::basic_option<T>;
 
     return ranges::find_if(os,
-                        [&s](const option& o) { return s == o.string_key; })
+                           [&s](const option& o) { return s == o.string_key; })
       != end(os);
   }
 
@@ -170,10 +170,9 @@ namespace task
 
     // Create the category containing `help', `version' and `usage'.
     po::options_description generic;
-    generic.add_options()("help,?", "Give this help list")
-                         ("usage", "Give a short usage message")
-                         ("version", "Print program version")
-                         ("license", "Print program license");
+    generic.add_options()("help,?", "Give this help list")(
+      "usage", "Give a short usage message")(
+      "version", "Print program version")("license", "Print program license");
 
     // Positional parameter.
     po::options_description hidden;
@@ -220,20 +219,18 @@ namespace task
 
             if (!std::filesystem::exists(licenses))
               {
-                std::cerr << program_name
-                          << ": cannot open licenses directory"
+                std::cerr << program_name << ": cannot open licenses directory"
                           << ": No such file or directory\n";
               }
             else if (!std::filesystem::is_directory(licenses))
               {
-                std::cerr << program_name
-                          << ": cannot open licenses directory"
+                std::cerr << program_name << ": cannot open licenses directory"
                           << ": Not a directory\n";
               }
             else
               {
                 using directory_iterator = std::filesystem::directory_iterator;
-                for (const auto& entry: directory_iterator(licenses))
+                for (const auto& entry : directory_iterator(licenses))
                   {
                     const auto& path = entry.path();
 
@@ -247,9 +244,11 @@ namespace task
                       continue;
 
                     std::cout << "\n  === " << path.stem().string()
-                              << " license notice ===\n\n" << license.rdbuf()
+                              << " license notice ===\n\n"
+                              << license.rdbuf()
                               << "\n  === " << path.stem().string()
-                              << " license notice ===\n" << std::endl;
+                              << " license notice ===\n"
+                              << std::endl;
                   }
               }
           }
