@@ -46,7 +46,7 @@ namespace misc
   template <typename T, class C>
   inline unique<T, C>::operator const data_type&() const
   {
-    // FIXME: Some code was deleted here.
+    return this->get();
   }
 
   template <typename T, class C>
