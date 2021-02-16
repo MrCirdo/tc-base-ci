@@ -62,4 +62,64 @@ authors.h: AUTHORS.txt $(AUTHORS_H_GEN)
 	$(AM_V_GEN)$(AUTHORS_H_GEN) $< >$@.tmp
 	$(AM_V_at)$(top_srcdir)/build-aux/bin/move-if-change $@.tmp $@
 
+.PHONY: everything-aux
+everything-aux: \
+  src/parse/libparse.lo\
+  src/parse/parsetiger.lo\
+  src/parse/prelude.lo\
+  src/parse/scantiger.lo\
+  src/parse/tiger-parser.lo\
+  $(NULL)
+everything-aux: CXXFLAGS+= \
+	-Wno-disabled-macro-expansion \
+	-Wno-extra-semi-stmt \
+	-Wno-implicit-fallthrough \
+	-Wno-old-style-cast \
+	-Wno-shorten-64-to-32 \
+	-Wno-switch-enum \
+	-Wno-unused-macros \
+	-Wno-zero-as-null-pointer-constant \
+	$(: todo) \
+	-Wno-documentation-unknown-command \
+	-Wno-reserved-id-macro \
+	-Wno-suggest-destructor-override \
+	-Wno-suggest-override \
+	-Wno-weak-vtables \
+	$(: given) \
+	-Wno-return-type \
+	-Wno-unused-exception-parameter \
+	-Wno-unused-parameter \
+	-Wno-unused-template \
+	-Wno-unused-variable \
+	$(NULL)
 
+.PHONY: everything2
+everything2: CXXFLAGS += \
+	-Wno-exit-time-destructors \
+	-Wno-global-constructors \
+	$(: todo) \
+	-Wno-documentation-unknown-command \
+	-Wno-implicit-int-float-conversion \
+	-Wno-missing-variable-declarations \
+	-Wno-reserved-id-macro \
+	-Wno-shorten-64-to-32 \
+	-Wno-sign-conversion \
+	-Wno-weak-vtables \
+	$(: given) \
+	-Wno-return-type \
+	-Wno-unused-exception-parameter \
+	-Wno-unused-parameter \
+	-Wno-unused-variable \
+	$(NULL)
+everything2: all check
+
+.PHONY: everything
+everything: CXX=clang++
+everything: CXXFLAGS= \
+	-Weverything\
+	-Werror\
+	-std=c++20\
+	-Wno-c++98-compat\
+	-Wno-padded\
+	$(NULL)
+everything: everything-aux everything2

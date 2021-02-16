@@ -45,7 +45,7 @@ namespace task
 #undef DISJUNCTIVE_TASK_DECLARE
 
 // Should we define the objects, or just declare them?
-#if DEFINE_TASKS
+#ifdef DEFINE_TASKS
 
 /// Define the current Task group name.
 #  define TASK_GROUP(Name) const char group_name[] = Name
