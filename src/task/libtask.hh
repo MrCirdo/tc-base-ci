@@ -92,15 +92,15 @@ namespace task
 /// Instantiate a FunctionTask.
 #  define TASK_DECLARE(Name, Help, Routine, Deps) extern void(Routine)()
 /// Instantiate a BooleanTask.
-#  define BOOLEAN_TASK_DECLARE(Name, Help, Flag, Deps) extern bool Flag;
+#  define BOOLEAN_TASK_DECLARE(Name, Help, Flag, Deps) extern bool Flag
 /// Instantiate an IntTask.
 #  define INT_TASK_DECLARE(Name, Min, Max, Help, Flag, Deps)
 /// Instantiate a StringTask.
 #  define STRING_TASK_DECLARE(Name, Default, Help, Flag, Deps)                 \
-    extern std::string Flag;
+    extern std::string Flag
 /// Instantiate a MultipleStringTask.
 #  define MULTIPLE_STRING_TASK_DECLARE(Name, Help, Routine, Deps)              \
-    extern void(Routine)(std::string);
+    extern void(Routine)(std::string)
 /// Instantiate a DisjunctiveTask.
 #  define DISJUNCTIVE_TASK_DECLARE(Name, Help, Deps)
 
