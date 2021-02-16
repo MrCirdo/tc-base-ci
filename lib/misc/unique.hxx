@@ -12,16 +12,9 @@ namespace misc
 {
   template <typename T, class C> unique<T, C>::unique(const data_type& s)
   {
-    if (object_set_instance().contains(s))
-    {
-      this->obj_ = &(*object_set_instance().find(s));
-    }
-    else
-    {
+    if (!object_set_instance().contains(s))
       object_set_instance().insert(s);
-      this->obj_ = &(*object_set_instance().find(s));
-    }
-
+    this->obj_ = &(*object_set_instance().find(s));
   }
 
   template <typename T, class C>
