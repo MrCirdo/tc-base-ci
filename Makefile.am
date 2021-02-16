@@ -32,7 +32,7 @@ endif
 # Most headers are to be shipped and to be found in src/, e.g.
 # tasks/tasks.hh is shipped in $(top_srcdir)/src/task/tasks.hh.  Some
 # are *built* in src, e.g., $(top_builddir)/src/modules.hh.
-AM_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_srcdir)/src -I$(top_builddir)/src
+AM_CPPFLAGS = -I$(top_srcdir)/lib -isystem$(top_srcdir)/lib/vendor -I$(top_srcdir)/src -I$(top_builddir)/src
 AM_CPPFLAGS += $(BOOST_CPPFLAGS)
 # Find the prelude.
 AM_CPPFLAGS += -DPKGDATADIR="\"$(pkgdatadir)\""
