@@ -15,6 +15,11 @@ AC_PREREQ([2.64])
 AC_INIT([LRDE Tiger Compiler], [1.90], [tiger@lrde.epita.fr], [tc],
         [http://tiger.lrde.epita.fr])
 
+if test -z "$CXXFLAGS"
+then
+  CXXFLAGS=''
+fi
+
 # Auxiliary files.
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([build-aux/m4])
@@ -79,6 +84,13 @@ fi
 
 # Try to use pipes between compiler stages to speed the compilation up.
 AX_CHECK_COMPILE_FLAG([-pipe], [CXXFLAGS="$CXXFLAGS -pipe"])
+
+SANITIZER_FLAGS=''
+
+for flag in address undefined leak pointer-compare pointer-subtract memory
+do
+  AX_CHECK_COMPILE_FLAG([-fsanitize=$flag], [SANITIZER_FLAGS="$SANITIZER_CXXFLAGS -fsanitize=$flag"])
+done
 
 # Use good warnings.
 TC_CXX_WARNINGS([[-Wall],

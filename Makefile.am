@@ -115,7 +115,7 @@ everything2: all check
 
 .PHONY: everything
 everything: CXX=clang++
-everything: CXXFLAGS= \
+everything: CXXFLAGS += \
 	-Weverything\
 	-Werror\
 	-std=c++20\
@@ -123,3 +123,7 @@ everything: CXXFLAGS= \
 	-Wno-padded\
 	$(NULL)
 everything: everything-aux everything2
+
+debug: CXXFLAGS += $(SANITIZER_FLAGS) -g3 -O0
+debug: LDFLAGS += $(SANITIZER_FLAGS) -g3 -O0
+debug: everything
