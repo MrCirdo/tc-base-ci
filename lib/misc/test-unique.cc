@@ -7,7 +7,7 @@
 
 #include <misc/contract.hh>
 #include <misc/unique.hh>
-void test_with_int()
+static void test_with_int()
 {
   using unique_int = misc::unique<int>;
   unique_int the_answer = 42;
@@ -22,7 +22,7 @@ void test_with_int()
   std::cout << the_answer << '\n';
 }
 
-void test_with_string()
+static void test_with_string()
 {
   using unique_str = misc::unique<std::string>;
   unique_str the_answer = std::string{"coucou"};
@@ -30,7 +30,7 @@ void test_with_string()
   unique_str the_solution = std::string{"coucou mais un peu différent"};
   std::string the_same_answer2 = the_same_answer;
 
-  // Checking misc::unique<int>.
+  // Checking misc::unique<std::string>.
   assertion(the_answer == unique_str(std::string{"coucou"}));
   assertion(the_answer == the_same_answer);
   assertion(the_answer != the_solution);
