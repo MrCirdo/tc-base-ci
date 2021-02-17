@@ -19,7 +19,6 @@ void test_with_int()
   assertion(the_answer == the_same_answer);
   assertion(the_answer != the_solution);
 
-
   std::cout << the_answer << '\n';
 }
 
@@ -27,7 +26,7 @@ void test_with_string()
 {
   using unique_str = misc::unique<std::string>;
   unique_str the_answer = std::string{"coucou"};
-  unique_str the_same_answer =  std::string{"coucou"};
+  unique_str the_same_answer = std::string{"coucou"};
   unique_str the_solution = std::string{"coucou mais un peu différent"};
   std::string the_same_answer2 = the_same_answer;
 
