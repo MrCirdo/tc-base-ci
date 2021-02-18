@@ -23,6 +23,7 @@ WORKDIR /project
 ENV LC_ALL=C
 RUN echo $SHELL
 ENV CONFIG_SHELL=/bin/bash
+RUN aclocal
 RUN autoconf
 
 # && ./configure && make
