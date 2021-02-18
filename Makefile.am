@@ -70,7 +70,7 @@ everything-aux: \
   src/parse/scantiger.lo\
   src/parse/tiger-parser.lo\
   $(NULL)
-everything-aux: CXXFLAGS+= \
+everything-aux: AM_CXXFLAGS += \
 	-Wno-disabled-macro-expansion \
 	-Wno-extra-semi-stmt \
 	-Wno-implicit-fallthrough \
@@ -94,7 +94,7 @@ everything-aux: CXXFLAGS+= \
 	$(NULL)
 
 .PHONY: everything2
-everything2: CXXFLAGS += \
+everything2: AM_CXXFLAGS += \
 	-Wno-exit-time-destructors \
 	-Wno-global-constructors \
 	$(: todo) \
@@ -111,11 +111,11 @@ everything2: CXXFLAGS += \
 	-Wno-unused-parameter \
 	-Wno-unused-variable \
 	$(NULL)
-everything2: all check
+everything2: $(bin_PROGRAMS) $(LTLIBRARIES) $(check_PROGRAMS) all check
 
 .PHONY: everything
 everything: CXX=clang++
-everything: CXXFLAGS += \
+everything: AM_CXXFLAGS += \
 	-Weverything\
 	-Werror\
 	-std=c++20\
@@ -124,6 +124,6 @@ everything: CXXFLAGS += \
 	$(NULL)
 everything: everything-aux everything2
 
-debug: CXXFLAGS += $(SANITIZER_FLAGS) -g3 -O0
-debug: LDFLAGS += $(SANITIZER_FLAGS) -g3 -O0
+debug: AM_CXXFLAGS += $(SANITIZER_FLAGS) -g3 -O0
+debug: AM_LDFLAGS += $(SANITIZER_FLAGS) -g3 -O0
 debug: everything

@@ -89,8 +89,10 @@ SANITIZER_FLAGS=''
 
 for flag in address undefined leak pointer-compare pointer-subtract memory
 do
-  AX_CHECK_COMPILE_FLAG([-fsanitize=$flag], [SANITIZER_FLAGS="$SANITIZER_CXXFLAGS -fsanitize=$flag"])
+  AX_CHECK_COMPILE_FLAG([-fsanitize=$flag], [SANITIZER_FLAGS="$SANITIZER_FLAGS -fsanitize=$flag"])
 done
+
+AC_SUBST([SANITIZER_FLAGS], ["$SANITIZER_FLAGS"])
 
 # Use good warnings.
 TC_CXX_WARNINGS([[-Wall],
