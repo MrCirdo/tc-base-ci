@@ -19,6 +19,7 @@ RUN mkdir /project
 COPY . /project
 
 WORKDIR /project
+ENV LC_ALL=C
 RUN autoreconf -vif 
 # && ./configure && make
 
