@@ -19,7 +19,7 @@ RUN mkdir /project
 COPY . /project
 
 WORKDIR /project
-RUN ./bootstrap 
+RUN autoreconf -vif 
 # && ./configure && make
 
 #ENV M4=/usr/bin/m4
