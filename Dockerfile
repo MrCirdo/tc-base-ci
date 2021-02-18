@@ -19,7 +19,6 @@ RUN mkdir /project
 COPY . /project
 
 WORKDIR /project
-RUN libtoolize --force
 RUN ls
 RUN zsh ./bootstrap
 RUN zsh /usr/bin/autoconf || zsh --version
