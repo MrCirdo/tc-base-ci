@@ -74,7 +74,7 @@ if ! "${stdpass-false}"; then
 fi
 
 if ! "${stdpass-false}"; then
-  AC_ERROR([unable to turn on C++20 mode with this compiler])
+  AC_MSG_ERROR(unable to turn on C++20 mode with this compiler)
 fi
 
 # Try to use pipes between compiler stages to speed the compilation up.
