@@ -21,6 +21,9 @@ COPY . /project
 WORKDIR /project
 
 RUN ls
+RUN which autoconf
+RUN $(which autoconf)
+RUN $(which autoconf) --version
 RUN ./bootstrap
 RUN ./configure
 RUN make
