@@ -20,7 +20,8 @@ COPY . /project
 
 WORKDIR /project
 ENV LC_ALL=C
-RUN autoreconf -vif 
+RUN autoconf
+
 # && ./configure && make
 
 #ENV M4=/usr/bin/m4
