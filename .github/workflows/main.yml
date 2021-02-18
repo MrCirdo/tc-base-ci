@@ -55,7 +55,7 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache
 
       - name: Build
-        run: ./autogen.sh
+        run: ./bootstrap
       - run: ./configure
       - run: make
             
