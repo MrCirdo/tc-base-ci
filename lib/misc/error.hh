@@ -89,7 +89,7 @@ namespace misc
     void exit_on_error() const;
 
     /// Throw an Internal Compiler Error.
-    void ice(const char* file, int line) const;
+    [[noreturn]] void ice(const char* file, int line) const;
 
     /// If the error status is set, consider that an Internal Compiler
     /// Error has happened and abort.
