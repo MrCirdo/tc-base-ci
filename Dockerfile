@@ -21,7 +21,7 @@ COPY . /project
 WORKDIR /project
 ENV LC_ALL=C
 RUN echo $SHELL
-ENV SHELL=/bin/bash
+ENV CONFIG_SHELL=/bin/bash
 RUN autoconf
 
 # && ./configure && make
