@@ -26,7 +26,7 @@ ENV CONFIG_SHELL=/bin/bash
 ENV M4=/bin/m4
 RUN aclocal
 RUN ./bootstrap
-RUN ./configure
+RUN set -x; ./configure
 
 # && ./configure && make
 
