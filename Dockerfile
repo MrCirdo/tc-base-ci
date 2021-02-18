@@ -5,7 +5,7 @@ RUN patched_glibc=glibc-linux4-2.33-4-x86_64.pkg.tar.zst && \
 curl -LO "https://repo.archlinuxcn.org/x86_64/$patched_glibc" && \
 bsdtar -C / -xvf "$patched_glibc"
 
-RUN pacman -Syu --noconfirm clang gtest autoconf automake autoconf-archive boost gcc
+RUN pacman -Syu --noconfirm clang gtest autoconf automake autoconf-archive boost gcc libtool
 
 RUN bsdtar -C / -xvf "$patched_glibc"
 
@@ -21,9 +21,8 @@ COPY . /project
 WORKDIR /project
 
 RUN ls
-RUN which autoconf
-RUN $(which autoconf)
-RUN $(which autoconf) --version
+RUN /usr/bin/autoconf
+RUN /usr/bin/autoconf --version
 RUN ./bootstrap
 RUN ./configure
 RUN make
