@@ -14,7 +14,13 @@ RUN cat /cri-mirror >> /etc/pacman.conf
 
 COPY clang-format /.clang-format
 
+RUN mkdir /project
 
+COPY . /project
 
+WORKDIR /project
 
-
+RUN ls
+RUN ./bootstrap
+RUN ./configure
+RUN make
