@@ -26,6 +26,7 @@ ENV CONFIG_SHELL=/bin/bash
 ENV M4=/bin/m4
 RUN aclocal
 RUN autoreconf -vif
+RUN ./configure
 
 # && ./configure && make
 
