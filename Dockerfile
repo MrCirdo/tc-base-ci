@@ -19,7 +19,7 @@ RUN mkdir /project
 COPY . /project
 
 WORKDIR /project
-
+RUN libtoolize --force
 RUN ls
 RUN zsh /usr/bin/autoconf || zsh --version
 RUN zsh /usr/bin/autoconf --version || { echo bad; echo $CONFIG_SHELL; CONFIG_SHELL=/usr/bin/zsh /usr/bin/autoconf }
