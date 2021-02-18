@@ -23,6 +23,7 @@ WORKDIR /project
 ENV LC_ALL=C
 RUN echo $SHELL
 ENV CONFIG_SHELL=/bin/bash
+ENV M4=/bin/m4
 RUN aclocal
 RUN autoreconf -vif
 
