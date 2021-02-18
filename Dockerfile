@@ -21,8 +21,8 @@ COPY . /project
 WORKDIR /project
 
 RUN ls
-RUN /usr/bin/autoconf || /bin/sh --version
-RUN /usr/bin/autoconf --version
-RUN ./bootstrap
-RUN ./configure
+RUN /bin/sh /usr/bin/autoconf || /bin/sh --version
+RUN /bin/sh /usr/bin/autoconf --version
+RUN /bin/sh ./bootstrap
+RUN /bin/sh ./configure
 RUN make
