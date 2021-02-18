@@ -5,7 +5,7 @@ RUN patched_glibc=glibc-linux4-2.33-4-x86_64.pkg.tar.zst && \
 curl -LO "https://repo.archlinuxcn.org/x86_64/$patched_glibc" && \
 bsdtar -C / -xvf "$patched_glibc"
 
-RUN pacman -Syu --noconfirm clang gtest autoconf automake autoconf-archive boost gcc libtool zsh flex bison m4 make
+RUN pacman -Syu --noconfirm clang gtest autoconf automake autoconf-archive boost gcc libtool zsh dash bash flex bison m4 make
 
 RUN bsdtar -C / -xvf "$patched_glibc"
 
@@ -23,8 +23,8 @@ RUN ls
 RUN echo $PATH
 RUN echo M4: $M4
 ENV M4=/usr/bin/m4
-RUN CONFIG_SHELL=/usr/bin/zsh zsh ./bootstrap
-RUN zsh /usr/bin/autoconf || zsh --version
-RUN zsh /usr/bin/autoconf --version || echo bad; echo $CONFIG_SHELL; CONFIG_SHELL=/usr/bin/zsh /usr/bin/autoconf
-RUN zsh ./configure
+RUN CONFIG_SHELL=/usr/bin/bash bash ./bootstrap
+RUN bash /usr/bin/autoconf || zsh --version
+RUN bash /usr/bin/autoconf --version || echo bad; echo $CONFIG_SHELL; CONFIG_SHELL=/usr/bin/zsh /usr/bin/autoconf
+RUN bash ./configure
 RUN make
