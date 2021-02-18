@@ -21,6 +21,8 @@ COPY . /project
 WORKDIR /project
 RUN ls
 RUN echo $PATH
+RUN echo M4: $M4
+ENV M4=/usr/bin/m4
 RUN CONFIG_SHELL=/usr/bin/zsh zsh ./bootstrap
 RUN zsh /usr/bin/autoconf || zsh --version
 RUN zsh /usr/bin/autoconf --version || echo bad; echo $CONFIG_SHELL; CONFIG_SHELL=/usr/bin/zsh /usr/bin/autoconf
