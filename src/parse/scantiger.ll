@@ -47,7 +47,6 @@
                 << misc::escape(yytext) << "'\n";       \
   } while (false)
 
-std::string string_content;
 
 YY_FLEX_NAMESPACE_BEGIN
 %}
@@ -58,13 +57,14 @@ YY_FLEX_NAMESPACE_BEGIN
 digit			[0-9]
 int				{digit}+
 letter			[a-zA-Z]
-escape			\\[abfnrtv]
+escape			\\[abfnrtv\\"]|\\[0-3][0-7]{2}|\\x[0-9a-fA-F]{2}
 EOL				(\r\n?|\n\r?)
 whitespace		[ \t]
 
 %%
 %{
   // FIXME: Some code was deleted here (Local variables).
+  std::string string_content;
 
   // Each time yylex is called.
   tp.location_.step();
@@ -86,7 +86,16 @@ whitespace		[ \t]
     	BEGIN(INITIAL);
 	    return TOKEN_VAL(STRING, string_content);
 	}
-	.		{ string_content.push_back(yytext[0]); }
+
+	.|{escape}		{ string_content.append(yytext); }
+
+  \\.           {
+                  tp.error_ << misc::error::error_type::scan
+                            << tp.location_
+                            << ": invalid escape sequence: "
+                            << yytext
+                            << "\n";
+                }
 }
 
  /* Comments */
