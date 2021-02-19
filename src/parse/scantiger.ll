@@ -103,7 +103,6 @@ whitespace		[ \t]
 
 <SC_COMMENT>{
 	"*/"	{ yy_pop_state(); }
-	\n		{ tp.location_.lines(yyleng); tp.location_.step(); }
 	.		{ }
 }
 
@@ -166,7 +165,7 @@ whitespace		[ \t]
 
 {whitespace} { }
 
-{EOL}		{tp.location_.lines(); tp.location_.step(); /* maybe unnecessary */};
+<*>{EOL}		{tp.location_.lines(); tp.location_.step(); /* maybe unnecessary */};
 
 <<EOF>> { return TOKEN(EOF); };
 
