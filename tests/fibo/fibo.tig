@@ -1,0 +1,14 @@
+let
+    import "fibo.tih"
+in
+    (
+        print_int(fibo(0));
+        print(" ");
+        print_int(fibo(1));
+        print(" ");
+        print_int(fibo(8));
+        print(" ");
+        print_int(fibo(45));
+        print("\n")
+    )
+end
