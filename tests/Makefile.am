@@ -1,0 +1,2 @@
+check-local:
+	dune runtest
