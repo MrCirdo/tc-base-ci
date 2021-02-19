@@ -72,13 +72,13 @@ whitespace		[ \t]
 
  /* The rules.  */
 
-// Integer literals
+ /* Integer literals */
 {int}		{
                 int val = atoi(yytext);
                 return TOKEN_VAL(INT, val);
 			}
 
-// String literals FIXME: add escapes
+ /* String literals FIXME: add escapes */
 "\""		{ BEGIN(SC_STRING); }
 
 <SC_STRING>{
@@ -89,8 +89,8 @@ whitespace		[ \t]
 	.		{ string_content.push_back(yytext[0]); }
 }
 
-// Comments
-<SC_COMMENT, INITIAL>"/*"		{ yy_push_state(SC_COMMENT); }
+ /* Comments */
+<SC_COMMENT,INITIAL>"/*"		{ yy_push_state(SC_COMMENT); }
 
 <SC_COMMENT>{
 	"*/"	{ yy_pop_state(); }
@@ -98,7 +98,7 @@ whitespace		[ \t]
 	.		{ }
 }
 
-// Regular keywords
+ /* Regular keywords */
 "array"		{ return TOKEN(ARRAY); }
 "if"		{ return TOKEN(IF); }
 "then"		{ return TOKEN(THEN); }
@@ -119,13 +119,13 @@ whitespace		[ \t]
 "import"	{ return TOKEN(IMPORT); }
 "primitive"	{ return TOKEN(PRIMITIVE); }
 
-// Object-oriented extension keywords
+ /* Object-oriented extension keywords */
 "class"		{ return TOKEN(CLASS); }
 "extends"	{ return TOKEN(EXTENDS); }
 "method"	{ return TOKEN(METHOD); }
 "new"		{ return TOKEN(NEW); }
 
-// Symbols
+ /* Symbols */
 ","			{ return TOKEN(COMMA); }
 ":"			{ return TOKEN(COLON); }
 ";"			{ return TOKEN(SEMI); }
@@ -150,7 +150,7 @@ whitespace		[ \t]
 "|"			{ return TOKEN(OR); }
 ":="		{ return TOKEN(ASSIGN); }
 
-// Identifiers
+ /* Identifiers */
 ({letter}({letter}|{digit}|"_")|"_main") { return TOKEN_VAL(ID, strdup(yytext); }
 
 {whitespace} { }
@@ -158,6 +158,8 @@ whitespace		[ \t]
 {EOL}		{tp.location_.lines(); tp.location_.step(); /* maybe unnecessary */};
 
 <<EOF>> { return TOKEN(EOF); };
+
+. { yyerror("Invalid char"); }
 
 %%
 
