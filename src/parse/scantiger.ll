@@ -170,7 +170,13 @@ whitespace		[ \t]
 
 <<EOF>> { return TOKEN(EOF); };
 
-. { yyerror("Invalid char"); }
+. { 
+    tp.error_ << misc::error::error_type::scan
+              << tp.location_
+              << ": Illegal character: "
+              << yytext
+              <<"\n";
+  }
 
 %%
 
