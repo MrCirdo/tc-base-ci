@@ -64,6 +64,7 @@ authors.h: AUTHORS.txt $(AUTHORS_H_GEN)
 
 .PHONY: everything-aux
 everything-aux: \
+  $(BUILT_SOURCES) \
   src/parse/libparse.lo\
   src/parse/parsetiger.lo\
   src/parse/prelude.lo\
