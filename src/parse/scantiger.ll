@@ -103,6 +103,13 @@ whitespace		[ \t]
 
 <SC_COMMENT>{
 	"*/"	{ yy_pop_state(); }
+
+  <<EOF>> {
+            tp.error_ << misc::error::error_type::scan
+                      << tp.location_
+                      << ": Unexpected end of file inside of comment\n";
+          }
+
 	.		{ }
 }
 
@@ -169,7 +176,7 @@ whitespace		[ \t]
 
 <<EOF>> { return TOKEN(EOF); };
 
-. { 
+. {
     tp.error_ << misc::error::error_type::scan
               << tp.location_
               << ": Illegal character: "
