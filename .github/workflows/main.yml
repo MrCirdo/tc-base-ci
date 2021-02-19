@@ -25,6 +25,9 @@ jobs:
       - name: Check Out Repo 
         uses: actions/checkout@v2
 
+      - name: Login to GitHub Package Registry
+        run: echo "${{ $GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u "${{ github.actor }}" --password-stdin
+
       - name: Run the default code
         run: docker run --mount type=bind,source="$(pwd)",target=/project docker.pkg.github.com/et7f3/arch-toolchain/arch-epita:latest
         
