@@ -47,15 +47,21 @@
                 << misc::escape(yytext) << "'\n";       \
   } while (false)
 
+std::string string_content;
+
 YY_FLEX_NAMESPACE_BEGIN
 %}
 
 %x SC_COMMENT SC_STRING
 
 /* Abbreviations.  */
-int             [0-9]+
+digit			[0-9]
+int				{digit}+
+letter			[a-zA-Z]
+escape			\\[abfnrtv]
+EOL				(\r\n?|\n\r?)
+whitespace		[ \t]
 
-EOL             \n\r|\r\n|\n|\r
 %%
 %{
   // FIXME: Some code was deleted here (Local variables).
@@ -66,61 +72,90 @@ EOL             \n\r|\r\n|\n|\r
 
  /* The rules.  */
 
-{int}         {
-                int val = 0;
-  // FIXME: Some code was deleted here (Decode, and check the value).
+// Integer literals
+{int}		{
+                int val = atoi(yytext);
                 return TOKEN_VAL(INT, val);
-              }
+			}
 
-"&" { return TOKEN(AND); };
-"array" { return TOKEN(ARRAY); };
-":=" { return TOKEN(ASSIGN); };
-"break" { return TOKEN(BREAK); };
-"_cast" { return TOKEN(CAST); };
-"class" { return TOKEN(CLASS); };
-":" { return TOKEN(COLON); };
-"," { return TOKEN(COMMA); };
-"/" { return TOKEN(DIVIDE); };
-"do" { return TOKEN(DO); };
-"\." { return TOKEN(DOT); };
-"else" { return TOKEN(ELSE); };
-"end" { return TOKEN(END); };
-"=" { return TOKEN(EQ); };
-"extends" { return TOKEN(EXTENDS); };
-"for" { return TOKEN(FOR); };
-"function" { return TOKEN(FUNCTION); };
-">=" { return TOKEN(GE); };
-">" { return TOKEN(GT); };
-"if" { return TOKEN(IF); };
-"import" { return TOKEN(IMPORT); };
-"in" { return TOKEN(IN); };
-"\{" { return TOKEN(LBRACE); };
-"\[" { return TOKEN(LBRACK); };
-"<=" { return TOKEN(LE); };
-"let" { return TOKEN(LET); };
-"\(" { return TOKEN(LPAREN); };
-"<" { return TOKEN(LT); };
-"-" { return TOKEN(MINUS); };
-"method" { return TOKEN(METHOD); };
-"<>" { return TOKEN(NE); };
-"new" { return TOKEN(NEW); };
-"nil" { return TOKEN(NIL); };
-"of" { return TOKEN(OF); };
-"\|" { return TOKEN(OR); };
-"\+" { return TOKEN(PLUS); };
-"primitive" { return TOKEN(PRIMITIVE); };
-"\}" { return TOKEN(RBRACE); };
-"\]" { return TOKEN(RBRACK); };
-"\)" { return TOKEN(RPAREN); };
-";" { return TOKEN(SEMI); };
-"then" { return TOKEN(THEN); };
-"*" { return TOKEN(TIMES); };
-"to" { return TOKEN(TO); };
-"type" { return TOKEN(TYPE); };
-"var" { return TOKEN(VAR); };
-"while" { return TOKEN(WHILE); };
+// String literals FIXME: add escapes
+"\""		{ BEGIN(SC_STRING); }
 
-{EOL} {tp.location_.lines(); tp.location_.step(); /* maybe unnecessary */};
+<SC_STRING>{
+	"\""	{
+    	BEGIN(INITIAL);
+	    return TOKEN_VAL(STRING, string_content);
+	}
+	.		{ string_content.push_back(yytext[0]); }
+}
+
+// Comments
+<SC_COMMENT, INITIAL>"/*"		{ yy_push_state(SC_COMMENT); }
+
+<SC_COMMENT>{
+	"*/"	{ yy_pop_state(); }
+	\n		{ tp.location_.lines(yyleng); tp.location_.step(); }
+	.		{ }
+}
+
+// Regular keywords
+"array"		{ return TOKEN(ARRAY); }
+"if"		{ return TOKEN(IF); }
+"then"		{ return TOKEN(THEN); }
+"else"		{ return TOKEN(ELSE); }
+"while"		{ return TOKEN(WHILE); }
+"for"		{ return TOKEN(FOR); }
+"to"		{ return TOKEN(TO); }
+"do"		{ return TOKEN(DO); }
+"let"		{ return TOKEN(LET); }
+"in"		{ return TOKEN(IN); }
+"end"		{ return TOKEN(END); }
+"of"		{ return TOKEN(OF); }
+"break"		{ return TOKEN(BREAK); }
+"nil"		{ return TOKEN(NIL); }
+"function"	{ return TOKEN(FUNCTION); }
+"var"		{ return TOKEN(VAR); }
+"type"		{ return TOKEN(TYPE); }
+"import"	{ return TOKEN(IMPORT); }
+"primitive"	{ return TOKEN(PRIMITIVE); }
+
+// Object-oriented extension keywords
+"class"		{ return TOKEN(CLASS); }
+"extends"	{ return TOKEN(EXTENDS); }
+"method"	{ return TOKEN(METHOD); }
+"new"		{ return TOKEN(NEW); }
+
+// Symbols
+","			{ return TOKEN(COMMA); }
+":"			{ return TOKEN(COLON); }
+";"			{ return TOKEN(SEMI); }
+"("			{ return TOKEN(LPAREN); }
+")"			{ return TOKEN(RPAREN); }
+"["			{ return TOKEN(LBRACK); }
+"]"			{ return TOKEN(RBRACK); }
+"{"			{ return TOKEN(LBRACE); }
+"}"			{ return TOKEN(RBRACE); }
+"."			{ return TOKEN(DOT); }
+"+"			{ return TOKEN(PLUS); }
+"-"			{ return TOKEN(MINUS); }
+"*"			{ return TOKEN(TIMES); }
+"/"			{ return TOKEN(DIVIDE); }
+"="			{ return TOKEN(EQ); }
+"<>"		{ return TOKEN(NE); }
+"<"			{ return TOKEN(LT); }
+"<="		{ return TOKEN(LE); }
+">"			{ return TOKEN(GT); }
+">="		{ return TOKEN(GE); }
+"&"			{ return TOKEN(AND); }
+"|"			{ return TOKEN(OR); }
+":="		{ return TOKEN(ASSIGN); }
+
+// Identifiers
+({letter}({letter}|{digit}|"_")|"_main") { return TOKEN_VAL(ID, strdup(yytext); }
+
+{whitespace} { }
+
+{EOL}		{tp.location_.lines(); tp.location_.step(); /* maybe unnecessary */};
 
 <<EOF>> { return TOKEN(EOF); };
 
