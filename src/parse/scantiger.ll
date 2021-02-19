@@ -108,7 +108,7 @@ whitespace [ \t]
             tp.error_ << misc::error::error_type::scan
                       << tp.location_
                       << ": Unexpected end of file inside of comment\n";
-            tp.error_.exit();
+            BEGIN(INITIAL);
           }
 
   .    { }
