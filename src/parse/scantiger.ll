@@ -78,7 +78,7 @@ whitespace [ \t]
                 return TOKEN_VAL(INT, val);
       }
 
- /* String literals FIXME: add escapes */
+ /* String literals */
 "\""  { BEGIN(SC_STRING); }
 
 <SC_STRING>{
