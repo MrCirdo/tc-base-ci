@@ -5,28 +5,31 @@
 
 #pragma once
 
+#include <iostream>
 #include <misc/symbol.hh>
 
 namespace misc
 {
   inline symbol& symbol::operator=(const symbol& rhs)
   {
-    // FIXME: Some code was deleted here.
+    unique::operator=(rhs);
+
+    return *this;
   }
 
   inline bool symbol::operator==(const symbol& rhs) const
   {
-    // FIXME: Some code was deleted here.
+    return unique::operator==(rhs);
   }
 
   inline bool symbol::operator!=(const symbol& rhs) const
   {
-    // FIXME: Some code was deleted here.
+    return !operator==(rhs);
   }
 
   inline std::ostream& operator<<(std::ostream& ostr, const symbol& the)
   {
-    // FIXME: Some code was deleted here.
+    std::cout << the.get();
   }
 
 } // namespace misc
