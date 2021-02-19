@@ -54,7 +54,8 @@ YY_FLEX_NAMESPACE_BEGIN
 
 /* Abbreviations.  */
 int             [0-9]+
-  /* FIXME: Some code was deleted here. */
+
+EOL             \n\r|\r\n|\n|\r
 %%
 %{
   // FIXME: Some code was deleted here (Local variables).
@@ -71,7 +72,58 @@ int             [0-9]+
                 return TOKEN_VAL(INT, val);
               }
 
-  /* FIXME: Some code was deleted here. */
+"&" { return TOKEN(AND); };
+"array" { return TOKEN(ARRAY); };
+":=" { return TOKEN(ASSIGN); };
+"break" { return TOKEN(BREAK); };
+"_cast" { return TOKEN(CAST); };
+"class" { return TOKEN(CLASS); };
+":" { return TOKEN(COLON); };
+"," { return TOKEN(COMMA); };
+"/" { return TOKEN(DIVIDE); };
+"do" { return TOKEN(DO); };
+"\." { return TOKEN(DOT); };
+"else" { return TOKEN(ELSE); };
+"end" { return TOKEN(END); };
+"=" { return TOKEN(EQ); };
+"extends" { return TOKEN(EXTENDS); };
+"for" { return TOKEN(FOR); };
+"function" { return TOKEN(FUNCTION); };
+">=" { return TOKEN(GE); };
+">" { return TOKEN(GT); };
+"if" { return TOKEN(IF); };
+"import" { return TOKEN(IMPORT); };
+"in" { return TOKEN(IN); };
+"\{" { return TOKEN(LBRACE); };
+"\[" { return TOKEN(LBRACK); };
+"<=" { return TOKEN(LE); };
+"let" { return TOKEN(LET); };
+"\(" { return TOKEN(LPAREN); };
+"<" { return TOKEN(LT); };
+"-" { return TOKEN(MINUS); };
+"method" { return TOKEN(METHOD); };
+"<>" { return TOKEN(NE); };
+"new" { return TOKEN(NEW); };
+"nil" { return TOKEN(NIL); };
+"of" { return TOKEN(OF); };
+"\|" { return TOKEN(OR); };
+"\+" { return TOKEN(PLUS); };
+"primitive" { return TOKEN(PRIMITIVE); };
+"\}" { return TOKEN(RBRACE); };
+"\]" { return TOKEN(RBRACK); };
+"\)" { return TOKEN(RPAREN); };
+";" { return TOKEN(SEMI); };
+"then" { return TOKEN(THEN); };
+"*" { return TOKEN(TIMES); };
+"to" { return TOKEN(TO); };
+"type" { return TOKEN(TYPE); };
+"var" { return TOKEN(VAR); };
+"while" { return TOKEN(WHILE); };
+
+{EOL} {tp.location_.lines(); tp.location_.step(); /* maybe unnecessary */};
+
+<<EOF>> { return TOKEN(EOF); };
+
 %%
 
 // Do not use %option noyywrap, because then flex generates the same
