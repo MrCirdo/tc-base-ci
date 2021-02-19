@@ -10,17 +10,15 @@
 
 namespace misc
 {
-  template <typename T, class C> unique<T, C>::unique(const data_type& s)
-  {
-    if (!object_set_instance().contains(s))
-      object_set_instance().insert(s);
-    this->obj_ = &(*object_set_instance().find(s));
-  }
+  template <typename T, class C>
+  unique<T, C>::unique(const data_type& s)
+    : obj_(&(*object_set_instance().emplace(std::move(s)).first))
+  {}
 
   template <typename T, class C>
   typename unique<T, C>::object_set_type& unique<T, C>::object_set_instance()
   {
-    static object_set_type singleton_ = object_set_type();
+    static object_set_type singleton_;
     return singleton_;
   }
 
