@@ -28,6 +28,10 @@ namespace parse
   /// Set the scanner traces.
   TigerParser& TigerParser::scan_trace(bool b)
   {
+    if (b)
+      {
+        scanner_->set_debug(1);
+      }
     scan_trace_p_ = b;
     return *this;
   }
@@ -89,6 +93,12 @@ namespace parse
       }
 
     // FIXME: Some code was deleted here (Initialize the scanner and parser, then parse and close).
+    scanner_->scan_open_(*in);
+    parser parser{*this};
+    parser.set_debug_level(parse_trace_p_);
+    parser.parse();
+    scanner_->scan_close_();
+
     ast_type res = ast_;
     ast_ = static_cast<ast::Exp*>(nullptr);
 
