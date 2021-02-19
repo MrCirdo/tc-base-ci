@@ -151,7 +151,9 @@ whitespace		[ \t]
 ":="		{ return TOKEN(ASSIGN); }
 
  /* Identifiers */
-({letter}({letter}|{digit}|"_")|"_main") { return TOKEN_VAL(ID, strdup(yytext)); }
+({letter}({letter}|{digit}|"_")|"_main") {
+    return TOKEN_VAL(ID, misc::symbol(yytext));
+}
 
 {whitespace} { }
 
