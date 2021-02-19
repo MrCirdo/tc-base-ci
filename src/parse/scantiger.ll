@@ -63,7 +63,6 @@ whitespace [ \t]
 
 %%
 %{
-  // FIXME: Some code was deleted here (Local variables).
   std::string string_content;
 
   // Each time yylex is called.
