@@ -12,8 +12,7 @@ AC_PREREQ([2.64])
 ## Package set up.  ##
 ## ---------------- ##
 
-AC_INIT([LRDE Tiger Compiler], [1.90], [tiger@lrde.epita.fr], [tc],
-        [http://tiger.lrde.epita.fr])
+AC_INIT([Spider Compiler],[0.1],[tiger@lrde.epita.fr],[tc],[http://tiger.lrde.epita.fr])
 
 if test -z "$CXXFLAGS"
 then
