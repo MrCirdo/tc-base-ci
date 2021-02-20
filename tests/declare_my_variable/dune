@@ -1,0 +1,4 @@
+(cram
+ (deps
+  (file ../../src/tc)
+  (source_tree .)))

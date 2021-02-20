@@ -1,0 +1,31 @@
+type int_array = array of int
+/* insertion sort */
+function sort(arr: int_array, size: int) =
+(
+    if size > 0 then
+    (
+        for i := 1 to size-1 do
+        (
+            let
+                var j := i
+            in
+                while j >= 1 do
+                (
+                    if arr[j-1] > arr[j] then
+                        let
+                            var t := arr[j]
+                        in
+                        (
+                            arr[j] := arr[j-1];
+                            arr[j-1] := t;
+                            ()
+                        )
+                        end
+                    else
+                        break;
+                    j := j -1
+                )
+            end
+        )
+    )
+)
