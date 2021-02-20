@@ -13,7 +13,7 @@ class graph_type : public undirected_graph<int, std::string>
 {
 public:
   virtual std::ostream& vertex_print(vertex_descriptor v,
-                                     std::ostream& ostr) const
+                                     std::ostream& ostr) const override
   {
     return ostr << (*this)[v];
   }
@@ -45,7 +45,8 @@ static bool consistency(graph_type& g)
 
   graph_type::vertex_descriptor n(0);
   for (auto [p, p_end] = boost::adjacent_vertices(n, g); p != p_end; ++p)
-    std::cout << (int)*p << '\n';
+    //ASK(elie): Here unsigned long why we cast to int ?
+    std::cout << *p << '\n';
   std::cout << std::flush;
 
   g.name_set("test-graph");

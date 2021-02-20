@@ -33,7 +33,7 @@ namespace task
       {
         var_ = stol(arg);
       }
-    catch (const std::invalid_argument& e)
+    catch (const std::invalid_argument&)
       {
         std::cerr << program_name << ": expected an integer: " << arg << '\n';
         throw;

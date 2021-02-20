@@ -6,7 +6,7 @@ include %D%/misc/local.am
 ## ---------- ##
 
 dist_noinst_HEADERS =
-include %D%/concepts/local.am
-include %D%/meta/local.am
-include %D%/range/v3/local.am
-include %D%/std/local.am
+include %D%/vendor/concepts/local.am
+include %D%/vendor/meta/local.am
+include %D%/vendor/range/v3/local.am
+include %D%/vendor/std/local.am

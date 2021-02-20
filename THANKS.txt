@@ -1,4 +1,5 @@
 This package was written by and with the assistance of
+me quand meme
 
 * Akim Demaille                akim@lrde.epita.fr
   - Project inception.

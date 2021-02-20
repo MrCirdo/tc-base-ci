@@ -27,7 +27,7 @@ int main()
       {
         std::string s = v;
       }
-    catch (const std::bad_variant_access& e)
+    catch (const std::bad_variant_access&)
       {
         failure = false;
       }
@@ -57,7 +57,7 @@ int main()
       {
         int i = v;
       }
-    catch (const std::bad_variant_access& e)
+    catch (const std::bad_variant_access&)
       {
         failure = false;
       }

@@ -1,0 +1,19 @@
+let
+    import "use-an-array.tih"
+    var arr := int_array[10] of 0
+in
+    (
+        arr[0] := 0;
+        arr[1] := 1;
+        arr[2] := 4;
+        arr[3] := 2;
+        arr[4] := 6;
+        arr[5] := 42;
+        arr[6] := 16;
+        arr[7] := 8;
+        arr[8] := 9;
+        arr[9] := 10;
+        print_int(max_search(arr, 10));
+        print("\n")
+    )
+end

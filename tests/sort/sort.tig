@@ -1,0 +1,83 @@
+let
+  import "sort.tih"
+  var arr_sign := 1
+  var arr_size := 0
+  var c := getchar()
+
+  function is_digit(c : string) : int =
+    c >= "0" & c <= "9"
+
+  function print_array(arr : int_array, size : int) =
+  (
+    for i := 0 to size - 1 do
+    (
+      print_int(arr[i]);
+      print(" ")
+    );
+    print("\n")
+  )
+in
+  if (c = "-") then
+  (
+    arr_sign := -1;
+    c := getchar()
+  );
+
+  while (is_digit(c)) do
+  (
+    arr_size := arr_size * 10 + ord(c) - 48;
+    c := getchar()
+  );
+
+  arr_size := arr_sign * arr_size;
+  if (arr_size <= 0) then
+  (
+    let
+      var arr := int_array[6] of 0
+    in
+      arr[0] := 6;
+      arr[1] := 14;
+      arr[2] := -4;
+      arr[3] := 9;
+      arr[4] := -1;
+      arr[5] := 11;
+
+      sort(arr, arr_size);
+      print_array(arr, 6)
+    end
+  )
+  else
+  (
+    let
+      var arr := int_array[arr_size] of 0
+      var sign := 1
+      var index := 0
+    in
+      c := getchar();
+      while (c <> "\n") do
+      (
+        if (c = "-") then
+        (
+          sign := -1;
+          c := getchar()
+        );
+
+        while (is_digit(c)) do
+        (
+          arr[index] := arr[index]*10 + ord(c) - 48;
+          c := getchar()
+        );
+        arr[index] := sign * arr[index];
+
+        if (c = "\n") then
+          break;
+        c := getchar();
+        index := index + 1
+      );
+
+      sort(arr, arr_size);
+      print_array(arr, arr_size)
+    end
+  )
+end
+

@@ -144,7 +144,6 @@ namespace misc
     boost::add_edge(v1, v2, *this);
   }
 
-
   template <typename NodeLabel, typename EdgeLabel>
   std::vector<typename directed_graph<NodeLabel, EdgeLabel>::vertex_descriptor>
   directed_graph<NodeLabel, EdgeLabel>::topological_sort() const

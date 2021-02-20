@@ -32,7 +32,7 @@ endif
 # Most headers are to be shipped and to be found in src/, e.g.
 # tasks/tasks.hh is shipped in $(top_srcdir)/src/task/tasks.hh.  Some
 # are *built* in src, e.g., $(top_builddir)/src/modules.hh.
-AM_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_srcdir)/src -I$(top_builddir)/src
+AM_CPPFLAGS = -I$(top_srcdir)/lib -isystem$(top_srcdir)/lib/vendor -I$(top_srcdir)/src -I$(top_builddir)/src
 AM_CPPFLAGS += $(BOOST_CPPFLAGS)
 # Find the prelude.
 AM_CPPFLAGS += -DPKGDATADIR="\"$(pkgdatadir)\""
@@ -62,4 +62,64 @@ authors.h: AUTHORS.txt $(AUTHORS_H_GEN)
 	$(AM_V_GEN)$(AUTHORS_H_GEN) $< >$@.tmp
 	$(AM_V_at)$(top_srcdir)/build-aux/bin/move-if-change $@.tmp $@
 
+.PHONY: everything-aux
+everything-aux: \
+  $(BUILT_SOURCES) \
+  src/parse/libparse.lo\
+  src/parse/parsetiger.lo\
+  src/parse/prelude.lo\
+  src/parse/scantiger.lo\
+  src/parse/tiger-parser.lo\
+  $(NULL)
+everything-aux: AM_CXXFLAGS += \
+	-Wno-disabled-macro-expansion \
+	-Wno-extra-semi-stmt \
+	-Wno-implicit-fallthrough \
+	-Wno-old-style-cast \
+	-Wno-shorten-64-to-32 \
+	-Wno-switch-enum \
+	-Wno-unused-macros \
+	-Wno-zero-as-null-pointer-constant \
+	$(: todo) \
+	-Wno-documentation-unknown-command \
+	-Wno-reserved-id-macro \
+	-Wno-suggest-destructor-override \
+	-Wno-suggest-override \
+	-Wno-weak-vtables \
+	$(: given) \
+	-Wno-unused-parameter \
+	-Wno-unused-template \
+	-Wno-unused-variable \
+	$(NULL)
 
+.PHONY: everything2
+everything2: AM_CXXFLAGS += \
+	-Wno-exit-time-destructors \
+	-Wno-global-constructors \
+	$(: todo) \
+	-Wno-documentation-unknown-command \
+	-Wno-implicit-int-float-conversion \
+	-Wno-missing-variable-declarations \
+	-Wno-reserved-id-macro \
+	-Wno-shorten-64-to-32 \
+	-Wno-sign-conversion \
+	-Wno-weak-vtables \
+	$(: given) \
+	-Wno-unused-variable \
+	$(NULL)
+everything2: $(bin_PROGRAMS) $(LTLIBRARIES) $(check_PROGRAMS) all check
+
+.PHONY: everything
+everything: CXX=clang++
+everything: AM_CXXFLAGS += \
+	-Weverything\
+	-Werror\
+	-std=c++20\
+	-Wno-c++98-compat\
+	-Wno-padded\
+	$(NULL)
+everything: everything-aux everything2
+
+debug: AM_CXXFLAGS += $(SANITIZER_FLAGS) -g3 -O0
+debug: AM_LDFLAGS += $(SANITIZER_FLAGS) -g3 -O0
+debug: everything

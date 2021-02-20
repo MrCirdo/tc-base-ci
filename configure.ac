@@ -12,8 +12,12 @@ AC_PREREQ([2.64])
 ## Package set up.  ##
 ## ---------------- ##
 
-AC_INIT([LRDE Tiger Compiler], [1.90], [tiger@lrde.epita.fr], [tc],
-        [http://tiger.lrde.epita.fr])
+AC_INIT([Spider Compiler],[0.1],[tiger@lrde.epita.fr],[tc],[http://tiger.lrde.epita.fr])
+
+if test -z "$CXXFLAGS"
+then
+  CXXFLAGS=''
+fi
 
 # Auxiliary files.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -79,6 +83,15 @@ fi
 
 # Try to use pipes between compiler stages to speed the compilation up.
 AX_CHECK_COMPILE_FLAG([-pipe], [CXXFLAGS="$CXXFLAGS -pipe"])
+
+SANITIZER_FLAGS=''
+
+for flag in address undefined leak pointer-compare pointer-subtract memory
+do
+  AX_CHECK_COMPILE_FLAG([-fsanitize=$flag], [SANITIZER_FLAGS="$SANITIZER_FLAGS -fsanitize=$flag"])
+done
+
+AC_SUBST([SANITIZER_FLAGS], ["$SANITIZER_FLAGS"])
 
 # Use good warnings.
 TC_CXX_WARNINGS([[-Wall],
@@ -217,6 +230,17 @@ AM_CONDITIONAL([SUPPORTED_IA32],
 # Clang-format.
 AC_CHECK_PROGS([CLANG_FORMAT], [clang-format])
 
+# Dune.
+AC_CHECK_PROG([DUNE], [dune], [yes], [no])
+if test "x$DUNE" == "xyes"
+then
+  AC_MSG_CHECKING([for dune >= 2.7])
+  AX_COMPARE_VERSION([$(dune --version)],[ge],[2.7],
+    AC_SUBST([DUNE_CORRECT_VERSION], [yes]),
+    AC_SUBST([DUNE_CORRECT_VERSION], [no]))
+  echo $DUNE_CORRECT_VERSION
+fi
+
 ## ----------- ##
 ## Libraries.  ##
 ## ----------- ##
@@ -248,6 +272,8 @@ AX_CONFIG_SCRIPTS([tcsh/run])
 
 # Students should create their test suite in tests/.  Add the needed
 # configure options here.
+AM_CONDITIONAL([FUNCTIONAL], [ test "x$DUNE" != "xno" -a "x$DUNE_CORRECT_VERSION" != "xno" ])
+
 AC_CONFIG_FILES([tests/Makefile])
 
 ## --------------- ##
