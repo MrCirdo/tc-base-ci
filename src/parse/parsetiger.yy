@@ -168,6 +168,7 @@ program:
 
 exp:
   INT
+  | STRING
   | ID
   | exp PLUS exp
    
