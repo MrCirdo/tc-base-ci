@@ -171,6 +171,12 @@ exp:
   | STRING
   | ID
   | exp PLUS exp
+  | LPAREN exps RPAREN
+
+exps:
+  %empty
+  | exps SEMI exp
+
    
   // FIXME: Some code was deleted here (More rules).
 
