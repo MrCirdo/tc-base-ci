@@ -186,7 +186,7 @@ namespace parse
       {
         res = parse_file(absolute_path);
       }
-    catch (const std::bad_variant_access& e)
+    catch (const std::bad_variant_access&)
       {
         error_ << misc::error::error_type::parse << absolute_path
                << ": imported from " << loc

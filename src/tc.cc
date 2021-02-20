@@ -36,7 +36,7 @@ int main(int argc, char** argv)
     }
 
   // Required to enable stack unwinding.
-  catch (const std::invalid_argument& e)
+  catch (const std::invalid_argument&)
     {
       return 64;
     }

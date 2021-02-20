@@ -10,7 +10,8 @@
 // From ast/.
 namespace ast
 {
-  class Exp;
+  class Exp
+  {};
   class ChunkList;
 
 } // namespace ast

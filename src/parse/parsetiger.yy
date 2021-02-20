@@ -168,6 +168,8 @@ program:
 
 exp:
   INT
+  | ID
+  | exp PLUS exp
    
   // FIXME: Some code was deleted here (More rules).
 

@@ -276,7 +276,7 @@ namespace task
                      "Try `tc --help' or `tc --usage' for more information.\n";
         throw std::invalid_argument("command line parsing error");
       }
-    catch (const std::invalid_argument& e)
+    catch (const std::invalid_argument&)
       {
         throw;
       }

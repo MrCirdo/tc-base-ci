@@ -166,7 +166,7 @@ whitespace [ \t]
 ":="      { return TOKEN(ASSIGN); }
 
  /* Identifiers */
-({letter}({letter}|{digit}|"_")|"_main") {
+({letter}({letter}|{digit}|"_")*|"_main") {
     return TOKEN_VAL(ID, misc::symbol(yytext));
 }
 
