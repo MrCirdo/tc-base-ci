@@ -230,6 +230,17 @@ AM_CONDITIONAL([SUPPORTED_IA32],
 # Clang-format.
 AC_CHECK_PROGS([CLANG_FORMAT], [clang-format])
 
+# Dune.
+AC_CHECK_PROG([DUNE], [dune], [yes], [no])
+if test "x$DUNE" == "xyes"
+then
+  AC_MSG_CHECKING([for dune >= 2.7])
+  AX_COMPARE_VERSION([$(dune --version)],[ge],[2.7],
+    AC_SUBST([DUNE_CORRECT_VERSION], [yes]),
+    AC_SUBST([DUNE_CORRECT_VERSION], [no]))
+  echo $DUNE_CORRECT_VERSION
+fi
+
 ## ----------- ##
 ## Libraries.  ##
 ## ----------- ##
@@ -261,6 +272,8 @@ AX_CONFIG_SCRIPTS([tcsh/run])
 
 # Students should create their test suite in tests/.  Add the needed
 # configure options here.
+AM_CONDITIONAL([FUNCTIONAL], [ test "x$DUNE" != "xno" -a "x$DUNE_CORRECT_VERSION" != "xno" ])
+
 AC_CONFIG_FILES([tests/Makefile])
 
 ## --------------- ##
