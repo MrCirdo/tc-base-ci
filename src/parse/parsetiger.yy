@@ -153,7 +153,12 @@
        EOF 0        "end of file"
 
 
-  // FIXME: Some code was deleted here (Priorities/associativities).
+%left "|"
+%left "&"
+%nonassoc ">=" "<=" "=" "<>" "<" ">"
+%left "+" "-";
+%left "*" "/";
+
 %start program
 
 %%
@@ -161,16 +166,33 @@ program:
   /* Parsing a source program.  */
   exp
    
-| /* Parsing an imported file.  */
-  chunks
+  | /* Parsing an imported file.  */
+   chunks
    
 ;
 
 exp:
-  INT
+  /* Literals. */
+  NIL
+  | INT
   | STRING
   | ID
+
+  /* Operations. */
+  | MINUS exp
   | exp PLUS exp
+  | exp MINUS exp
+  | exp TIMES exp
+  | exp DIVIDE exp
+  | exp EQ exp
+  | exp NE exp
+  | exp GT exp
+  | exp LT exp
+  | exp GE exp
+  | exp LE exp
+  | exp AND exp
+  | exp OR exp
+
   | LPAREN exps RPAREN
 
 exps:
