@@ -87,7 +87,6 @@ everything-aux: AM_CXXFLAGS += \
 	-Wno-suggest-override \
 	-Wno-weak-vtables \
 	$(: given) \
-	-Wno-unused-exception-parameter \
 	-Wno-unused-parameter \
 	-Wno-unused-template \
 	-Wno-unused-variable \
@@ -106,8 +105,6 @@ everything2: AM_CXXFLAGS += \
 	-Wno-sign-conversion \
 	-Wno-weak-vtables \
 	$(: given) \
-	-Wno-return-type \
-	-Wno-unused-exception-parameter \
 	-Wno-unused-variable \
 	$(NULL)
 everything2: $(bin_PROGRAMS) $(LTLIBRARIES) $(check_PROGRAMS) all check
